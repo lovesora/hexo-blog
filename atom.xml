@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.lovesora.pro/"/>
-  <updated>2019-02-26T05:34:30.736Z</updated>
+  <updated>2019-04-09T14:46:13.182Z</updated>
   <id>blog.lovesora.pro/</id>
   
   <author>
@@ -17,9 +17,77 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Hexo Plugin 合集</title>
+    <link href="blog.lovesora.pro/2019/04/09/blog/hexo/plugin/"/>
+    <id>blog.lovesora.pro/2019/04/09/blog/hexo/plugin/</id>
+    <published>2019-04-09T14:44:42.000Z</published>
+    <updated>2019-04-09T14:46:13.182Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Hexo-Mermaid-插件"><a href="#Hexo-Mermaid-插件" class="headerlink" title="Hexo Mermaid 插件"></a>Hexo Mermaid 插件</h2><blockquote><p><a href="https://www.npmjs.com/package/hexo-filter-mermaid-diagrams" target="_blank" rel="noopener">官方文档</a></p></blockquote><h3 id="Step1-Install-Package"><a href="#Step1-Install-Package" class="headerlink" title="Step1 Install Package"></a>Step1 Install Package</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn add hexo-filter-mermaid-diagrams</span><br></pre></td></tr></table></figure><blockquote><p>In your blog floder, not hexo floder</p></blockquote><h3 id="Step2-Edit-Config"><a href="#Step2-Edit-Config" class="headerlink" title="Step2 Edit Config"></a>Step2 Edit Config</h3><p>After installed, you should edit hexo config file: <code>_config.yml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mermaid chart</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="comment">## mermaid url https://github.com/knsv/mermaid</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span>  <span class="comment"># default true</span></span><br><span class="line"><span class="attr">  version:</span> <span class="string">"7.1.2"</span> <span class="comment"># default v7.1.2</span></span><br><span class="line"><span class="attr">  options:</span>  <span class="comment"># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span></span><br><span class="line">    <span class="comment">#startOnload: true  // default true</span></span><br></pre></td></tr></table></figure></p><blockquote><p>❗️❗️❗️Notice: if you want to use ‘Class diagram’, please edit your ‘_config.yml’ file, set <code>external_link: false</code>. - hexo bug.</p></blockquote><h3 id="Step3-include-mermaid-js-in-pug-or-ejs"><a href="#Step3-include-mermaid-js-in-pug-or-ejs" class="headerlink" title="Step3 include mermaid.js in pug or ejs"></a>Step3 include mermaid.js in pug or ejs</h3><p>After edited <code>_config.yml</code>, you shou edit your blog page component like <code>after_footer.pug</code> , <code>after-footer.ejs</code> or <code>swig</code>.</p><p>Where is it?</p><p>Open your theme folder, you can see the <code>layout</code> folder, open it and then you could see it.</p><p>Okey! if your blog is used pug, you can copy the below codes in <code>after_footer.pug</code>:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if theme.mermaid.enable == true</span><br><span class="line">  script(type=&apos;text/javascript&apos;, id=&apos;maid-script&apos; mermaidoptioins=theme.mermaid.options src=&apos;https://unpkg.com/mermaid@&apos;+ theme.mermaid.version + &apos;/dist/mermaid.min.js&apos; + &apos;?v=&apos; + theme.version)</span><br><span class="line">  script.</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      var options = JSON.parse(document.getElementById(&apos;maid-script&apos;).getAttribute(&apos;mermaidoptioins&apos;));</span><br><span class="line">      mermaid.initialize(options);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><p><code>after-footer.ejs</code> should copy below codes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.mermaid.enable) &#123; %&gt;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&lt;%= theme.mermaid.version %&gt;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;theme: &apos;forest&apos;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p><p>swig template engine:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.mermaid.enable %&#125;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&#123;&#123; theme.mermaid.version &#125;&#125;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;&#123; JSON.stringify(theme.mermaid.options) &#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Hexo-Mermaid-插件&quot;&gt;&lt;a href=&quot;#Hexo-Mermaid-插件&quot; class=&quot;headerlink&quot; title=&quot;Hexo Mermaid 插件&quot;&gt;&lt;/a&gt;Hexo Mermaid 插件&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;a hr
+      
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="blog.lovesora.pro/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>组件&amp;库 架构方案</title>
+    <link href="blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/"/>
+    <id>blog.lovesora.pro/2018/12/28/fe/架构/angular 架构演进/</id>
+    <published>2018-12-28T08:22:22.000Z</published>
+    <updated>2019-04-09T14:46:34.046Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="最原始方案"><a href="#最原始方案" class="headerlink" title="最原始方案"></a>最原始方案</h2><p>所有组件库各自独立维护，独立演进。<br>搭建私有<code>npm</code>，业务项目独立引用组件库对应版本。</p><ul><li>优势</li></ul><p>组件之间相互独立，各自互补相干。</p><ul><li>劣势</li></ul><p>组件库的研发比较麻烦，需要写独立demo。<br>如果在业务项目中发现组件库出现问题，调试极其麻烦。</p><ul><li><p>适用<br>大型团队，组件与业务彻底分离，各自独立演进。</p></li><li><p>不适用<br>小型团队使用成本极大，业务产出低。</p></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;最原始方案&quot;&gt;&lt;a href=&quot;#最原始方案&quot; class=&quot;headerlink&quot; title=&quot;最原始方案&quot;&gt;&lt;/a&gt;最原始方案&lt;/h2&gt;&lt;p&gt;所有组件库各自独立维护，独立演进。&lt;br&gt;搭建私有&lt;code&gt;npm&lt;/code&gt;，业务项目独立引用组件库对应版本。
+      
+    
+    </summary>
+    
+    
+      <category term="架构" scheme="blog.lovesora.pro/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记 `*ngIf` 生命周期导致的一个坑</title>
+    <link href="blog.lovesora.pro/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/"/>
+    <id>blog.lovesora.pro/2018/09/19/fe/angular/杂文/lifecycle-ngif/</id>
+    <published>2018-09-19T08:07:03.000Z</published>
+    <updated>2019-04-09T12:06:28.974Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="情景"><a href="#情景" class="headerlink" title="情景"></a>情景</h2><p><code>*ngIf</code> 中的 <code>ViewChild</code> 要在 <code>ngAfterViewInit</code> 生命周期钩子中才能拿到。</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  condition = <span class="literal">true</span>;</span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'div'</span>) div: ElementRef;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterContentInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterViewInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// ElementRef</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ng-container</span> *<span class="attr">ngIf</span>=<span class="string">"condition"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> #<span class="attr">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ng-container</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;情景&quot;&gt;&lt;a href=&quot;#情景&quot; class=&quot;headerlink&quot; title=&quot;情景&quot;&gt;&lt;/a&gt;情景&lt;/h2&gt;&lt;p&gt;&lt;code&gt;*ngIf&lt;/code&gt; 中的 &lt;code&gt;ViewChild&lt;/code&gt; 要在 &lt;code&gt;ngAfterViewInit&lt;
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Angualr 开源组件设计</title>
-    <link href="blog.lovesora.pro/2018/09/10/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/"/>
-    <id>blog.lovesora.pro/2018/09/10/angular/组件/ngx-os项目结构/</id>
+    <link href="blog.lovesora.pro/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/"/>
+    <id>blog.lovesora.pro/2018/09/10/fe/angular/组件/ngx-os项目结构/</id>
     <published>2018-09-10T10:06:25.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -43,8 +111,8 @@
   
   <entry>
     <title>Angular Route Reuse Strategy</title>
-    <link href="blog.lovesora.pro/2018/09/06/angular/%E6%9D%82%E6%96%87/route-reuse/"/>
-    <id>blog.lovesora.pro/2018/09/06/angular/杂文/route-reuse/</id>
+    <link href="blog.lovesora.pro/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/"/>
+    <id>blog.lovesora.pro/2018/09/06/fe/angular/杂文/route-reuse/</id>
     <published>2018-09-06T05:59:48.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -68,8 +136,8 @@
   
   <entry>
     <title>tsconfig 浅析</title>
-    <link href="blog.lovesora.pro/2018/08/09/typescript/tsconfig/"/>
-    <id>blog.lovesora.pro/2018/08/09/typescript/tsconfig/</id>
+    <link href="blog.lovesora.pro/2018/08/09/fe/typescript/tsconfig/"/>
+    <id>blog.lovesora.pro/2018/08/09/fe/typescript/tsconfig/</id>
     <published>2018-08-09T03:24:58.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -91,8 +159,8 @@
   
   <entry>
     <title>Angular 组件开源架构</title>
-    <link href="blog.lovesora.pro/2018/08/07/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/"/>
-    <id>blog.lovesora.pro/2018/08/07/angular/组件/开源架构/</id>
+    <link href="blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/"/>
+    <id>blog.lovesora.pro/2018/08/07/fe/angular/组件/开源架构/</id>
     <published>2018-08-07T03:18:27.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -116,8 +184,8 @@
   
   <entry>
     <title>Angular 组件开源流程</title>
-    <link href="blog.lovesora.pro/2018/08/07/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/"/>
-    <id>blog.lovesora.pro/2018/08/07/angular/组件/开源/</id>
+    <link href="blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/"/>
+    <id>blog.lovesora.pro/2018/08/07/fe/angular/组件/开源/</id>
     <published>2018-08-07T02:47:22.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -143,8 +211,8 @@
   
   <entry>
     <title>Sketch Useful Shortcut</title>
-    <link href="blog.lovesora.pro/2018/08/03/sketch/shortcut/"/>
-    <id>blog.lovesora.pro/2018/08/03/sketch/shortcut/</id>
+    <link href="blog.lovesora.pro/2018/08/03/design/sketch/shortcut/"/>
+    <id>blog.lovesora.pro/2018/08/03/design/sketch/shortcut/</id>
     <published>2018-08-03T07:24:29.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -171,8 +239,8 @@
   
   <entry>
     <title>Centos 7 安装SSL</title>
-    <link href="blog.lovesora.pro/2018/07/27/centos/ssl/"/>
-    <id>blog.lovesora.pro/2018/07/27/centos/ssl/</id>
+    <link href="blog.lovesora.pro/2018/07/27/linux/centos/ssl/"/>
+    <id>blog.lovesora.pro/2018/07/27/linux/centos/ssl/</id>
     <published>2018-07-27T02:07:02.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -188,18 +256,18 @@
     </summary>
     
     
+      <category term="nginx" scheme="blog.lovesora.pro/tags/nginx/"/>
+    
       <category term="centos" scheme="blog.lovesora.pro/tags/centos/"/>
     
       <category term="ssl" scheme="blog.lovesora.pro/tags/ssl/"/>
-    
-      <category term="nginx" scheme="blog.lovesora.pro/tags/nginx/"/>
     
   </entry>
   
   <entry>
     <title>Gitlab Docker安装</title>
-    <link href="blog.lovesora.pro/2018/07/19/gitlab/install/"/>
-    <id>blog.lovesora.pro/2018/07/19/gitlab/install/</id>
+    <link href="blog.lovesora.pro/2018/07/19/vcs/gitlab/install/"/>
+    <id>blog.lovesora.pro/2018/07/19/vcs/gitlab/install/</id>
     <published>2018-07-19T07:01:57.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -221,8 +289,8 @@
   
   <entry>
     <title>GitLab CI/CD Runner 入门</title>
-    <link href="blog.lovesora.pro/2018/07/19/gitlab/runner/"/>
-    <id>blog.lovesora.pro/2018/07/19/gitlab/runner/</id>
+    <link href="blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/"/>
+    <id>blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/</id>
     <published>2018-07-19T06:05:56.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -247,8 +315,8 @@
   
   <entry>
     <title>函数式编程浅析</title>
-    <link href="blog.lovesora.pro/2018/07/05/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
-    <id>blog.lovesora.pro/2018/07/05/rxjs/函数式编程/</id>
+    <link href="blog.lovesora.pro/2018/07/05/fe/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/"/>
+    <id>blog.lovesora.pro/2018/07/05/fe/rxjs/函数式编程/</id>
     <published>2018-07-05T09:03:45.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -270,8 +338,8 @@
   
   <entry>
     <title>Spring Boot Mysql Guide</title>
-    <link href="blog.lovesora.pro/2018/07/05/spring-boot/mysql/"/>
-    <id>blog.lovesora.pro/2018/07/05/spring-boot/mysql/</id>
+    <link href="blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/"/>
+    <id>blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/</id>
     <published>2018-07-05T07:57:03.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -295,8 +363,8 @@
   
   <entry>
     <title>Spring Boot Building a RESTful Web Service</title>
-    <link href="blog.lovesora.pro/2018/07/05/spring-boot/beginner/"/>
-    <id>blog.lovesora.pro/2018/07/05/spring-boot/beginner/</id>
+    <link href="blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/"/>
+    <id>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</id>
     <published>2018-07-05T02:14:42.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -318,8 +386,8 @@
   
   <entry>
     <title>IOS移动端兼容性</title>
-    <link href="blog.lovesora.pro/2018/07/03/mobile/ios%E5%85%BC%E5%AE%B9/"/>
-    <id>blog.lovesora.pro/2018/07/03/mobile/ios兼容/</id>
+    <link href="blog.lovesora.pro/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/"/>
+    <id>blog.lovesora.pro/2018/07/03/fe/mobile/ios兼容/</id>
     <published>2018-07-03T12:40:43.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -343,8 +411,8 @@
   
   <entry>
     <title>2018 年中总结</title>
-    <link href="blog.lovesora.pro/2018/06/29/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/"/>
-    <id>blog.lovesora.pro/2018/06/29/summery/2018年中总结/</id>
+    <link href="blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/"/>
+    <id>blog.lovesora.pro/2018/06/29/work/summery/2018年中总结/</id>
     <published>2018-06-29T06:51:40.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -366,8 +434,8 @@
   
   <entry>
     <title>浅谈angularjs架构演进</title>
-    <link href="blog.lovesora.pro/2018/06/25/angular/%E6%9E%B6%E6%9E%84/angularjs/"/>
-    <id>blog.lovesora.pro/2018/06/25/angular/架构/angularjs/</id>
+    <link href="blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/"/>
+    <id>blog.lovesora.pro/2018/06/25/fe/架构/angularjs/</id>
     <published>2018-06-25T13:48:06.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -394,8 +462,8 @@
   
   <entry>
     <title>Git Stash 保存和恢复进度</title>
-    <link href="blog.lovesora.pro/2018/06/14/git/git-stash/"/>
-    <id>blog.lovesora.pro/2018/06/14/git/git-stash/</id>
+    <link href="blog.lovesora.pro/2018/06/14/vcs/git/git-stash/"/>
+    <id>blog.lovesora.pro/2018/06/14/vcs/git/git-stash/</id>
     <published>2018-06-14T02:48:09.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -420,8 +488,8 @@
   
   <entry>
     <title>docker flow</title>
-    <link href="blog.lovesora.pro/2018/06/05/docker/flow/"/>
-    <id>blog.lovesora.pro/2018/06/05/docker/flow/</id>
+    <link href="blog.lovesora.pro/2018/06/05/devops/docker/flow/"/>
+    <id>blog.lovesora.pro/2018/06/05/devops/docker/flow/</id>
     <published>2018-06-05T10:23:26.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -440,16 +508,16 @@
     </summary>
     
     
-      <category term="flow" scheme="blog.lovesora.pro/tags/flow/"/>
-    
       <category term="docker" scheme="blog.lovesora.pro/tags/docker/"/>
+    
+      <category term="flow" scheme="blog.lovesora.pro/tags/flow/"/>
     
   </entry>
   
   <entry>
     <title>在fish中使用sdkman</title>
-    <link href="blog.lovesora.pro/2018/06/05/ionic/install/sdk/"/>
-    <id>blog.lovesora.pro/2018/06/05/ionic/install/sdk/</id>
+    <link href="blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/"/>
+    <id>blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/</id>
     <published>2018-06-04T16:47:52.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -473,8 +541,8 @@
   
   <entry>
     <title>centos 7 设置 yum 换源</title>
-    <link href="blog.lovesora.pro/2018/06/02/centos/yum-epel/"/>
-    <id>blog.lovesora.pro/2018/06/02/centos/yum-epel/</id>
+    <link href="blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/"/>
+    <id>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</id>
     <published>2018-06-01T17:17:45.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -498,8 +566,8 @@
   
   <entry>
     <title>Docker FAQ</title>
-    <link href="blog.lovesora.pro/2018/06/02/docker/faq/"/>
-    <id>blog.lovesora.pro/2018/06/02/docker/faq/</id>
+    <link href="blog.lovesora.pro/2018/06/02/devops/docker/faq/"/>
+    <id>blog.lovesora.pro/2018/06/02/devops/docker/faq/</id>
     <published>2018-06-01T17:03:49.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -552,8 +620,8 @@
   
   <entry>
     <title>docker 基础</title>
-    <link href="blog.lovesora.pro/2018/05/31/docker/basis/"/>
-    <id>blog.lovesora.pro/2018/05/31/docker/basis/</id>
+    <link href="blog.lovesora.pro/2018/05/31/devops/docker/basis/"/>
+    <id>blog.lovesora.pro/2018/05/31/devops/docker/basis/</id>
     <published>2018-05-31T06:30:54.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -579,8 +647,8 @@
   
   <entry>
     <title>shell 基础</title>
-    <link href="blog.lovesora.pro/2018/05/31/shell/basis/"/>
-    <id>blog.lovesora.pro/2018/05/31/shell/basis/</id>
+    <link href="blog.lovesora.pro/2018/05/31/devops/shell/basis/"/>
+    <id>blog.lovesora.pro/2018/05/31/devops/shell/basis/</id>
     <published>2018-05-30T16:48:30.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -629,8 +697,8 @@
   
   <entry>
     <title>Angular Library 分离实践</title>
-    <link href="blog.lovesora.pro/2018/05/28/angular/%E6%9D%82%E6%96%87/library/"/>
-    <id>blog.lovesora.pro/2018/05/28/angular/杂文/library/</id>
+    <link href="blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/"/>
+    <id>blog.lovesora.pro/2018/05/28/fe/angular/杂文/library/</id>
     <published>2018-05-28T08:22:22.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -658,8 +726,8 @@
   
   <entry>
     <title>tsconfig json schema</title>
-    <link href="blog.lovesora.pro/2018/05/28/typescript/schema/"/>
-    <id>blog.lovesora.pro/2018/05/28/typescript/schema/</id>
+    <link href="blog.lovesora.pro/2018/05/28/fe/typescript/schema/"/>
+    <id>blog.lovesora.pro/2018/05/28/fe/typescript/schema/</id>
     <published>2018-05-28T03:28:36.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -684,8 +752,8 @@
   
   <entry>
     <title>git flow</title>
-    <link href="blog.lovesora.pro/2018/05/28/git/git-flow/"/>
-    <id>blog.lovesora.pro/2018/05/28/git/git-flow/</id>
+    <link href="blog.lovesora.pro/2018/05/28/vcs/git/git-flow/"/>
+    <id>blog.lovesora.pro/2018/05/28/vcs/git/git-flow/</id>
     <published>2018-05-28T03:21:03.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -701,16 +769,16 @@
     </summary>
     
     
-      <category term="git" scheme="blog.lovesora.pro/tags/git/"/>
-    
       <category term="flow" scheme="blog.lovesora.pro/tags/flow/"/>
+    
+      <category term="git" scheme="blog.lovesora.pro/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>angular v5升级至v6</title>
-    <link href="blog.lovesora.pro/2018/05/28/angular/%E6%9D%82%E6%96%87/v5-to-v6/"/>
-    <id>blog.lovesora.pro/2018/05/28/angular/杂文/v5-to-v6/</id>
+    <link href="blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/"/>
+    <id>blog.lovesora.pro/2018/05/28/fe/angular/杂文/v5-to-v6/</id>
     <published>2018-05-28T03:15:31.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -734,8 +802,8 @@
   
   <entry>
     <title>github pages tips</title>
-    <link href="blog.lovesora.pro/2018/05/28/github/git-page/"/>
-    <id>blog.lovesora.pro/2018/05/28/github/git-page/</id>
+    <link href="blog.lovesora.pro/2018/05/28/open-source/github/git-page/"/>
+    <id>blog.lovesora.pro/2018/05/28/open-source/github/git-page/</id>
     <published>2018-05-27T18:08:11.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -760,8 +828,8 @@
   
   <entry>
     <title>angular疑难杂症</title>
-    <link href="blog.lovesora.pro/2018/05/28/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
-    <id>blog.lovesora.pro/2018/05/28/angular/杂文/疑难杂症/</id>
+    <link href="blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/"/>
+    <id>blog.lovesora.pro/2018/05/28/fe/angular/杂文/疑难杂症/</id>
     <published>2018-05-27T16:07:03.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -783,8 +851,8 @@
   
   <entry>
     <title>angular 入门系列 - 环境配置</title>
-    <link href="blog.lovesora.pro/2018/05/27/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
-    <id>blog.lovesora.pro/2018/05/27/angular/入门系列/环境配置/</id>
+    <link href="blog.lovesora.pro/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/"/>
+    <id>blog.lovesora.pro/2018/05/27/fe/angular/入门系列/环境配置/</id>
     <published>2018-05-27T02:48:01.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
@@ -809,8 +877,8 @@
   
   <entry>
     <title>Nginx 配置</title>
-    <link href="blog.lovesora.pro/2018/05/26/nginx/config/"/>
-    <id>blog.lovesora.pro/2018/05/26/nginx/config/</id>
+    <link href="blog.lovesora.pro/2018/05/26/devops/nginx/config/"/>
+    <id>blog.lovesora.pro/2018/05/26/devops/nginx/config/</id>
     <published>2018-05-26T15:23:13.000Z</published>
     <updated>2019-02-26T05:34:30.740Z</updated>
     
@@ -834,10 +902,10 @@
   
   <entry>
     <title>hexo FAQ</title>
-    <link href="blog.lovesora.pro/2018/05/26/hexo/hexo-faq/"/>
-    <id>blog.lovesora.pro/2018/05/26/hexo/hexo-faq/</id>
+    <link href="blog.lovesora.pro/2018/05/26/blog/hexo/hexo-faq/"/>
+    <id>blog.lovesora.pro/2018/05/26/blog/hexo/hexo-faq/</id>
     <published>2018-05-25T18:11:35.000Z</published>
-    <updated>2019-02-26T05:34:30.740Z</updated>
+    <updated>2019-04-09T14:46:27.314Z</updated>
     
     <content type="html"><![CDATA[<h2 id="hexo-spost中的tag删除后还存在"><a href="#hexo-spost中的tag删除后还存在" class="headerlink" title="hexo spost中的tag删除后还存在"></a><code>hexo s</code>post中的tag删除后还存在</h2><ol><li>停止hexo server</li><li>执行<code>hexo clean</code></li><li>重启server<code>hexo s</code></li></ol>]]></content>
     
@@ -857,8 +925,8 @@
   
   <entry>
     <title>git常用命令</title>
-    <link href="blog.lovesora.pro/2018/05/25/git/git-cammand/"/>
-    <id>blog.lovesora.pro/2018/05/25/git/git-cammand/</id>
+    <link href="blog.lovesora.pro/2018/05/25/vcs/git/git-cammand/"/>
+    <id>blog.lovesora.pro/2018/05/25/vcs/git/git-cammand/</id>
     <published>2018-05-25T14:08:09.000Z</published>
     <updated>2019-02-26T05:34:30.736Z</updated>
     
