@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>Centos 7 安装SSL | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 生成ssl1certbot --nginx -d gitlab.example.com Issues 找不到 nginx">
+  <meta name="description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 安装certbot1sudo yum install certbot python2-certbot-nginx 生成ss">
 <meta name="keywords" content="nginx,centos,ssl">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Centos 7 安装SSL">
 <meta property="og:url" content="blog.lovesora.pro/2018/07/27/linux/centos/ssl/index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 生成ssl1certbot --nginx -d gitlab.example.com Issues 找不到 nginx">
+<meta property="og:description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 安装certbot1sudo yum install certbot python2-certbot-nginx 生成ss">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T05:34:30.736Z">
+<meta property="og:updated_time" content="2019-04-10T14:35:07.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Centos 7 安装SSL">
-<meta name="twitter:description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 生成ssl1certbot --nginx -d gitlab.example.com Issues 找不到 nginx">
+<meta name="twitter:description" content="安装epel-release1234567yum install -y epel-releaseyum search python2-certbot-nginx# 如果没有对应的packageyum reinstall -y epel-releaseyum update -y 安装certbot1sudo yum install certbot python2-certbot-nginx 生成ss">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -166,7 +166,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装epel-release"><a href="#安装epel-release" class="headerlink" title="安装epel-release"></a>安装epel-release</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br><span class="line"></span><br><span class="line">yum search python2-certbot-nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果没有对应的package</span></span><br><span class="line">yum reinstall -y epel-release</span><br><span class="line">yum update -y</span><br></pre></td></tr></table></figure>
-<h2 id="生成ssl"><a href="#生成ssl" class="headerlink" title="生成ssl"></a>生成ssl</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot --nginx -d gitlab.example.com</span><br></pre></td></tr></table></figure>
+<h2 id="安装certbot"><a href="#安装certbot" class="headerlink" title="安装certbot"></a>安装certbot</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install certbot python2-certbot-nginx</span><br></pre></td></tr></table></figure>
+<h2 id="生成ssl"><a href="#生成ssl" class="headerlink" title="生成ssl"></a>生成ssl</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 根据提示选择即可</span></span><br><span class="line">sudo certbot --nginx</span><br></pre></td></tr></table></figure>
 <h2 id="Issues"><a href="#Issues" class="headerlink" title="Issues"></a>Issues</h2><ol>
 <li><p>找不到 <code>nginx</code> 命令<br>解决方案：将nginx命令所在目录添加至环境变量</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/profile</span><br><span class="line">PATH=<span class="variable">$PATH</span>:/usr/sbin;</span><br></pre></td></tr></table></figure>
@@ -468,15 +469,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sketch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -488,7 +489,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,7 +501,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -516,35 +517,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,15 +529,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -573,6 +558,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,11 +581,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" class="js-tag color3">ci</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ci</a>
+                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">compat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +601,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,15 +613,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">open source</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -629,10 +634,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
               </li>
             
             <div class="clearfix"></div>
