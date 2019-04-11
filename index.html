@@ -146,6 +146,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/angular/router/reuse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/11/fe/angular/router/reuse/">Angular Router Reuse</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/11/fe/angular/router/reuse/" class="archive-article-date">
+  	<time datetime="2019-04-11T14:56:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>路由在切换时需要销毁当前组件，这在大多数情况下是符合预期的。但是有些时候在一些列表 + 详情的结构下，进入详情后再返回列表需要保留之前的列表状态，此时就需要缓存列表路由。</p>
+<h3 id="现有方案"><a href="#现有方案" class="headerlink" title="现有方案"></a>现有方案</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// route-reuse.strategy.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  DefaultUrlSerializer,</span><br><span class="line">  ActivatedRouteSnapshot,</span><br><span class="line">  DetachedRouteHandle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SimpleReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line"></span><br><span class="line">  _cacheRouters: &#123; [key: <span class="built_in">string</span>]: <span class="built_in">any</span> &#125; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !!route.data.keep;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)] = &#123;</span><br><span class="line">      snapshot: route,</span><br><span class="line">      handle: handle</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> route.data.keep &amp;&amp; !!<span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.data.keep || !<span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)].handle;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._getCacheKey(future) === <span class="keyword">this</span>._getCacheKey(curr);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _getCacheKey(route: ActivatedRouteSnapshot): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> route[<span class="string">'_routerState'</span>].url;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app-routing.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  RouterModule,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [</span><br><span class="line">    RouterModule.forRoot(routes),</span><br><span class="line">  ],</span><br><span class="line">  providers: [&#123;</span><br><span class="line">    provide: RouteReuseStrategy,</span><br><span class="line">    useClass: SimpleReuseStrategy,</span><br><span class="line">  &#125;],</span><br><span class="line">  exports: [RouterModule]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRoutingModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 任意一个页面组件</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  NavigationEnd,</span><br><span class="line">  Router,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> router: Router</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">this</span>.router.events</span><br><span class="line">    .filter(<span class="function">(<span class="params">event</span>) =&gt;</span> event <span class="keyword">instanceof</span> NavigationEnd)</span><br><span class="line">    .subscribe(<span class="function">(<span class="params">event: NavigationEnd</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 这里需要判断一下当前路由，如果不加的话，每次路由结束的时候都会执行这里的方法</span></span><br><span class="line">      <span class="keyword">if</span> (event.url.indexOf(<span class="string">'currentRoute'</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="comment">// 进入当前路由需要重新执行的操作</span></span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>同一父路由</strong> 下的子路由之间的跳转会重新初始化 parent component。翻了翻源代码这才找到了答案。</p>
+<h2 id="RouteReuseStrategy-抽象类"><a href="#RouteReuseStrategy-抽象类" class="headerlink" title="RouteReuseStrategy 抽象类"></a>RouteReuseStrategy 抽象类</h2><blockquote>
+<p>Provides a way to customize when activated routes get reused. <a href="https://github.com/angular/angular/blob/master/packages/router/src/route_reuse_strategy.ts" target="_blank" rel="noopener">code</a></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">abstract</span> <span class="keyword">class</span> RouteReuseStrategy &#123;</span><br><span class="line">  <span class="comment">/** Determines if this route (and its subtree) should be detached to be reused later */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Stores the detached route.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Storing a `null` value should erase the previously stored value.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">abstract</span> store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle|<span class="literal">null</span>): <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Determines if this route (and its subtree) should be reattached */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Retrieves the previously stored route */</span></span><br><span class="line">  <span class="keyword">abstract</span> retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle|<span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Determines if a route should be reused */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>官方默认的 <code>ReuseStrategy</code> 如下</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Does not detach any subtrees. Reuses routes as long as their route config is the same.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DefaultRouteReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">  store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle): <span class="built_in">void</span> &#123;&#125;</span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle|<span class="literal">null</span> &#123; <span class="keyword">return</span> <span class="literal">null</span>; &#125;</span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> future.routeConfig === curr.routeConfig;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对比发现 <code>shouldReuseRoute</code> 中的判断条件不一样。于是将原有代码做了一些调整</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> future.routeConfig === curr.routeConfig || <span class="keyword">this</span>._getCacheKey(future) === <span class="keyword">this</span>._getCacheKey(curr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时同一父路由下的子路由之间的跳转不会再初始化父组件了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/11/fe/angular/router/reuse/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-blog/hexo/hexo-gitment" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -951,11 +1042,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">open source</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">component</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">component</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">open source</a>
         		</li>
       		
 		</ul>
@@ -966,139 +1057,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/08/07/fe/angular/组件/开源/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-design/sketch/shortcut" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/03/design/sketch/shortcut/">Sketch Useful Shortcut</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/03/design/sketch/shortcut/" class="archive-article-date">
-  	<time datetime="2018-08-03T07:24:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Duplicate"><a href="#Duplicate" class="headerlink" title="Duplicate"></a>Duplicate</h2><table>
-<thead>
-<tr>
-<th style="text-align:left">usage</th>
-<th style="text-align:left">command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">复制样式</td>
-<td style="text-align:left">Option + Command + C</td>
-</tr>
-<tr>
-<td style="text-align:left">粘贴样式</td>
-<td style="text-align:left">Option + Command + V</td>
-</tr>
-<tr>
-<td style="text-align:left">复制</td>
-<td style="text-align:left">Ctrl + Command + arrow</td>
-</tr>
-<tr>
-<td style="text-align:left">自定义复制</td>
-<td style="text-align:left">Ctrl + Shift + Command + arrow</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Groups"><a href="#Groups" class="headerlink" title="Groups"></a>Groups</h2><table>
-<thead>
-<tr>
-<th style="text-align:left">usage</th>
-<th style="text-align:left">command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Bring Forward</td>
-<td style="text-align:left">Alt + Cmd + ↑</td>
-</tr>
-<tr>
-<td style="text-align:left">Bring to Front</td>
-<td style="text-align:left">Control + Alt + Cmd + ↑</td>
-</tr>
-<tr>
-<td style="text-align:left">Send Backward</td>
-<td style="text-align:left">Alt + Cmd + ↓</td>
-</tr>
-<tr>
-<td style="text-align:left">Sent to Back</td>
-<td style="text-align:left">Control + Alt + Cmd + ↓</td>
-</tr>
-<tr>
-<td style="text-align:left">Select Parent Artboard</td>
-<td style="text-align:left">Esc</td>
-</tr>
-</tbody>
-</table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">sketch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">shortcut</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/03/design/sketch/shortcut/">ALL >></a>
         </p>
       
 
@@ -1231,19 +1189,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1275,15 +1225,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+                <a href="javascript:void(0)" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,11 +1265,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1315,19 +1281,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,27 +1305,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ci</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,19 +1313,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1387,7 +1337,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">open source</a>
+                <a href="javascript:void(0)" class="js-tag color3">library</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1396,6 +1354,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
