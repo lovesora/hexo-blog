@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.lovesora.pro/"/>
-  <updated>2019-04-11T15:14:58.632Z</updated>
+  <updated>2019-04-18T12:56:43.206Z</updated>
   <id>blog.lovesora.pro/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu 内核升级</title>
+    <link href="blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/"/>
+    <id>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</id>
+    <published>2019-04-18T12:31:59.000Z</published>
+    <updated>2019-04-18T12:56:43.206Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="查看发布版本号"><a href="#查看发布版本号" class="headerlink" title="查看发布版本号"></a>查看发布版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br><span class="line"></span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure><h2 id="查看内核版本号"><a href="#查看内核版本号" class="headerlink" title="查看内核版本号"></a>查看内核版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内核信息</span></span><br><span class="line">uname -sr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有信息</span></span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure><h2 id="升级方式一"><a href="#升级方式一" class="headerlink" title="升级方式一"></a>升级方式一</h2><blockquote><p>到官网<a href="https://kernel.ubuntu.com/~kernel-ppa/mainline/" target="_blank" rel="noopener">kernel.ubuntu.com</a>下载对应deb文件</p></blockquote><p><img src="/assets/images/linux/ubuntu-kernel.png" alt="列表"></p><p><img src="/assets/images/linux/ubuntu-kernel-download.png" alt="文件"></p><p>下载 <code>*all.deb</code> 和所有 <code>*generic*.deb</code> 文件后，到对应文件夹下执行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure><blockquote><p>我是64位操作系统所以选择的 <code>amd64</code>，32位的小伙伴选 <code>i386</code>即可</p></blockquote><h2 id="升级方式二（推荐）"><a href="#升级方式二（推荐）" class="headerlink" title="升级方式二（推荐）"></a>升级方式二（推荐）</h2><h3 id="查看需要更新的内核命令"><a href="#查看需要更新的内核命令" class="headerlink" title="查看需要更新的内核命令"></a>查看需要更新的内核命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search linux</span><br></pre></td></tr></table></figure><h3 id="安装对应版本内核"><a href="#安装对应版本内核" class="headerlink" title="安装对应版本内核"></a>安装对应版本内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install linux-headers-5.0.8-050008-generic</span><br></pre></td></tr></table></figure><p><img src="/assets/images/linux/ubuntu-kernel-install.png" alt="install"></p><blockquote><p>安装完成后默认启动最新内核</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内核启动顺序</span></span><br><span class="line">grep menuentry /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure><h2 id="卸载多余内核"><a href="#卸载多余内核" class="headerlink" title="卸载多余内核"></a>卸载多余内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;查看发布版本号&quot;&gt;&lt;a href=&quot;#查看发布版本号&quot; class=&quot;headerlink&quot; title=&quot;查看发布版本号&quot;&gt;&lt;/a&gt;查看发布版本号&lt;/h2&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="ubuntu" scheme="blog.lovesora.pro/tags/ubuntu/"/>
+    
+  </entry>
   
   <entry>
     <title>Angular Router Reuse</title>
