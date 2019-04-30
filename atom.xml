@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="blog.lovesora.pro/"/>
-  <updated>2019-04-18T12:56:43.206Z</updated>
+  <updated>2019-04-30T02:21:43.585Z</updated>
   <id>blog.lovesora.pro/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>记一次数组赋值导致的页面卡死</title>
+    <link href="blog.lovesora.pro/2019/04/29/fe/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/array/"/>
+    <id>blog.lovesora.pro/2019/04/29/fe/性能优化/array/</id>
+    <published>2019-04-29T08:58:03.000Z</published>
+    <updated>2019-04-30T02:21:43.585Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一个很简单的功能直接导致页面卡死</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line">arr[<span class="number">4294967294</span>] = <span class="string">'arr'</span>;</span><br><span class="line">arr.map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">console</span>.log(item));</span><br></pre></td></tr></table></figure><p>尝试在控制台运行以上代码…</p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><blockquote><p>JavaScript 使用一个32位整数，保存数组的元素个数。这意味着，数组成员最多只有 4294967295 个（232 - 1）个，也就是说length属性的最大值就是 4294967295。</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>];</span><br><span class="line">arr.length <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">2</span>] = <span class="string">'c'</span>;</span><br><span class="line">arr.length <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">9</span>] = <span class="string">'d'</span>;</span><br><span class="line">arr.length <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">1000</span>] = <span class="string">'e'</span>;</span><br><span class="line">arr.length <span class="comment">// 1001</span></span><br></pre></td></tr></table></figure><p>数组的遍历会从索引 <code>0</code> 开始一直到 <code>length-1</code></p><p>所以，以下代码往往不可控</p><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> key: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line">arr[key] = ...</span><br><span class="line">arr.map(<span class="function"><span class="params">item</span> =&gt;</span> ...);</span><br></pre></td></tr></table></figure><p>对数组以一个 <code>number</code> 类型的变量作为 <code>key</code> 赋值后，再使用 <code>map, forEach, for...</code> 等来遍历数组时，由于 <code>key</code> 的值不可控，如果是数据库中的 <code>主键id</code>，那么在数据量小的时候发现不了什么异常，一旦数据量过大，浏览器直接就会卡死!</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;一个很简单的功能直接导致页面卡死&lt;/p&gt;
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+      
+    
+    </summary>
+    
+    
+      <category term="性能优化" scheme="blog.lovesora.pro/tags/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/"/>
+    
+      <category term="array" scheme="blog.lovesora.pro/tags/array/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu 内核升级</title>

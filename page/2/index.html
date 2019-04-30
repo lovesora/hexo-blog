@@ -146,6 +146,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/angular/组件/开源架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/07/fe/angular/组件/开源架构/">Angular 组件开源架构</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/07/fe/angular/组件/开源架构/" class="archive-article-date">
+  	<time datetime="2018-08-07T03:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Common"><a href="#Common" class="headerlink" title="Common"></a>Common</h2><p><code>Common</code> 的定义是 <code>公共</code>，参考的 <code>angular</code>，所有开源组件公共的代码都放在这个项目中，包括两部分：</p>
+<ul>
+<li>ts</li>
+<li>sass</li>
+</ul>
+<p>这部分定义了基于 <code>typescript</code> 的所有公共库，类似<code>lodash</code>，包含组件需要使用的公共的功能。目前包含以下部分：</p>
+<ul>
+<li>util</li>
+<li>net</li>
+<li>error</li>
+<li>global</li>
+</ul>
+<p>代码最终会被编译成 <code>js</code>，并且包含 <code>*.d.ts</code>，无论是 <code>js</code> 还是 <code>ts</code> 项目都可引用。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  SearchArray,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@petkit/common'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h2><p>这部分定义了基于 <code>sass</code> 的公共样式。目前包含以下部分：</p>
+<ul>
+<li>animation</li>
+<li>icon</li>
+<li>support</li>
+<li>wechat</li>
+<li>mp</li>
+</ul>
+<p>该部分样式针对不同平台（Web, PC,公众号,小程序等）做了兼容处理，需要在配置文件中配置，默认 <code>750</code> 占满屏幕宽度（类似微信小程序）。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _theming.config.scss</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">'~@petkit/style/theming'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$app-primary</span>: mat-palette(<span class="variable">$mat-cyan</span>);</span><br><span class="line"><span class="variable">$app-accent</span>: mat-palette(<span class="variable">$mat-orange</span>);</span><br><span class="line"><span class="variable">$app-warn</span>: mat-palette(<span class="variable">$mat-yellow</span>, <span class="number">700</span>, <span class="number">300</span>, <span class="number">900</span>);</span><br><span class="line"><span class="variable">$app-theme</span>: mat-light-theme(<span class="variable">$app-primary</span>, <span class="variable">$app-accent</span>, <span class="variable">$app-warn</span>);</span><br><span class="line"><span class="variable">$app-size</span>: size(wp);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">open source</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/07/fe/angular/组件/开源架构/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/angular/组件/开源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1039,172 +1140,9 @@
 
 
   
-    <article id="post-work/summery/2018年中总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/29/work/summery/2018年中总结/">2018 年中总结</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/29/work/summery/2018年中总结/" class="archive-article-date">
-  	<time datetime="2018-06-29T06:51:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>转眼18年已经过半，到公司已经快一年了。从年初到现在的这半年间切实体会到了什么叫做痛并快乐着。从做寄养开始，压力就一直伴随在身边。用新技术处理新业务这一选择，直接导致我们前端开发人员一度崩坏。但是，自己做出的选择，含着泪也要把它搞定！不过，现在回想起来，那真的是一段弥足珍贵的体验，同事的鼓励和领导的宽容，让我坚持了下去。如果不一鼓作气往前走，那么自己永远迈不出那一步。这股魄力成为了我人生中宝贵的一笔财富。</p>
-<h2 id="主要工作"><a href="#主要工作" class="headerlink" title="主要工作"></a>主要工作</h2><p>这半年来主要工作都集中在了angular的应用上，从做猫窝开始时的基础试运行，到后来做寄养开始的正式技术迁移，大体成果如下：</p>
-<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>核心思想是分层架构，层内独立，层间通过接口通信。</p>
-<ul>
-<li><code>lib</code> 公共ts库，所有项目通用<ul>
-<li>net</li>
-<li>util</li>
-<li>error</li>
-<li>pipe</li>
-</ul>
-</li>
-<li><code>style</code> 公共样式库，所有项目通用<ul>
-<li>material-theming</li>
-<li>icon</li>
-<li>animation</li>
-<li>support</li>
-<li>plugin</li>
-<li>mobile</li>
-<li>wechat</li>
-<li>mini-program</li>
-<li>pc</li>
-</ul>
-</li>
-<li><code>matrial</code> angular material库<ul>
-<li>amap</li>
-<li>calendar</li>
-<li>card<ul>
-<li>check</li>
-<li>delete</li>
-<li>loading</li>
-</ul>
-</li>
-<li>date-range-picker</li>
-<li>dialog<ul>
-<li>confirm</li>
-<li>success</li>
-<li>table</li>
-</ul>
-</li>
-<li>layout</li>
-<li>loading</li>
-<li>nav</li>
-<li>table</li>
-<li>tree</li>
-<li>upload</li>
-</ul>
-</li>
-<li><code>flux</code> pc端数据层</li>
-<li><code>redux</code> 移动端数据层</li>
-<li><code>common</code> 原子业务层，微服务基础</li>
-<li><code>saas</code> 聚合业务层</li>
-</ul>
-<h3 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h3><blockquote>
-<p>AMD -&gt; ESM</p>
-</blockquote>
-<p>在angularjs时期，我们是用的AMD(requirejs)模块化方案，解决了<code>按需加载</code>问题，但是随着构建工具（gulp，webpack，rollup等）的不断发展，ESM逐渐成为主流。Angular 框架本身使用的TS，其模块化方案是ESM的超集。</p>
-<h3 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h3><blockquote>
-<p>directive -&gt; Component</p>
-</blockquote>
-<p>angularjs中使用的<code>directive</code>作为组件化的基础，而在angular中则是使用 <code>Module</code>，<code>Component</code>, <code>Directive</code> 来适用不用的组件化场景。</p>
-<h3 id="规范化"><a href="#规范化" class="headerlink" title="规范化"></a>规范化</h3><blockquote>
-<p>htmlhint, stylelint, eslint, tslint</p>
-</blockquote>
-<p>使用语言对应的lint插件来规范代码风格，保证代码的可读性和一致性。</p>
-<blockquote>
-<p>git flow</p>
-</blockquote>
-<p>使用git flow分支管理模型，让多人协作，分支管理变得清晰有序。</p>
-<h3 id="跨平台"><a href="#跨平台" class="headerlink" title="跨平台"></a>跨平台</h3><p>PC端，移动端，小程序使用同一套架构设计。</p>
-<ul>
-<li><code>bin</code>中存放了项目相关shell脚本</li>
-<li><code>dist</code>编译后文件所在目录</li>
-<li><code>projects</code>目录存放了所有库项目，负责独立的业务。</li>
-<li><code>src</code>项目源代码</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">▾ bin/</span><br><span class="line">▸ dist/</span><br><span class="line">▸ node_modules/</span><br><span class="line">▾ projects/</span><br><span class="line">  ▸ common/</span><br><span class="line">  ▸ flux/</span><br><span class="line">  ▸ lib/</span><br><span class="line">  ▸ material/</span><br><span class="line">▾ src/</span><br><span class="line">  ▸ app/</span><br><span class="line">  ▸ assets/</span><br><span class="line">  ▸ environments/</span><br><span class="line">  ▸ style/</span><br></pre></td></tr></table></figure>
-<h2 id="经验教训"><a href="#经验教训" class="headerlink" title="经验教训"></a>经验教训</h2><h3 id="时间评估"><a href="#时间评估" class="headerlink" title="时间评估"></a>时间评估</h3><p>细节与依赖都需要自己不断去挖掘才能考虑得详细，如果只是想当然的评估，那么事情的结果往往会变得很糟糕。</p>
-<h3 id="三个臭皮匠抵过一个诸葛亮"><a href="#三个臭皮匠抵过一个诸葛亮" class="headerlink" title="三个臭皮匠抵过一个诸葛亮"></a>三个臭皮匠抵过一个诸葛亮</h3><p>在使用新技术的过程中，经常闭门造车，导致自己走了很多弯路。以后遇到类似问题一定要多与别人讨论。</p>
-<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这一年做了太多的东西，却思考得太少，没有理解到技术的原理，深深地陷入了码农深渊，不知道为什么这么做，为什么这样设计。每次从需求到研发，都是拿着设计图，思考实现这个东西要怎么做，时间可控不，要花多少时间，有什么风险，需要什么依赖，哪些东西可以复用等等。但是，产品初衷是什么？解决了用户什么刚需？为什么设计师要这样子设计？后端数据库怎么设计的？为什么要给这样的数据结构？这些往往难以接触，即使有机会了解，也不太愿意花时间去做。很多时候都不清除源头，就开始草草动工，只着眼于自己领域的实现，结果往往就是各种返工。在以后的研发中，一定不能把自己仅仅定位为“前端”工程师，应当从更为宏观，更为根本的角度去考虑事情。</p>
-<h2 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h2><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>目前单元测试已经有了眉目，使用angular官方提供的 <code>karma</code> 和 <code>jasmine</code>。</p>
-<h3 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h3><p>这一部分是目前最为薄弱的一环，当业务达到一定复杂度时，会发现越来越多的任务都是水墨功夫，流程都是一摸一样，无非相关数据有所区别，自动化工具可以帮助我们快速创建一系列相关文件和代码，提高生产效率。</p>
-<h3 id="异常上报与监控"><a href="#异常上报与监控" class="headerlink" title="异常上报与监控"></a>异常上报与监控</h3><p>异常类型</p>
-<ul>
-<li>网络</li>
-<li>接口</li>
-<li>代码</li>
-<li>数据</li>
-</ul>
-<p>通过线上的异常监控可以及时拿到用户的异常信息，即时修复。</p>
-<h3 id="全栈"><a href="#全栈" class="headerlink" title="全栈"></a>全栈</h3><p>年初之时就想朝着全栈发展，这半年从结果上看，离自己的目标还是有一段距离，现在后端的同事们都在朝着全栈发展，我们也不能落后。如果有相关后端业务的话，希望自己还是能够主动去争取</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">summery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/29/work/summery/2018年中总结/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1305,23 +1243,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,6 +1260,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">faq</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,11 +1299,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,15 +1319,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">epel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,14 +1367,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
               </li>
              
@@ -1421,15 +1375,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1441,7 +1387,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,15 +1399,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1477,7 +1423,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
