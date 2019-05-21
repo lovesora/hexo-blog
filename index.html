@@ -146,6 +146,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-javascript/dynamic/font" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/21/javascript/dynamic/font/">JS 动态加载字体</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/21/javascript/dynamic/font/" class="archive-article-date">
+  	<time datetime="2019-05-21T02:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Axios-FileReader"><a href="#Axios-FileReader" class="headerlink" title="Axios + FileReader"></a>Axios + FileReader</h1><blockquote>
+<p>FileReader 对象允许Web应用程序异步读取存储在用户计算机上的文件（或原始数据缓冲区）的内容，使用 File 或 Blob 对象指定要读取的文件或数据。</p>
+</blockquote>
+<blockquote>
+<p>File 对象是来自用户在一个 <input> 元素上选择文件后返回的 FileList 对象,也可以是来自由拖放操作生成的 DataTransfer 对象，或者来自 HTMLCanvasElement 上的 mozGetAsFile() API。</p>
+</blockquote>
+<blockquote>
+<p>Blob 对象表示一个不可变、原始数据的类文件对象。Blob 表示的不一定是JavaScript原生格式的数据。File 接口基于Blob，继承了 blob 的功能并将其扩展使其支持用户系统上的文件</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> woffUrl = chrome.extension.getURL(<span class="string">'/libs/fonts/element-icons.woff'</span>);</span><br><span class="line"></span><br><span class="line">axios.get(woffUrl, &#123;</span><br><span class="line">  responseType: <span class="string">'blob'</span>,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">  reader.readAsDataURL(data.data);</span><br><span class="line">  reader.onloadend = <span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> woffData = reader.result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newStyle = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">    newStyle.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">`</span></span><br><span class="line"><span class="string">      @font-face &#123;</span></span><br><span class="line"><span class="string">          font-family: element-icons;</span></span><br><span class="line"><span class="string">          src: url(<span class="subst">$&#123;woffData&#125;</span>) format("woff");</span></span><br><span class="line"><span class="string">      &#125;\</span></span><br><span class="line"><span class="string">    `</span>));</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(newStyle);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">font</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/21/javascript/dynamic/font/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/性能优化/array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -997,94 +1084,6 @@
 
 
   
-    <article id="post-fe/typescript/tsconfig" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/09/fe/typescript/tsconfig/">tsconfig 浅析</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/09/fe/typescript/tsconfig/" class="archive-article-date">
-  	<time datetime="2018-08-09T03:24:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="相对-vs-非相对模块导入"><a href="#相对-vs-非相对模块导入" class="headerlink" title="相对 vs. 非相对模块导入"></a>相对 vs. 非相对模块导入</h3><p>根据模块引用是相对的还是非相对的，模块导入会以不同的方式解析。</p>
-<p>相对导入是以/，./或../开头的。 下面是一些例子：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Entry <span class="keyword">from</span> <span class="string">"./components/Entry"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; DefaultHeaders &#125; <span class="keyword">from</span> <span class="string">"../constants/http"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"/mod"</span>;</span><br></pre></td></tr></table></figure>
-<p>所有其它形式的导入被当作非相对的。 下面是一些例子：</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> $ <span class="keyword">from</span> <span class="string">"jQuery"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">"@angular/core"</span>;</span><br></pre></td></tr></table></figure>
-<p>相对导入在解析时是相对于导入它的文件，并且不能解析为一个外部模块声明。 你应该为你自己写的模块使用相对导入，这样能确保它们在运行时的相对位置。</p>
-<p>非相对模块的导入可以相对于 <code>baseUrl</code> 或通过下文会讲到的路径映射来进行解析。 它们还可以被解析成 <a href="https://www.tslang.cn/docs/handbook/modules.html#ambient-modules" target="_blank" rel="noopener">外部模块声明</a>。 使用非相对路径来导入你的外部依赖</p>
-<h3 id="路径映射"><a href="#路径映射" class="headerlink" title="路径映射"></a>路径映射</h3><p>有时模块不是直接放在<code>baseUrl</code>下面。 比如，充分 <code>&quot;jquery&quot;</code>模块地导入，在运行时可能被解释为 <code>&quot;node_modules/jquery/dist/jquery.slim.min.js&quot;</code>。加载器使用映射配置来将模块名映射到运行时的文件。</p>
-<p>TypeScript编译器通过使用tsconfig.json文件里的”paths”来支持这样的声明映射。 下面是一个如何指定 jquery的”paths”的例子。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"baseUrl"</span>: <span class="string">"."</span>, <span class="comment">// This must be specified if "paths" is.</span></span><br><span class="line">    <span class="string">"paths"</span>: &#123;</span><br><span class="line">      <span class="string">"jquery"</span>: [<span class="string">"node_modules/jquery/dist/jquery"</span>] <span class="comment">// 此处映射是相对于"baseUrl"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>请注意<code>&quot;paths&quot;</code>是相对于<code>&quot;baseUrl&quot;</code>进行解析。 如果 <code>&quot;baseUrl&quot;</code>被设置成了除<code>&quot;.&quot;</code>外的其它值，比如<code>tsconfig.json</code>所在的目录，那么映射必须要做相应的改变。<br>如果你在上例中设置了 <code>&quot;baseUrl&quot;: &quot;./src&quot;</code>，那么<code>jquery</code>应该映射到<code>&quot;../node_modules/jquery/dist/jquery&quot;</code>。</p>
-<h3 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h3><ul>
-<li><a href="https://www.tslang.cn/docs/handbook/module-resolution.html" target="_blank" rel="noopener">tslang.cn</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/21629069" target="_blank" rel="noopener">zhihu</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/09/fe/typescript/tsconfig/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1188,15 +1187,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,15 +1219,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1236,22 +1243,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mobile</a>
               </li>
              
@@ -1264,11 +1255,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">font</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1280,7 +1295,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1292,27 +1311,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pageg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1328,6 +1331,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ci</a>
               </li>
              
@@ -1340,11 +1347,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,15 +1371,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">

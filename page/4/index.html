@@ -146,6 +146,140 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-devops/shell/basis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/devops/shell/basis/">shell 基础</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/31/devops/shell/basis/" class="archive-article-date">
+  	<time datetime="2018-05-30T16:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
+<li>语法<ul>
+<li>每句末尾的 <code>;</code> 是可选的</li>
+<li>赋值<ul>
+<li>赋值语句 <code>=</code> 两边不能有空格</li>
+</ul>
+</li>
+<li>取值<ul>
+<li><code>&#39;&#39;</code> 内不会取到变量具体内容</li>
+<li><code>&quot;&quot;</code> 内的变量会被替换成值</li>
+</ul>
+</li>
+<li>判断<ul>
+<li>判断语句 <code>[</code> <code>]</code> 两边都需要有空格</li>
+<li><code>-d</code> 两边都需要空格</li>
+<li>多重判断 <code>[[]]</code> 间使用 <code>||</code> 或者 <code>&amp;&amp;</code> 连接，<code>||</code> 和 <code>&amp;&amp;</code> 两边空格是可选的</li>
+</ul>
+</li>
+<li>循环 <code>for var in 1 2 3; do</code> <code>done</code><ul>
+<li>循环列表中使用空格 <code></code> 区分项</li>
+<li><code>do</code> 为开始 <code>done</code> 为结束</li>
+<li>使用变量 <code>$var</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>变量<ul>
+<li>使用变量时添加 <code>$</code> 前缀</li>
+</ul>
+</li>
+<li>函数<ul>
+<li>函数声明内可以引用函数外部变量</li>
+<li>函数内部可以使用作用域链上的变量，但取不到未执行的变量</li>
+</ul>
+</li>
+<li>获取用户输入 <code>read</code><ul>
+<li><code>-p</code> 允许输入提示</li>
+</ul>
+</li>
+<li>全局变量<ul>
+<li><code>$0</code> 脚本执行路径</li>
+</ul>
+</li>
+<li>命令<ul>
+<li><code>dirname $path</code> 获取 <code>$path</code> 上层目录<ul>
+<li><code>path=/path/to/filename</code></li>
+<li><code>$(dirname $path) # /path/to</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ROOT=<span class="variable">$PWD</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'$PWD'</span>; <span class="comment"># $PWD</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$PWD</span>"</span>; <span class="comment"># /path/to</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">createDir</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$before</span>; <span class="comment"># before ...</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$after</span>;  <span class="comment"># empty line</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    DIR=<span class="variable">$ROOT</span>/<span class="variable">$arg</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ -d <span class="variable">$DIR</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"<span class="variable">$DIR</span> is already a directory"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">read</span> -p <span class="string">"create <span class="variable">$DIR</span> ? (Y/n)"</span> isYes;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$isYes</span>"</span> = <span class="string">"Y"</span> ]] || [[ ! <span class="variable">$isYes</span> ]]; <span class="keyword">then</span></span><br><span class="line">        mkdir <span class="variable">$DIR</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"cancel create <span class="variable">$DIR</span>"</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">before=<span class="string">"before..."</span>;</span><br><span class="line"></span><br><span class="line">createDir <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">after=<span class="string">"after..."</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="string">"a a"</span> b c; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$var</span>; <span class="comment"># a a, b, c</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span>; <span class="comment"># 执行路径</span></span><br><span class="line"><span class="built_in">echo</span> $(dirname <span class="variable">$0</span>); <span class="comment"># 获取上层目录</span></span><br></pre></td></tr></table></figure>
+<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
+<li><a href="http://blog.51cto.com/lynnteng0/798365" target="_blank" rel="noopener">shell if 多条件 或 泛匹配</a></li>
+<li><a href="https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script" target="_blank" rel="noopener">How to iterate over arguments in a Bash script</a></li>
+<li><a href="https://stackoverflow.com/questions/59838/check-if-a-directory-exists-in-a-shell-script" target="_blank" rel="noopener">Check if a directory exists in a shell script</a></li>
+<li><a href="https://stackoverflow.com/questions/42453262/how-to-prompt-user-for-input-in-shell-script" target="_blank" rel="noopener">How to prompt user for input in shell script?</a></li>
+<li><a href="https://stackoverflow.com/questions/10849297/compare-a-string-in-unix" target="_blank" rel="noopener">Compare a string in Unix</a></li>
+<li><a href="https://blog.csdn.net/x1269778817/article/details/46535729" target="_blank" rel="noopener">Linux shell 中$() <code></code> 作用与区别</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/31/devops/shell/basis/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javascript/exports/xlsx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -980,84 +1114,6 @@
 
 
   
-    <article id="post-blog/hexo/hexo-faq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/26/blog/hexo/hexo-faq/">hexo FAQ</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/26/blog/hexo/hexo-faq/" class="archive-article-date">
-  	<time datetime="2018-05-25T18:11:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="hexo-spost中的tag删除后还存在"><a href="#hexo-spost中的tag删除后还存在" class="headerlink" title="hexo spost中的tag删除后还存在"></a><code>hexo s</code>post中的tag删除后还存在</h2><ol>
-<li>停止hexo server</li>
-<li>执行<code>hexo clean</code></li>
-<li>重启server<code>hexo s</code></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/26/blog/hexo/hexo-faq/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1161,15 +1217,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,15 +1249,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,22 +1273,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mobile</a>
               </li>
              
@@ -1237,11 +1285,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">font</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1253,7 +1325,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1265,27 +1341,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pageg</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,6 +1361,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">ci</a>
               </li>
              
@@ -1313,11 +1377,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,15 +1401,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
