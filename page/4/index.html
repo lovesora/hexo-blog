@@ -144,6 +144,138 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-devops/docker/basis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/31/devops/docker/basis/">docker 基础</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/31/devops/docker/basis/" class="archive-article-date">
+  	<time datetime="2018-05-31T14:30:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>所有命令均在 centOS 7 上执行</p>
+</blockquote>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>镜像(<code>Image</code>)<ul>
+<li>相当于是一个 root 文件系统</li>
+<li>提供容器运行时所需的程序、库、资源、配置等文件</li>
+<li>还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）</li>
+<li>镜像不包含任何动态数据，其内容在构建之后也不会被改变</li>
+<li>镜像是分层存储的，由多层文件系统联合组成</li>
+<li>镜像构建时，会一层层构建，前一层是后一层的基础。</li>
+<li>每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。</li>
+</ul>
+</li>
+<li>容器(<code>Container</code>)<ul>
+<li>镜像和容器的关系，就像是面向对象程序设计中的 <code>类</code> 和 <code>实例</code> 一样</li>
+<li>容器的实质是进程</li>
+<li>容器进程运行于属于自己的独立的命名空间</li>
+<li>容器也是使用的是分层存储(<code>容器存储层</code>)</li>
+<li>容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</li>
+<li>容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化</li>
+<li>所有的文件写入操作，都应该使用 <code>数据卷（Volume）</code>、或者绑定宿主目录</li>
+<li>数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡</li>
+</ul>
+</li>
+<li>仓库(Registry)<ul>
+<li>registry/repository:tag</li>
+<li>默认registry地址 <a href="https://hub.docker.com/explore/" target="_blank" rel="noopener">docker hub</a></li>
+<li>默认registry名 <code>library</code></li>
+</ul>
+</li>
+<li>构建(build)<ul>
+<li>Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具</li>
+<li>Docker 的引擎提供了一组 REST API，被称为 Docker Remote API</li>
+<li>而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互</li>
+<li>虽然表面上我们好像是在本机执行各种 docker 功能，但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成</li>
+<li>也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举</li>
+<li><code>docker build -t nginx:v3 .</code> 中的这个 <code>.</code>，实际上是在指定上下文的目录</li>
+<li>docker build 命令会将该目录下的内容打包交给 Docker 引擎以帮助构建镜像</li>
+<li>一般来说，应该会将 Dockerfile 置于一个空目录下，或者项目根目录下</li>
+<li>如果该目录下没有所需文件，那么应该把所需文件复制一份过来</li>
+<li>如果目录下有些东西确实不希望构建时传给 Docker 引擎，那么可以用 .gitignore 一样的语法写一个 .dockerignore，该文件是用于剔除不需要作为上下文传递给 Docker 引擎的。</li>
+</ul>
+</li>
+</ul>
+<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pull</span></span><br><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</span><br><span class="line"></span><br><span class="line">docker pull ubuntu:16.04</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># image</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出镜像</span></span><br><span class="line">docker image ls</span><br><span class="line"><span class="comment"># 列出所有镜像(包括中间层镜像)</span></span><br><span class="line">docker image ls -a</span><br><span class="line"><span class="comment"># 列出指定仓库镜像</span></span><br><span class="line">docker image ls ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚悬镜像(dangling image)</span></span><br><span class="line">docker image ls -f dangling=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 删除虚悬镜像(dangling image)</span></span><br><span class="line">docker image prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</span><br><span class="line">docker image rm [Image ID]</span><br><span class="line">docker image rm centos</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># system</span></span><br><span class="line"><span class="comment"># 查看docker所占空间</span></span><br><span class="line">docker system df</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">history</span> imageName:imageTag</span><br></pre></td></tr></table></figure>
+
+<h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a><code>commit</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker commit(慎用)(臃肿) 生成的镜像也被称为黑箱镜像</span></span><br><span class="line">docker commit \</span><br><span class="line">  --author <span class="string">'liuxin'</span> \</span><br><span class="line">  --message <span class="string">'commit msg'</span> \</span><br><span class="line">  containerName \</span><br><span class="line">  imageName:imageTag</span><br></pre></td></tr></table></figure>
+
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a><code>exec</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it containerName bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="build"><a href="#build" class="headerlink" title="build"></a><code>build</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build [选项] &lt;上下文路径/URL/-&gt;</span><br><span class="line"></span><br><span class="line">docker build -t imageName:imageTag .</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/31/devops/docker/basis/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-devops/shell/basis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1037,126 +1169,6 @@
 
 
   
-    <article id="post-devops/nginx/config" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/26/devops/nginx/config/">Nginx 配置</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/26/devops/nginx/config/" class="archive-article-date">
-  	<time datetime="2018-05-26T23:23:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h2><p>配置文件: <strong>/usr/local/etc/nginx/nginx.conf</strong></p>
-<ul>
-<li>将 <strong>http</strong> 部分修改成下面的配置</li>
-</ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">  <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">  <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">log_format</span>    main  <span class="string">'<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] "<span class="variable">$request</span>" '</span></span><br><span class="line">  <span class="string">'<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> "<span class="variable">$http_referer</span>" '</span></span><br><span class="line">  <span class="string">'"<span class="variable">$http_user_agent</span>" "<span class="variable">$http_x_forwarded_for</span>"'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">access_log</span>    /var/log/nginx/access.log  main;    <span class="comment">#日志文件存放位置</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">sendfile</span>      <span class="literal">on</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line">  <span class="attribute">gzip_http_version</span>  <span class="number">1</span>.<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">gzip_disable</span>       <span class="string">"MSIE [1-6]."</span>;</span><br><span class="line">  <span class="attribute">gzip_min_length</span>    <span class="number">512</span>;</span><br><span class="line">  <span class="attribute">gzip_types</span>         text/plain application/x-javascript text/css text/javascript application/javascript application/xml application/json;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">include</span> servers/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>如果日志文件的路径不存在, 则需要先创建: sudo mkdir -p /var/log/nginx/</p>
-</blockquote>
-<blockquote>
-<p>修改访问权限: sudo chmod -R a+rw /var/log/nginx/</p>
-</blockquote>
-<blockquote>
-<p>如果出现没有权限访问access.log文件, 可手工创建, 并修改权限:</p>
-</blockquote>
-<blockquote>
-<p>touch /var/log/nginx/access.log &amp;&amp; sudo chmod a+rw /var/log/nginx/access.log</p>
-</blockquote>
-<h2 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h2><p>配置文件: <strong>/usr/local/etc/nginx/proxy.conf</strong></p>
-<ul>
-<li>proxy.conf的内容如下:</li>
-</ul>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">proxy_redirect</span>          <span class="literal">off</span>;</span><br><span class="line"><span class="attribute">proxy_set_header</span>        Host <span class="variable">$host</span>;</span><br><span class="line"><span class="attribute">proxy_set_header</span>        X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line"><span class="attribute">client_max_body_size</span>    <span class="number">10m</span>;</span><br><span class="line"><span class="attribute">client_body_buffer_size</span> <span class="number">128k</span>;</span><br><span class="line"><span class="attribute">proxy_connect_timeout</span>   <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_send_timeout</span>      <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_read_timeout</span>      <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_buffer_size</span>       <span class="number">4k</span>;</span><br><span class="line"><span class="attribute">proxy_buffers</span>           <span class="number">4</span> <span class="number">32k</span>;</span><br><span class="line"><span class="attribute">proxy_busy_buffers_size</span> <span class="number">64k</span>;</span><br><span class="line"><span class="attribute">proxy_temp_file_write_size</span> <span class="number">64k</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h2><p>配置文件: <strong>/usr/local/etc/nginx/servers/food.conf</strong></p>
-<p><strong>注意</strong>: </p>
-<p>请将配置文件中的 <strong>/root/workspace/project/src</strong> 修改为本地路径</p>
-<p>#测试服务器</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> sandbox &#123;</span><br><span class="line">  <span class="attribute">server</span> sandbox.com:<span class="number">80</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>#正式服务器</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> deploy &#123;</span><br><span class="line">  <span class="attribute">server</span> deploy.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span>  localhost <span class="number">127.0.0.1</span>; <span class="comment">#可通过这二个地址访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件的存放位置</span></span><br><span class="line">  <span class="attribute">access_log</span>    /var/log/nginx/food-access.log  main;</span><br><span class="line">  <span class="attribute">error_log</span>     /var/log/nginx/food-<span class="literal">error</span>.log;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">index</span> index.html;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> /api &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span>              http://sandbox.com/api;</span><br><span class="line">    <span class="comment"># Host限定</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>        Host sandbox.com;</span><br><span class="line">    <span class="attribute">include</span> proxy.conf;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> /admin &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span>              http://sandbox.com/admin;</span><br><span class="line">    <span class="comment"># Host限定</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>        Host sandbox.com;</span><br><span class="line">    <span class="attribute">include</span> proxy.conf;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span>        /root/workspace/project/src;  <span class="comment">#将该地址指向正确的项目路径</span></span><br><span class="line">    <span class="attribute">index</span>       index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@badrequest</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">400</span> <span class="string">"&#123;\"error\":&#123;\"code\":96,\"message\":\"请求不正确\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">400</span> <span class="string">"&#123;\"error\":&#123;\"code\":96,\"msg\":\"Bad request\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@versiontooold</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">404</span> <span class="string">"&#123;\"error\":&#123;\"code\":97,\"message\":\"App版本过低，请升级\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span> <span class="string">"&#123;\"error\":&#123;\"code\":97,\"message\":\"App is too old, please upgrade\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@servererror</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">500</span> <span class="string">"&#123;\"error\":&#123;\"code\":98,\"message\":\"系统繁忙，请稍后重试\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">500</span> <span class="string">"&#123;\"error\":&#123;\"code\":98,\"message\":\"Unknown error, please retry later\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@maintenance</span>&#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">503</span> <span class="string">"&#123;\"error\":&#123;\"code\":99,\"message\":\"很抱歉，服务器维护中，请稍后重试\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">503</span> <span class="string">"&#123;\"error\":&#123;\"code\":99,\"message\":\"The server is under maintenance, please retry later\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">400</span> = <span class="variable">@badrequest</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">404</span> = <span class="variable">@versiontooold</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">500</span> = <span class="variable">@servererror</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> = <span class="variable">@maintenance</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="验证配置文件"><a href="#验证配置文件" class="headerlink" title="验证配置文件"></a>验证配置文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
-
-<h1 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
-
-<h1 id="重启或重加载配置文件"><a href="#重启或重加载配置文件" class="headerlink" title="重启或重加载配置文件"></a>重启或重加载配置文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">config</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/26/devops/nginx/config/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1260,15 +1272,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1292,15 +1308,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,15 +1340,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,7 +1380,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,19 +1420,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">

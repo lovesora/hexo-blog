@@ -144,6 +144,107 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/angular/杂文/route-reuse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/">Angular Route Reuse Strategy</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/" class="archive-article-date">
+  	<time datetime="2018-09-06T13:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>路由跳转的过程相当于是对组件的实例化，销毁过程。<br>这种机制能够应付绝大部分业务场景，但是在大部分管理系统当中，从 <code>列表 -&gt; 编辑 -&gt; 保存 -&gt; 返回列表</code> 该场景需要保存类似搜索，分页等状态数据，此时则需要使用 Angular 的 <code>RouteReuseStrategy</code> 贯穿路由状态并决定构建组件的方式。</p>
+<h2 id="RouteReuseStrategy"><a href="#RouteReuseStrategy" class="headerlink" title="RouteReuseStrategy"></a>RouteReuseStrategy</h2><ul>
+<li><code>shouldDetach</code> Determines if this route (and its subtree) should be detached to be reused later.</li>
+<li><code>store</code> Stores the detached route.</li>
+<li><code>shouldAttach</code> Determines if this route (and its subtree) should be reattached.</li>
+<li><code>retrieve</code> Retrieves the previously stored route.</li>
+<li><code>shouldReuseRoute</code> Determines if a route should be reused.</li>
+</ul>
+<p>执行顺序如下：</p>
+<h2 id="SimpleReuseStrategy"><a href="#SimpleReuseStrategy" class="headerlink" title="SimpleReuseStrategy"></a>SimpleReuseStrategy</h2><p>网上很多例子在这里都是用的 <code>route.routeConfig.path</code> 作为 <code>key</code>。<br>如果不涉及到lazy load是不会有问题的，但是如果存在 <code>loadChildren</code>，那么<code>route.routeConfig.path</code>就有可能会重复。<br>于是我将 <code>key</code> 改为了 <code>route[&#39;_routerState&#39;].url</code> 取的绝对路径。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  DefaultUrlSerializer,</span><br><span class="line">  ActivatedRouteSnapshot,</span><br><span class="line">  DetachedRouteHandle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SimpleReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line"></span><br><span class="line">  _cacheRouters: &#123; [key: <span class="built_in">string</span>]: <span class="built_in">any</span> &#125; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !route.data.reuse;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url] = &#123;</span><br><span class="line">      snapshot: route,</span><br><span class="line">      handle: handle</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !!<span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.routeConfig || route.routeConfig.loadChildren || !<span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url].handle;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="comment">// 同一路由时复用路由</span></span><br><span class="line">    <span class="keyword">return</span> future[<span class="string">'_routerState'</span>].url === curr[<span class="string">'_routerState'</span>].url;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="注册策略到-forRoot-模块。"><a href="#注册策略到-forRoot-模块。" class="headerlink" title="注册策略到 forRoot 模块。"></a>注册策略到 <code>forRoot</code> 模块。</h2><blockquote>
+<p>lazy laod 的 <code>forChild</code> 模块是无法注册的</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [</span><br><span class="line">    RouterModule.forRoot(routes),</span><br><span class="line">  ],</span><br><span class="line">  providers: [&#123;</span><br><span class="line">    provide: RouteReuseStrategy,</span><br><span class="line">    useClass: SimpleReuseStrategy,</span><br><span class="line">  &#125;],</span><br><span class="line">  exports: [RouterModule]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="具体模块使用"><a href="#具体模块使用" class="headerlink" title="具体模块使用"></a>具体模块使用</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [&#123;</span><br><span class="line">  path: <span class="string">''</span>,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    path: <span class="string">''</span>,</span><br><span class="line">    redirectTo: <span class="string">'list'</span>,</span><br><span class="line">  &#125;,  &#123;</span><br><span class="line">    path: <span class="string">'list'</span>,</span><br><span class="line">    component: ListComponent,</span><br><span class="line">    data: &#123;</span><br><span class="line">      reuse: <span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    path: <span class="string">'detail/:id'</span>,</span><br><span class="line">    component: DetailComponent,</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
+<li><a href="https://angular.cn/api/router/RouteReuseStrategy" target="_blank" rel="noopener">angular.cn</a></li>
+<li><a href="https://segmentfault.com/a/1190000011430157#articleHeader1" target="_blank" rel="noopener">Angular路由复用策略</a></li>
+<li><a href="https://segmentfault.com/a/1190000014944087" target="_blank" rel="noopener">Angular 5.0 学习8：Angular路由复用策略 (切换页面内容不丢失，保持原来状态)</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">route</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/typescript/tsconfig" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1069,109 +1170,6 @@
 
 
   
-    <article id="post-be/spring-boot/beginner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/be/spring-boot/beginner/">Spring Boot Building a RESTful Web Service</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/05/be/spring-boot/beginner/" class="archive-article-date">
-  	<time datetime="2018-07-05T10:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p><code>idea -&gt; new project -&gt; Spring Initializr -&gt; check web/web dependency -&gt; finish</code></p>
-<h2 id="创建VO"><a href="#创建VO" class="headerlink" title="创建VO"></a>创建VO</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sora.rest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Greeting</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Greeting</span><span class="params">(<span class="keyword">long</span> id, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建Controller"><a href="#创建Controller" class="headerlink" title="创建Controller"></a>创建Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sora.rest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicLong;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String template = <span class="string">"Hello, %s! Your id is %s"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicLong counter = <span class="keyword">new</span> AtomicLong();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Greeting <span class="title">greeting</span><span class="params">(@RequestParam(value = <span class="string">"/greeting"</span>, defaultValue = <span class="string">"world"</span>)</span> String name) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Greeting(counter.incrementAndGet(), String.format(template, name, counter.get()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>Press <code>Option + Control + D</code> ，编辑配置，如图所示</p>
-<p><img src="/assets/images/spring/debug-configuration.jpg" alt="configuration"></p>
-<p>再次按下 <code>Option + Control + D</code> ，选择刚才配置的spring boot，启动。</p>
-<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>打开终端，进入项目目录，执行 <code>./mvnw clean package</code></p>
-<h2 id="部署执行"><a href="#部署执行" class="headerlink" title="部署执行"></a>部署执行</h2><ol>
-<li>安装jre</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install java-1.8.0-openjdk</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>将 <code>target</code> 目录下的 <code>jar</code> 文件copy至服务器，执行 <code>java -jar xxxx.jar</code>即可。</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp target/xxx.jar user@ip:xxx.jar</span><br><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
-
-<h2 id="Summery"><a href="#Summery" class="headerlink" title="Summery"></a>Summery</h2><ol>
-<li>创建REST项目需要添加 <code>spring-boot-starter-web</code> 依赖</li>
-</ol>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>通过注解的方式关联API请求</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射路径，方法，默认值等</span></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射参数</span></span><br><span class="line"><span class="meta">@RequestParam</span></span><br><span class="line"><span class="meta">@RequestBody</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射返回值</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><p>-<a href="https://linuxize.com/post/install-java-on-centos-7/" target="_blank" rel="noopener">How to install Java on CentOS 7</a><br>-<a href="http://spring.io/guides/gs/rest-service/#initial" target="_blank" rel="noopener">Building a RESTful Web Service</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">spring boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/05/be/spring-boot/beginner/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1275,15 +1273,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1307,15 +1309,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,15 +1341,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,7 +1381,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1415,19 +1421,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
