@@ -12,14 +12,12 @@
 <meta name="keywords" content="angular,open source">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angular 组件开源架构">
-<meta property="og:url" content="blog.lovesora.pro/2018/08/07/fe/angular/组件/开源架构/index.html">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;08&#x2F;07&#x2F;fe&#x2F;angular&#x2F;%E7%BB%84%E4%BB%B6&#x2F;%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
 <meta property="og:description" content="CommonCommon 的定义是 公共，参考的 angular，所有开源组件公共的代码都放在这个项目中，包括两部分：  ts sass  这部分定义了基于 typescript 的所有公共库，类似lodash，包含组件需要使用的公共的功能。目前包含以下部分：  util net error global  代码最终会被编译成 js，并且包含 *.d.ts，无论是 js 还是 ts 项目都可引用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T05:34:30.736Z">
+<meta property="og:updated_time" content="2019-11-19T06:12:24.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angular 组件开源架构">
-<meta name="twitter:description" content="CommonCommon 的定义是 公共，参考的 angular，所有开源组件公共的代码都放在这个项目中，包括两部分：  ts sass  这部分定义了基于 typescript 的所有公共库，类似lodash，包含组件需要使用的公共的功能。目前包含以下部分：  util net error global  代码最终会被编译成 js，并且包含 *.d.ts，无论是 js 还是 ts 项目都可引用。">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -69,13 +67,13 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
     			
             
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
     			
             
 		</nav>
@@ -157,8 +155,8 @@
   
 
         
-        <a href="/2018/08/07/fe/angular/组件/开源架构/" class="archive-article-date">
-  	<time datetime="2018-08-07T03:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
+        <a href="/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2018-08-07T11:18:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-07</time>
 </a>
         
       </header>
@@ -179,6 +177,7 @@
 </ul>
 <p>代码最终会被编译成 <code>js</code>，并且包含 <code>*.d.ts</code>，无论是 <code>js</code> 还是 <code>ts</code> 项目都可引用。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  SearchArray,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@petkit/common'</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h2><p>这部分定义了基于 <code>sass</code> 的公共样式。目前包含以下部分：</p>
 <ul>
 <li>animation</li>
@@ -190,11 +189,13 @@
 <p>该部分样式针对不同平台（Web, PC,公众号,小程序等）做了兼容处理，需要在配置文件中配置，默认 <code>750</code> 占满屏幕宽度（类似微信小程序）。</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _theming.config.scss</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">'~@petkit/style/theming'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$app-primary</span>: mat-palette(<span class="variable">$mat-cyan</span>);</span><br><span class="line"><span class="variable">$app-accent</span>: mat-palette(<span class="variable">$mat-orange</span>);</span><br><span class="line"><span class="variable">$app-warn</span>: mat-palette(<span class="variable">$mat-yellow</span>, <span class="number">700</span>, <span class="number">300</span>, <span class="number">900</span>);</span><br><span class="line"><span class="variable">$app-theme</span>: mat-light-theme(<span class="variable">$app-primary</span>, <span class="variable">$app-accent</span>, <span class="variable">$app-warn</span>);</span><br><span class="line"><span class="variable">$app-size</span>: size(wp);</span><br></pre></td></tr></table></figure>
 
+
+
       
 
       
         <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
             <div class="tooltip tooltip-east">
             <span class="tooltip-item">
               赏
@@ -233,11 +234,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">open source</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">open source</a>
         		</li>
       		
 		</ul>
@@ -252,35 +253,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -290,10 +291,10 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/08/07/fe/angular/组件/开源架构/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -317,7 +318,7 @@
     </a>
   
   
-    <a href="/2018/08/07/fe/angular/组件/开源/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Angular 组件开源流程</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -329,7 +330,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -357,7 +358,7 @@
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Tue Aug 07 2018 11:18:27 GMT+0800",
+  id: "Tue Aug 07 2018 11:18:27 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -440,13 +441,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -467,203 +468,203 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">faq</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">enterprise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">requirement</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">tool</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ci</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ci</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">open source</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">fish</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">fish</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sdkman</a>
               </li>
             
             <div class="clearfix"></div>

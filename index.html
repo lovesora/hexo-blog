@@ -8,17 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="a front-end developer&apos;s blog">
+  <meta name="description" content="a front-end developer&amp;apos;s blog">
 <meta name="keywords" content="front-end architecture">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lovesora&#39;s blog">
-<meta property="og:url" content="blog.lovesora.pro/index.html">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="a front-end developer&apos;s blog">
+<meta property="og:description" content="a front-end developer&amp;apos;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lovesora&#39;s blog">
-<meta name="twitter:description" content="a front-end developer&apos;s blog">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -68,13 +66,13 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
     			
             
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
     			
             
 		</nav>
@@ -159,7 +157,7 @@
 
         
         <a href="/2019/05/21/javascript/dynamic/font/" class="archive-article-date">
-  	<time datetime="2019-05-21T02:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
+  	<time datetime="2019-05-21T10:09:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-21</time>
 </a>
         
       </header>
@@ -177,6 +175,8 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> woffUrl = chrome.extension.getURL(<span class="string">'/libs/fonts/element-icons.woff'</span>);</span><br><span class="line"></span><br><span class="line">axios.get(woffUrl, &#123;</span><br><span class="line">  responseType: <span class="string">'blob'</span>,</span><br><span class="line">&#125;).then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> reader = <span class="keyword">new</span> FileReader();</span><br><span class="line">  reader.readAsDataURL(data.data);</span><br><span class="line">  reader.onloadend = <span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> woffData = reader.result;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> newStyle = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</span><br><span class="line">    newStyle.appendChild(<span class="built_in">document</span>.createTextNode(<span class="string">`</span></span><br><span class="line"><span class="string">      @font-face &#123;</span></span><br><span class="line"><span class="string">          font-family: element-icons;</span></span><br><span class="line"><span class="string">          src: url(<span class="subst">$&#123;woffData&#125;</span>) format("woff");</span></span><br><span class="line"><span class="string">      &#125;\</span></span><br><span class="line"><span class="string">    `</span>));</span><br><span class="line">    <span class="built_in">document</span>.head.appendChild(newStyle);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
+
+
       
 
       
@@ -189,11 +189,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">font</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">font</a>
         		</li>
       		
 		</ul>
@@ -217,7 +217,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -240,13 +240,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/29/fe/性能优化/array/">记一次数组赋值导致的页面卡死</a>
+      <a class="article-title" href="/2019/04/29/fe/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/array/">记一次数组赋值导致的页面卡死</a>
     </h1>
   
 
         
-        <a href="/2019/04/29/fe/性能优化/array/" class="archive-article-date">
-  	<time datetime="2019-04-29T08:58:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
+        <a href="/2019/04/29/fe/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/array/" class="archive-article-date">
+  	<time datetime="2019-04-29T16:58:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-29</time>
 </a>
         
       </header>
@@ -255,14 +255,17 @@
       
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一个很简单的功能直接导致页面卡死</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line">arr[<span class="number">4294967294</span>] = <span class="string">'arr'</span>;</span><br><span class="line">arr.map(<span class="function"><span class="params">item</span> =&gt;</span> <span class="built_in">console</span>.log(item));</span><br></pre></td></tr></table></figure>
+
 <p>尝试在控制台运行以上代码…</p>
 <h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><blockquote>
 <p>JavaScript 使用一个32位整数，保存数组的元素个数。这意味着，数组成员最多只有 4294967295 个（232 - 1）个，也就是说length属性的最大值就是 4294967295。</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="string">'a'</span>, <span class="string">'b'</span>];</span><br><span class="line">arr.length <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">2</span>] = <span class="string">'c'</span>;</span><br><span class="line">arr.length <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">9</span>] = <span class="string">'d'</span>;</span><br><span class="line">arr.length <span class="comment">// 10</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">1000</span>] = <span class="string">'e'</span>;</span><br><span class="line">arr.length <span class="comment">// 1001</span></span><br></pre></td></tr></table></figure>
+
 <p>数组的遍历会从索引 <code>0</code> 开始一直到 <code>length-1</code></p>
 <p>所以，以下代码往往不可控</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> key: <span class="built_in">number</span>;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [];</span><br><span class="line">arr[key] = ...</span><br><span class="line">arr.map(<span class="function"><span class="params">item</span> =&gt;</span> ...);</span><br></pre></td></tr></table></figure>
+
 <p>对数组以一个 <code>number</code> 类型的变量作为 <code>key</code> 赋值后，再使用 <code>map, forEach, for...</code> 等来遍历数组时，由于 <code>key</code> 的值不可控，如果是数据库中的 <code>主键id</code>，那么在数据量小的时候发现不了什么异常，一旦数据量过大，浏览器直接就会卡死!</p>
 
       
@@ -277,11 +280,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">性能优化</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">性能优化</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">array</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">array</a>
         		</li>
       		
 		</ul>
@@ -291,7 +294,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/29/fe/性能优化/array/">ALL >></a>
+          <a class="article-more-a" href="/2019/04/29/fe/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/array/">ALL >></a>
         </p>
       
 
@@ -305,7 +308,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -334,7 +337,7 @@
 
         
         <a href="/2019/04/18/linux/ubuntu/upgrade-core/" class="archive-article-date">
-  	<time datetime="2019-04-18T12:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+  	<time datetime="2019-04-18T20:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
 </a>
         
       </header>
@@ -342,7 +345,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="查看发布版本号"><a href="#查看发布版本号" class="headerlink" title="查看发布版本号"></a>查看发布版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br><span class="line"></span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+
 <h2 id="查看内核版本号"><a href="#查看内核版本号" class="headerlink" title="查看内核版本号"></a>查看内核版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内核信息</span></span><br><span class="line">uname -sr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有信息</span></span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+
 <h2 id="升级方式一"><a href="#升级方式一" class="headerlink" title="升级方式一"></a>升级方式一</h2><blockquote>
 <p>到官网<a href="https://kernel.ubuntu.com/~kernel-ppa/mainline/" target="_blank" rel="noopener">kernel.ubuntu.com</a>下载对应deb文件</p>
 </blockquote>
@@ -350,17 +355,22 @@
 <p><img src="/assets/images/linux/ubuntu-kernel-download.png" alt="文件"></p>
 <p>下载 <code>*all.deb</code> 和所有 <code>*generic*.deb</code> 文件后，到对应文件夹下执行</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>我是64位操作系统所以选择的 <code>amd64</code>，32位的小伙伴选 <code>i386</code>即可</p>
 </blockquote>
 <h2 id="升级方式二（推荐）"><a href="#升级方式二（推荐）" class="headerlink" title="升级方式二（推荐）"></a>升级方式二（推荐）</h2><h3 id="查看需要更新的内核命令"><a href="#查看需要更新的内核命令" class="headerlink" title="查看需要更新的内核命令"></a>查看需要更新的内核命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search linux</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装对应版本内核"><a href="#安装对应版本内核" class="headerlink" title="安装对应版本内核"></a>安装对应版本内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install linux-headers-5.0.8-050008-generic</span><br></pre></td></tr></table></figure>
+
 <p><img src="/assets/images/linux/ubuntu-kernel-install.png" alt="install"></p>
 <blockquote>
 <p>安装完成后默认启动最新内核</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内核启动顺序</span></span><br><span class="line">grep menuentry /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+
 <h2 id="卸载多余内核"><a href="#卸载多余内核" class="headerlink" title="卸载多余内核"></a>卸载多余内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -374,7 +384,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">ubuntu</a>
         		</li>
       		
 		</ul>
@@ -398,7 +408,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -427,7 +437,7 @@
 
         
         <a href="/2019/04/11/fe/angular/router/reuse/" class="archive-article-date">
-  	<time datetime="2019-04-11T14:56:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+  	<time datetime="2019-04-11T22:56:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
 </a>
         
       </header>
@@ -436,17 +446,23 @@
       
         <h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>路由在切换时需要销毁当前组件，这在大多数情况下是符合预期的。但是有些时候在一些列表 + 详情的结构下，进入详情后再返回列表需要保留之前的列表状态，此时就需要缓存列表路由。</p>
 <h3 id="现有方案"><a href="#现有方案" class="headerlink" title="现有方案"></a>现有方案</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// route-reuse.strategy.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  DefaultUrlSerializer,</span><br><span class="line">  ActivatedRouteSnapshot,</span><br><span class="line">  DetachedRouteHandle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SimpleReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line"></span><br><span class="line">  _cacheRouters: &#123; [key: <span class="built_in">string</span>]: <span class="built_in">any</span> &#125; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !!route.data.keep;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)] = &#123;</span><br><span class="line">      snapshot: route,</span><br><span class="line">      handle: handle</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> route.data.keep &amp;&amp; !!<span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.data.keep || !<span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._cacheRouters[<span class="keyword">this</span>._getCacheKey(route)].handle;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._getCacheKey(future) === <span class="keyword">this</span>._getCacheKey(curr);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _getCacheKey(route: ActivatedRouteSnapshot): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> route[<span class="string">'_routerState'</span>].url;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app-routing.module.ts</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  RouterModule,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [</span><br><span class="line">    RouterModule.forRoot(routes),</span><br><span class="line">  ],</span><br><span class="line">  providers: [&#123;</span><br><span class="line">    provide: RouteReuseStrategy,</span><br><span class="line">    useClass: SimpleReuseStrategy,</span><br><span class="line">  &#125;],</span><br><span class="line">  exports: [RouterModule]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> AppRoutingModule &#123; &#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 任意一个页面组件</span></span><br><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  NavigationEnd,</span><br><span class="line">  Router,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">constructor</span>(<span class="params"></span></span><br><span class="line"><span class="params">  <span class="keyword">private</span> router: Router</span></span><br><span class="line"><span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">this</span>.router.events</span><br><span class="line">    .filter(<span class="function">(<span class="params">event</span>) =&gt;</span> event <span class="keyword">instanceof</span> NavigationEnd)</span><br><span class="line">    .subscribe(<span class="function">(<span class="params">event: NavigationEnd</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 这里需要判断一下当前路由，如果不加的话，每次路由结束的时候都会执行这里的方法</span></span><br><span class="line">      <span class="keyword">if</span> (event.url.indexOf(<span class="string">'currentRoute'</span>) &gt; <span class="number">-1</span>) &#123;</span><br><span class="line">        <span class="comment">// 进入当前路由需要重新执行的操作</span></span><br><span class="line">        ...</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p><strong>同一父路由</strong> 下的子路由之间的跳转会重新初始化 parent component。翻了翻源代码这才找到了答案。</p>
 <h2 id="RouteReuseStrategy-抽象类"><a href="#RouteReuseStrategy-抽象类" class="headerlink" title="RouteReuseStrategy 抽象类"></a>RouteReuseStrategy 抽象类</h2><blockquote>
 <p>Provides a way to customize when activated routes get reused. <a href="https://github.com/angular/angular/blob/master/packages/router/src/route_reuse_strategy.ts" target="_blank" rel="noopener">code</a></p>
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">abstract</span> <span class="keyword">class</span> RouteReuseStrategy &#123;</span><br><span class="line">  <span class="comment">/** Determines if this route (and its subtree) should be detached to be reused later */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Stores the detached route.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * Storing a `null` value should erase the previously stored value.</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">abstract</span> store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle|<span class="literal">null</span>): <span class="built_in">void</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Determines if this route (and its subtree) should be reattached */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Retrieves the previously stored route */</span></span><br><span class="line">  <span class="keyword">abstract</span> retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle|<span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/** Determines if a route should be reused */</span></span><br><span class="line">  <span class="keyword">abstract</span> shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>官方默认的 <code>ReuseStrategy</code> 如下</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Does not detach any subtrees. Reuses routes as long as their route config is the same.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> DefaultRouteReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">  store(route: ActivatedRouteSnapshot, detachedTree: DetachedRouteHandle): <span class="built_in">void</span> &#123;&#125;</span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123; <span class="keyword">return</span> <span class="literal">false</span>; &#125;</span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle|<span class="literal">null</span> &#123; <span class="keyword">return</span> <span class="literal">null</span>; &#125;</span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> future.routeConfig === curr.routeConfig;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>对比发现 <code>shouldReuseRoute</code> 中的判断条件不一样。于是将原有代码做了一些调整</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> future.routeConfig === curr.routeConfig || <span class="keyword">this</span>._getCacheKey(future) === <span class="keyword">this</span>._getCacheKey(curr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>此时同一父路由下的子路由之间的跳转不会再初始化父组件了。</p>
 
       
@@ -461,11 +477,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">router</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">router</a>
         		</li>
       		
 		</ul>
@@ -489,7 +505,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -518,7 +534,7 @@
 
         
         <a href="/2019/04/10/blog/hexo/hexo-gitment/" class="archive-article-date">
-  	<time datetime="2019-04-10T14:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
+  	<time datetime="2019-04-10T22:37:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
 </a>
         
       </header>
@@ -526,33 +542,43 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Get-Started"><a href="#Get-Started" class="headerlink" title="Get Started"></a>Get Started</h2><h3 id="1-Install"><a href="#1-Install" class="headerlink" title="1. Install"></a>1. Install</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://imsun.github.io/gitment/style/default.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://imsun.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>or via npm:</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i --save gitment</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">'gitment/style/default.css'</span></span><br><span class="line"><span class="keyword">import</span> Gitment <span class="keyword">from</span> <span class="string">'gitment'</span></span><br></pre></td></tr></table></figure>
+
 <h3 id="2-Register-An-OAuth-Application"><a href="#2-Register-An-OAuth-Application" class="headerlink" title="2. Register An OAuth Application"></a>2. Register An OAuth Application</h3><blockquote>
 <p><a href="https://github.com/settings/applications/new" target="_blank" rel="noopener">Click here</a></p>
 </blockquote>
 <p>注意 http 和 https</p>
 <p><img src="/assets/images/blog/hexo/OAuth.png" alt="oauth"></p>
 <h3 id="3-Render-Gitment"><a href="#3-Render-Gitment" class="headerlink" title="3. Render Gitment"></a>3. Render Gitment</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> gitment = <span class="keyword">new</span> Gitment(&#123;</span><br><span class="line">  id: <span class="string">'Your page ID'</span>, <span class="comment">// optional</span></span><br><span class="line">  owner: <span class="string">'Your GitHub ID'</span>,</span><br><span class="line">  repo: <span class="string">'The repo to store comments'</span>,</span><br><span class="line">  oauth: &#123;</span><br><span class="line">    client_id: <span class="string">'Your client ID'</span>,</span><br><span class="line">    client_secret: <span class="string">'Your client secret'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">// For more available options, check out the documentation below</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">gitment.render(<span class="string">'comments'</span>)</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// gitment.render(document.getElementById('comments'))</span></span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="comment">// document.body.appendChild(gitment.render())</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="Error-Comments-Not-Initialized"><a href="#Error-Comments-Not-Initialized" class="headerlink" title="Error: Comments Not Initialized"></a>Error: Comments Not Initialized</h3><p>出现这个错误一般有两个原因</p>
 <ol>
 <li>没有登录</li>
 <li>OAuth配置有问题，检查一下回调是否正确</li>
 </ol>
 <h3 id="登录时浏览器弹出-Object-ProgressEvent"><a href="#登录时浏览器弹出-Object-ProgressEvent" class="headerlink" title="登录时浏览器弹出[Object ProgressEvent]"></a>登录时浏览器弹出[Object ProgressEvent]</h3><p>这个问题稍微复杂一点，简单一点的方案是直接替换 <code>gitment.browser.js</code>的路径</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//lovesora.github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//lovesora.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//lovesora.github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//lovesora.github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 <p>如果想要自己折腾的话略微有些麻烦，大致步骤如下</p>
 <h4 id="1-clone-server"><a href="#1-clone-server" class="headerlink" title="1. clone server"></a>1. clone server</h4><p>在自己服务器上clone <a href="https://github.com/imsun/gh-oauth-server" target="_blank" rel="noopener">gh-oauth-server</a>, 执行</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 端口号默认是3000</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
 <p>启动 <code>gitment server</code></p>
 <h4 id="2-clone-gitment"><a href="#2-clone-gitment" class="headerlink" title="2. clone gitment"></a>2. clone gitment</h4><p><code>fork</code> <a href="https://github.com/imsun/gitment" target="_blank" rel="noopener">gitment</a>, <code>clone</code> fork的代码到本地，切到 <code>gh-pages</code> 分支</p>
 <h4 id="3-修改url"><a href="#3-修改url" class="headerlink" title="3. 修改url"></a>3. 修改url</h4><p>将 <code>https://gh-oauth.imsun.net</code> 改为自己服务器的 <code>http(s)</code> + <code>domain or ip</code> + <code>port</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_utils.http.post(<span class="string">'https://gh-oauth.imsun.net'</span>, &#123;</span><br><span class="line">  code: code,</span><br><span class="line">  client_id: client_id,</span><br><span class="line">  client_secret: client_secret</span><br><span class="line">&#125;, <span class="string">''</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  _this.accessToken = data.access_token;</span><br><span class="line">  _this.update();</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  _this.state.user.isLoggingIn = <span class="literal">false</span>;</span><br><span class="line">  alert(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">_utils.http.post(<span class="string">'https://gitment.lovesora.pro'</span>, &#123;</span><br><span class="line">  code: code,</span><br><span class="line">  client_id: client_id,</span><br><span class="line">  client_secret: client_secret</span><br><span class="line">&#125;, <span class="string">''</span>).then(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span><br><span class="line">  _this.accessToken = data.access_token;</span><br><span class="line">  _this.update();</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  _this.state.user.isLoggingIn = <span class="literal">false</span>;</span><br><span class="line">  alert(e);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <h4 id="4-push代码-amp-修改文件路径"><a href="#4-push代码-amp-修改文件路径" class="headerlink" title="4. push代码 &amp; 修改文件路径"></a>4. push代码 &amp; 修改文件路径</h4><p>将刚才的改动 <code>push</code> 至 <code>github</code>，再修改 <code>gitment.browser.js</code> 的url 即可</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//[username].github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//[username].github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//[username].github.io/gitment/style/default.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//[username].github.io/gitment/dist/gitment.browser.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -566,7 +592,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -590,7 +616,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -619,7 +645,7 @@
 
         
         <a href="/2019/04/09/blog/hexo/plugin/" class="archive-article-date">
-  	<time datetime="2019-04-09T14:44:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+  	<time datetime="2019-04-09T22:44:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
       </header>
@@ -633,7 +659,8 @@
 <blockquote>
 <p>In your blog floder, not hexo floder</p>
 </blockquote>
-<h3 id="Step2-Edit-Config"><a href="#Step2-Edit-Config" class="headerlink" title="Step2 Edit Config"></a>Step2 Edit Config</h3><p>After installed, you should edit hexo config file: <code>_config.yml</code>:<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mermaid chart</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="comment">## mermaid url https://github.com/knsv/mermaid</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span>  <span class="comment"># default true</span></span><br><span class="line"><span class="attr">  version:</span> <span class="string">"7.1.2"</span> <span class="comment"># default v7.1.2</span></span><br><span class="line"><span class="attr">  options:</span>  <span class="comment"># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span></span><br><span class="line">    <span class="comment">#startOnload: true  // default true</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Step2-Edit-Config"><a href="#Step2-Edit-Config" class="headerlink" title="Step2 Edit Config"></a>Step2 Edit Config</h3><p>After installed, you should edit hexo config file: <code>_config.yml</code>:</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mermaid chart</span></span><br><span class="line"><span class="attr">mermaid:</span> <span class="comment">## mermaid url https://github.com/knsv/mermaid</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span>  <span class="comment"># default true</span></span><br><span class="line">  <span class="attr">version:</span> <span class="string">"7.1.2"</span> <span class="comment"># default v7.1.2</span></span><br><span class="line">  <span class="attr">options:</span>  <span class="comment"># find more api options from https://github.com/knsv/mermaid/blob/master/src/mermaidAPI.js</span></span><br><span class="line">    <span class="comment">#startOnload: true  // default true</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>❗️❗️❗️Notice: if you want to use ‘Class diagram’, please edit your ‘_config.yml’ file, set <code>external_link: false</code>. - hexo bug.</p>
 </blockquote>
@@ -642,8 +669,13 @@
 <p>Open your theme folder, you can see the <code>layout</code> folder, open it and then you could see it.</p>
 <p>Okey! if your blog is used pug, you can copy the below codes in <code>after_footer.pug</code>:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if theme.mermaid.enable == true</span><br><span class="line">  script(type=&apos;text/javascript&apos;, id=&apos;maid-script&apos; mermaidoptioins=theme.mermaid.options src=&apos;https://unpkg.com/mermaid@&apos;+ theme.mermaid.version + &apos;/dist/mermaid.min.js&apos; + &apos;?v=&apos; + theme.version)</span><br><span class="line">  script.</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      var options = JSON.parse(document.getElementById(&apos;maid-script&apos;).getAttribute(&apos;mermaidoptioins&apos;));</span><br><span class="line">      mermaid.initialize(options);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p><code>after-footer.ejs</code> should copy below codes:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.mermaid.enable) &#123; %&gt;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&lt;%= theme.mermaid.version %&gt;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;theme: &apos;forest&apos;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
-<p>swig template engine:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.mermaid.enable %&#125;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&#123;&#123; theme.mermaid.version &#125;&#125;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;&#123; JSON.stringify(theme.mermaid.options) &#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure></p>
+
+<p><code>after-footer.ejs</code> should copy below codes:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.mermaid.enable) &#123; %&gt;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&lt;%= theme.mermaid.version %&gt;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;theme: &apos;forest&apos;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>swig template engine:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.mermaid.enable %&#125;</span><br><span class="line">  &lt;script src=&apos;https://unpkg.com/mermaid@&#123;&#123; theme.mermaid.version &#125;&#125;/dist/mermaid.min.js&apos;&gt;&lt;/script&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    if (window.mermaid) &#123;</span><br><span class="line">      mermaid.initialize(&#123;&#123; JSON.stringify(theme.mermaid.options) &#125;&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -657,7 +689,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
 		</ul>
@@ -681,7 +713,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -704,13 +736,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/28/fe/架构/angular 架构演进/">组件&amp;库 架构方案</a>
+      <a class="article-title" href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">组件&amp;库 架构方案</a>
     </h1>
   
 
         
-        <a href="/2018/12/28/fe/架构/angular 架构演进/" class="archive-article-date">
-  	<time datetime="2018-12-28T08:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-28</time>
+        <a href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/" class="archive-article-date">
+  	<time datetime="2018-12-28T16:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-28</time>
 </a>
         
       </header>
@@ -745,7 +777,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">架构</a>
         		</li>
       		
 		</ul>
@@ -755,7 +787,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/28/fe/架构/angular 架构演进/">ALL >></a>
+          <a class="article-more-a" href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">ALL >></a>
         </p>
       
 
@@ -769,7 +801,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -792,13 +824,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/19/fe/angular/杂文/lifecycle-ngif/">记 `*ngIf` 生命周期导致的一个坑</a>
+      <a class="article-title" href="/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/">记 `*ngIf` 生命周期导致的一个坑</a>
     </h1>
   
 
         
-        <a href="/2018/09/19/fe/angular/杂文/lifecycle-ngif/" class="archive-article-date">
-  	<time datetime="2018-09-19T08:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
+        <a href="/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/" class="archive-article-date">
+  	<time datetime="2018-09-19T16:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-19</time>
 </a>
         
       </header>
@@ -807,7 +839,13 @@
       
         <h2 id="情景"><a href="#情景" class="headerlink" title="情景"></a>情景</h2><p><code>*ngIf</code> 中的 <code>ViewChild</code> 要在 <code>ngAfterViewInit</code> 生命周期钩子中才能拿到。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  condition = <span class="literal">true</span>;</span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'div'</span>) div: ElementRef;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterContentInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterViewInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// ElementRef</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ng-container</span> *<span class="attr">ngIf</span>=<span class="string">"condition"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> #<span class="attr">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ng-container</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
 
@@ -820,7 +858,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/19/fe/angular/杂文/lifecycle-ngif/">ALL >></a>
+          <a class="article-more-a" href="/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/">ALL >></a>
         </p>
       
 
@@ -834,7 +872,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -857,13 +895,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/10/fe/angular/组件/ngx-os项目结构/">Angualr 开源组件设计</a>
+      <a class="article-title" href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">Angualr 开源组件设计</a>
     </h1>
   
 
         
-        <a href="/2018/09/10/fe/angular/组件/ngx-os项目结构/" class="archive-article-date">
-  	<time datetime="2018-09-10T10:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+        <a href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2018-09-10T18:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
 </a>
         
       </header>
@@ -884,47 +922,58 @@
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/assets/images/angular/os/ngx-os-directory.png" alt="directory"></p>
 <h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Debug阶段主要考虑到的是路径引入问题，为了让 <code>Demo源代码</code> 能够和生产环境下的使用保持一致，在 <code>PROJECT_ROOT/tsconfig.json</code> (PROJECT_ROOT指项目根目录)中做了一些配置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  "compilerOptions": &#123;</span><br><span class="line">    "baseUrl": ".",</span><br><span class="line">    "paths": &#123;</span><br><span class="line">      "@petkit/*": [</span><br><span class="line">        <span class="string">"./src/lib/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "demo/*": [</span><br><span class="line">        <span class="string">"./src/demo/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "util/*": [</span><br><span class="line">        <span class="string">"./src/util/*"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>将所有 <code>@petkit/</code> 开头的路径引入转换至 <code>src/lib/</code> 下 </p>
 <blockquote>
 <p><a href="http://json.schemastore.org/tsconfig" target="_blank" rel="noopener">schema</a></p>
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'@petkit/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>将被转换为</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'PROJECT_ROOT/src/lib/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Demo-及-Demo源代码"><a href="#Demo-及-Demo源代码" class="headerlink" title="Demo 及 Demo源代码"></a>Demo 及 Demo源代码</h2><p>这里参考了Angualar Material官方团队的设计（此处Demo和Example概念与官方有出入，官方的示例代码是放在example目录下的，个人觉得都可以，只是项目已经配好了，就不想再去调整得与官方保持一致了）。</p>
 <blockquote>
 <p><a href="https://github.com/angular/material2/tree/master/src/material-examples" target="_blank" rel="noopener">material 2</a></p>
 </blockquote>
 <p>将所有demo目录下的文件作为静态资源，通过http请求源代码，使用 <code>ngx-highlight</code> 高亮语法。 <code>angular.json</code> 配置如下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"projects"</span>: &#123;</span><br><span class="line">    <span class="attr">"example"</span>: &#123;</span><br><span class="line">      <span class="attr">"root"</span>: <span class="string">"."</span>,</span><br><span class="line">      <span class="attr">"sourceRoot"</span>: <span class="string">"src/example"</span>,</span><br><span class="line">      <span class="attr">"architect"</span>: &#123;</span><br><span class="line">        <span class="attr">"build"</span>: &#123;</span><br><span class="line">          <span class="attr">"options"</span>: &#123;</span><br><span class="line">            <span class="attr">"assets"</span>: [</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">"glob"</span>: <span class="string">"**/*"</span>,</span><br><span class="line">                <span class="attr">"input"</span>: <span class="string">"src/demo"</span>,</span><br><span class="line">                <span class="attr">"output"</span>: <span class="string">"assets/demo"</span></span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="string">"src/example/assets"</span></span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>注：<code>sourceRoot</code> 是 <code>ng g *</code> 的相对路径</p>
 </blockquote>
 <p><code>demo</code> 与 <code>example</code> 同级，直接引入会报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;assets&quot;: [</span><br><span class="line">    // Error: The src/demo asset path must start with the project source root.</span><br><span class="line">    &quot;src/demo&quot;,</span><br><span class="line">    &quot;src/example/assets&quot;</span><br><span class="line">  ]</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>demo会被当作静态资源输出至 <code>dist/example/assets/demo</code>，此时使用http请求对应路径文件即可。</p>
 <h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>这部分已经有现成的库 <code>ng packagr</code> 可以帮助我们直接打包了</p>
 <blockquote>
 <p><a href="https://github.com/ng-packagr/ng-packagr" target="_blank" rel="noopener">ng-packagr</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-packagr -p ./src/**/package.json</span><br></pre></td></tr></table></figure>
+
 <h2 id="Github-开源"><a href="#Github-开源" class="headerlink" title="Github 开源"></a>Github 开源</h2><p>针对 <code>lib</code> 下的源代码，采用 <code>git submodule</code> 的方式可以帮助我们更好地维护开源组件。</p>
 <blockquote>
 <p>关于 <code>git submodule</code> segmentfault 上有篇文章写得蛮不错的 <a href="https://segmentfault.com/a/1190000003076028" target="_blank" rel="noopener">git submodule</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add git@github.com:petkit-io/ngx-highlight.git src/lib/ngx-highlight</span><br></pre></td></tr></table></figure>
+
 <h2 id="npm发布"><a href="#npm发布" class="headerlink" title="npm发布"></a>npm发布</h2><p><code>ng-packagr</code> 打包出来的代码便可以直接发布。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish path --access public;</span><br></pre></td></tr></table></figure>
+
 <p>npm 上的 organization 需要加上 <code>--access public</code> 才能发布。每次发布完成后自动生成 <code>CHANGELOG</code>，打上新的版本号。</p>
 <blockquote>
 <p><a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="noopener">conventional-changelog</a> 可以帮助我们自动生成Change Log<br><a href="https://github.com/marionebl/commitlint" target="_blank" rel="noopener">commitlint</a>可以帮助我们规范commit message</p>
 </blockquote>
 <h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><p><code>build</code> <code>github</code> <code>npm</code> 三个阶段可以通过脚本自动执行。<code>PROJECT_ROOT/bin/pub.sh</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">libRoot=src/lib;</span><br><span class="line">distRoot=dist;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">buildLib</span></span>() &#123;</span><br><span class="line">  packagePath=<span class="variable">$1</span>;</span><br><span class="line"></span><br><span class="line">  npx ng-packagr -p <span class="variable">$packagePath</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">publishLib</span></span>() &#123;</span><br><span class="line">  libName=<span class="variable">$1</span>;</span><br><span class="line">  libPath=<span class="variable">$libRoot</span>/<span class="variable">$libName</span>;</span><br><span class="line"></span><br><span class="line">  buildLib <span class="variable">$libPath</span>/package.json;</span><br><span class="line">  npm publish <span class="variable">$distRoot</span>/<span class="variable">$libName</span> --access public;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$libPath</span>;</span><br><span class="line">  git add .;</span><br><span class="line">  git commit -m <span class="string">"chore(version): publish npmjs"</span> 1&gt;/dev/null 2&gt;&amp;1;</span><br><span class="line">  npm version patch;</span><br><span class="line">  git push;</span><br><span class="line">  git push --tags;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishLib <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+
 <p><code>maidfile.md</code>：</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## pub</span></span><br><span class="line"></span><br><span class="line">发布类库</span><br><span class="line">命令格式 <span class="code">`npx maid pub [lib-name]`</span></span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ts-lib`</span></span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ngx-material`</span></span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code">libName=$1</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">command="./bin/pub.sh $libName"</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">echo $command</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">$command</span></span><br></pre></td></tr></table></figure>
+
 <p>使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx maid pub ngx-highlight</span><br></pre></td></tr></table></figure>
+
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>整体结构还有一些不完善的地方，希望大家多多提些建议，我们也会逐步改善。</p>
 <blockquote>
 <p><a href="https://github.com/petkit-io/ngx-os" target="_blank" rel="noopener">Github</a> Star Star Star 重要的事情说三遍o(≧v≦)o</p>
@@ -942,11 +991,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">os</a>
         		</li>
       		
 		</ul>
@@ -956,7 +1005,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/10/fe/angular/组件/ngx-os项目结构/">ALL >></a>
+          <a class="article-more-a" href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">ALL >></a>
         </p>
       
 
@@ -970,7 +1019,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -993,13 +1042,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/06/fe/angular/杂文/route-reuse/">Angular Route Reuse Strategy</a>
+      <a class="article-title" href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/">Angular Route Reuse Strategy</a>
     </h1>
   
 
         
-        <a href="/2018/09/06/fe/angular/杂文/route-reuse/" class="archive-article-date">
-  	<time datetime="2018-09-06T05:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
+        <a href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/" class="archive-article-date">
+  	<time datetime="2018-09-06T13:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-06</time>
 </a>
         
       </header>
@@ -1017,11 +1066,14 @@
 <p>执行顺序如下：</p>
 <h2 id="SimpleReuseStrategy"><a href="#SimpleReuseStrategy" class="headerlink" title="SimpleReuseStrategy"></a>SimpleReuseStrategy</h2><p>网上很多例子在这里都是用的 <code>route.routeConfig.path</code> 作为 <code>key</code>。<br>如果不涉及到lazy load是不会有问题的，但是如果存在 <code>loadChildren</code>，那么<code>route.routeConfig.path</code>就有可能会重复。<br>于是我将 <code>key</code> 改为了 <code>route[&#39;_routerState&#39;].url</code> 取的绝对路径。</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  RouteReuseStrategy,</span><br><span class="line">  DefaultUrlSerializer,</span><br><span class="line">  ActivatedRouteSnapshot,</span><br><span class="line">  DetachedRouteHandle</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@angular/router'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> SimpleReuseStrategy <span class="keyword">implements</span> RouteReuseStrategy &#123;</span><br><span class="line"></span><br><span class="line">  _cacheRouters: &#123; [key: <span class="built_in">string</span>]: <span class="built_in">any</span> &#125; = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  shouldDetach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !route.data.reuse;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  store(route: ActivatedRouteSnapshot, handle: DetachedRouteHandle): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url] = &#123;</span><br><span class="line">      snapshot: route,</span><br><span class="line">      handle: handle</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldAttach(route: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> !!<span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url];</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  retrieve(route: ActivatedRouteSnapshot): DetachedRouteHandle &#123;</span><br><span class="line">    <span class="keyword">if</span> (!route.routeConfig || route.routeConfig.loadChildren || !<span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url]) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._cacheRouters[route[<span class="string">'_routerState'</span>].url].handle;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  shouldReuseRoute(future: ActivatedRouteSnapshot, curr: ActivatedRouteSnapshot): <span class="built_in">boolean</span> &#123;</span><br><span class="line">    <span class="comment">// 同一路由时复用路由</span></span><br><span class="line">    <span class="keyword">return</span> future[<span class="string">'_routerState'</span>].url === curr[<span class="string">'_routerState'</span>].url;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="注册策略到-forRoot-模块。"><a href="#注册策略到-forRoot-模块。" class="headerlink" title="注册策略到 forRoot 模块。"></a>注册策略到 <code>forRoot</code> 模块。</h2><blockquote>
 <p>lazy laod 的 <code>forChild</code> 模块是无法注册的</p>
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NgModule</span>(&#123;</span><br><span class="line">  imports: [</span><br><span class="line">    RouterModule.forRoot(routes),</span><br><span class="line">  ],</span><br><span class="line">  providers: [&#123;</span><br><span class="line">    provide: RouteReuseStrategy,</span><br><span class="line">    useClass: SimpleReuseStrategy,</span><br><span class="line">  &#125;],</span><br><span class="line">  exports: [RouterModule]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
 <h2 id="具体模块使用"><a href="#具体模块使用" class="headerlink" title="具体模块使用"></a>具体模块使用</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> routes: Routes = [&#123;</span><br><span class="line">  path: <span class="string">''</span>,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    path: <span class="string">''</span>,</span><br><span class="line">    redirectTo: <span class="string">'list'</span>,</span><br><span class="line">  &#125;,  &#123;</span><br><span class="line">    path: <span class="string">'list'</span>,</span><br><span class="line">    component: ListComponent,</span><br><span class="line">    data: &#123;</span><br><span class="line">      reuse: <span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;, &#123;</span><br><span class="line">    path: <span class="string">'detail/:id'</span>,</span><br><span class="line">    component: DetailComponent,</span><br><span class="line">  &#125;],</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
 <li><a href="https://angular.cn/api/router/RouteReuseStrategy" target="_blank" rel="noopener">angular.cn</a></li>
 <li><a href="https://segmentfault.com/a/1190000011430157#articleHeader1" target="_blank" rel="noopener">Angular路由复用策略</a></li>
@@ -1040,11 +1092,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">route</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">route</a>
         		</li>
       		
 		</ul>
@@ -1054,7 +1106,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/06/fe/angular/杂文/route-reuse/">ALL >></a>
+          <a class="article-more-a" href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/">ALL >></a>
         </p>
       
 
@@ -1068,7 +1120,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -1086,7 +1138,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1160,13 +1212,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -1187,203 +1239,203 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">faq</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">enterprise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">requirement</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">tool</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ci</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ci</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">open source</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">fish</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">fish</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sdkman</a>
               </li>
             
             <div class="clearfix"></div>

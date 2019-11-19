@@ -12,16 +12,14 @@
 <meta name="keywords" content="angular,os">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Angualr 开源组件设计">
-<meta property="og:url" content="blog.lovesora.pro/2018/09/10/fe/angular/组件/ngx-os项目结构/index.html">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;09&#x2F;10&#x2F;fe&#x2F;angular&#x2F;%E7%BB%84%E4%BB%B6&#x2F;ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
 <meta property="og:description" content="序公司的技术展选择的是 Angular ，设计风格也是Google的 Mateiral Design。Goolge官方团队有提供一套Material Angular版本的组件库 material.angular.io。但是国人的操作习惯与国外还是有一些区别，针对这部分业务，公司打算基于官方组件，封装一些自定义的组件，并且开源出来。这一过程当中，主要对以下几个方面做了一些考虑。希望能对大家的开源项目">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="/assets/images/angular/os/ngx-os-directory.png">
-<meta property="og:updated_time" content="2019-02-26T05:34:30.736Z">
+<meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;angular&#x2F;os&#x2F;ngx-os-directory.png">
+<meta property="og:updated_time" content="2019-11-19T06:12:24.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Angualr 开源组件设计">
-<meta name="twitter:description" content="序公司的技术展选择的是 Angular ，设计风格也是Google的 Mateiral Design。Goolge官方团队有提供一套Material Angular版本的组件库 material.angular.io。但是国人的操作习惯与国外还是有一些区别，针对这部分业务，公司打算基于官方组件，封装一些自定义的组件，并且开源出来。这一过程当中，主要对以下几个方面做了一些考虑。希望能对大家的开源项目">
-<meta name="twitter:image" content="/assets/images/angular/os/ngx-os-directory.png">
+<meta name="twitter:image" content="&#x2F;assets&#x2F;images&#x2F;angular&#x2F;os&#x2F;ngx-os-directory.png">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -71,13 +69,13 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
     			
             
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
     			
             
 		</nav>
@@ -159,8 +157,8 @@
   
 
         
-        <a href="/2018/09/10/fe/angular/组件/ngx-os项目结构/" class="archive-article-date">
-  	<time datetime="2018-09-10T10:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+        <a href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2018-09-10T18:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
 </a>
         
       </header>
@@ -181,47 +179,58 @@
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/assets/images/angular/os/ngx-os-directory.png" alt="directory"></p>
 <h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Debug阶段主要考虑到的是路径引入问题，为了让 <code>Demo源代码</code> 能够和生产环境下的使用保持一致，在 <code>PROJECT_ROOT/tsconfig.json</code> (PROJECT_ROOT指项目根目录)中做了一些配置</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  "compilerOptions": &#123;</span><br><span class="line">    "baseUrl": ".",</span><br><span class="line">    "paths": &#123;</span><br><span class="line">      "@petkit/*": [</span><br><span class="line">        <span class="string">"./src/lib/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "demo/*": [</span><br><span class="line">        <span class="string">"./src/demo/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "util/*": [</span><br><span class="line">        <span class="string">"./src/util/*"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>将所有 <code>@petkit/</code> 开头的路径引入转换至 <code>src/lib/</code> 下 </p>
 <blockquote>
 <p><a href="http://json.schemastore.org/tsconfig" target="_blank" rel="noopener">schema</a></p>
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'@petkit/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
 <p>将被转换为</p>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'PROJECT_ROOT/src/lib/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Demo-及-Demo源代码"><a href="#Demo-及-Demo源代码" class="headerlink" title="Demo 及 Demo源代码"></a>Demo 及 Demo源代码</h2><p>这里参考了Angualar Material官方团队的设计（此处Demo和Example概念与官方有出入，官方的示例代码是放在example目录下的，个人觉得都可以，只是项目已经配好了，就不想再去调整得与官方保持一致了）。</p>
 <blockquote>
 <p><a href="https://github.com/angular/material2/tree/master/src/material-examples" target="_blank" rel="noopener">material 2</a></p>
 </blockquote>
 <p>将所有demo目录下的文件作为静态资源，通过http请求源代码，使用 <code>ngx-highlight</code> 高亮语法。 <code>angular.json</code> 配置如下</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"projects"</span>: &#123;</span><br><span class="line">    <span class="attr">"example"</span>: &#123;</span><br><span class="line">      <span class="attr">"root"</span>: <span class="string">"."</span>,</span><br><span class="line">      <span class="attr">"sourceRoot"</span>: <span class="string">"src/example"</span>,</span><br><span class="line">      <span class="attr">"architect"</span>: &#123;</span><br><span class="line">        <span class="attr">"build"</span>: &#123;</span><br><span class="line">          <span class="attr">"options"</span>: &#123;</span><br><span class="line">            <span class="attr">"assets"</span>: [</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">"glob"</span>: <span class="string">"**/*"</span>,</span><br><span class="line">                <span class="attr">"input"</span>: <span class="string">"src/demo"</span>,</span><br><span class="line">                <span class="attr">"output"</span>: <span class="string">"assets/demo"</span></span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="string">"src/example/assets"</span></span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>注：<code>sourceRoot</code> 是 <code>ng g *</code> 的相对路径</p>
 </blockquote>
 <p><code>demo</code> 与 <code>example</code> 同级，直接引入会报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;assets&quot;: [</span><br><span class="line">    // Error: The src/demo asset path must start with the project source root.</span><br><span class="line">    &quot;src/demo&quot;,</span><br><span class="line">    &quot;src/example/assets&quot;</span><br><span class="line">  ]</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>demo会被当作静态资源输出至 <code>dist/example/assets/demo</code>，此时使用http请求对应路径文件即可。</p>
 <h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>这部分已经有现成的库 <code>ng packagr</code> 可以帮助我们直接打包了</p>
 <blockquote>
 <p><a href="https://github.com/ng-packagr/ng-packagr" target="_blank" rel="noopener">ng-packagr</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-packagr -p ./src/**/package.json</span><br></pre></td></tr></table></figure>
+
 <h2 id="Github-开源"><a href="#Github-开源" class="headerlink" title="Github 开源"></a>Github 开源</h2><p>针对 <code>lib</code> 下的源代码，采用 <code>git submodule</code> 的方式可以帮助我们更好地维护开源组件。</p>
 <blockquote>
 <p>关于 <code>git submodule</code> segmentfault 上有篇文章写得蛮不错的 <a href="https://segmentfault.com/a/1190000003076028" target="_blank" rel="noopener">git submodule</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add git@github.com:petkit-io/ngx-highlight.git src/lib/ngx-highlight</span><br></pre></td></tr></table></figure>
+
 <h2 id="npm发布"><a href="#npm发布" class="headerlink" title="npm发布"></a>npm发布</h2><p><code>ng-packagr</code> 打包出来的代码便可以直接发布。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish path --access public;</span><br></pre></td></tr></table></figure>
+
 <p>npm 上的 organization 需要加上 <code>--access public</code> 才能发布。每次发布完成后自动生成 <code>CHANGELOG</code>，打上新的版本号。</p>
 <blockquote>
 <p><a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="noopener">conventional-changelog</a> 可以帮助我们自动生成Change Log<br><a href="https://github.com/marionebl/commitlint" target="_blank" rel="noopener">commitlint</a>可以帮助我们规范commit message</p>
 </blockquote>
 <h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><p><code>build</code> <code>github</code> <code>npm</code> 三个阶段可以通过脚本自动执行。<code>PROJECT_ROOT/bin/pub.sh</code>：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">libRoot=src/lib;</span><br><span class="line">distRoot=dist;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">buildLib</span></span>() &#123;</span><br><span class="line">  packagePath=<span class="variable">$1</span>;</span><br><span class="line"></span><br><span class="line">  npx ng-packagr -p <span class="variable">$packagePath</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">publishLib</span></span>() &#123;</span><br><span class="line">  libName=<span class="variable">$1</span>;</span><br><span class="line">  libPath=<span class="variable">$libRoot</span>/<span class="variable">$libName</span>;</span><br><span class="line"></span><br><span class="line">  buildLib <span class="variable">$libPath</span>/package.json;</span><br><span class="line">  npm publish <span class="variable">$distRoot</span>/<span class="variable">$libName</span> --access public;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$libPath</span>;</span><br><span class="line">  git add .;</span><br><span class="line">  git commit -m <span class="string">"chore(version): publish npmjs"</span> 1&gt;/dev/null 2&gt;&amp;1;</span><br><span class="line">  npm version patch;</span><br><span class="line">  git push;</span><br><span class="line">  git push --tags;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishLib <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+
 <p><code>maidfile.md</code>：</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## pub</span></span><br><span class="line"></span><br><span class="line">发布类库</span><br><span class="line">命令格式 <span class="code">`npx maid pub [lib-name]`</span></span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ts-lib`</span></span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ngx-material`</span></span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code">libName=$1</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">command="./bin/pub.sh $libName"</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">echo $command</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">$command</span></span><br></pre></td></tr></table></figure>
+
 <p>使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx maid pub ngx-highlight</span><br></pre></td></tr></table></figure>
+
 <h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>整体结构还有一些不完善的地方，希望大家多多提些建议，我们也会逐步改善。</p>
 <blockquote>
 <p><a href="https://github.com/petkit-io/ngx-os" target="_blank" rel="noopener">Github</a> Star Star Star 重要的事情说三遍o(≧v≦)o</p>
@@ -231,7 +240,7 @@
 
       
         <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
+          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
             <div class="tooltip tooltip-east">
             <span class="tooltip-item">
               赏
@@ -270,11 +279,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">os</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">os</a>
         		</li>
       		
 		</ul>
@@ -289,35 +298,35 @@
 <div class="share-btn share-icons tooltip-left">
   <div class="tooltip tooltip-east">
     <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
+      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
         <i class="icon icon-share"></i>
       </a>
     </span>
     <span class="tooltip-content">
       <div class="share-wrap">
         <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
             <i class="icon icon-weibo"></i>
           </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
             <i class="icon icon-weixin"></i>
           </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
+          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
             <i class="icon icon-qq"></i>
           </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
+          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
             <i class="icon icon-douban"></i>
           </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
             <i class="icon icon-qzone"></i>
           </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
             <i class="icon icon-facebook"></i>
           </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
             <i class="icon icon-twitter"></i>
           </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
+          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
             <i class="icon icon-google"></i>
           </a>
         </div>
@@ -327,10 +336,10 @@
 </div>
 
 <div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/09/10/fe/angular/组件/ngx-os项目结构/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -344,7 +353,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/19/fe/angular/杂文/lifecycle-ngif/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -354,7 +363,7 @@
     </a>
   
   
-    <a href="/2018/09/06/fe/angular/杂文/route-reuse/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Angular Route Reuse Strategy</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -366,7 +375,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -394,7 +403,7 @@
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Mon Sep 10 2018 18:06:25 GMT+0800",
+  id: "Mon Sep 10 2018 18:06:25 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -477,13 +486,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -504,203 +513,203 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">faq</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">enterprise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">requirement</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">tool</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ci</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ci</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">open source</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">fish</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">fish</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sdkman</a>
               </li>
             
             <div class="clearfix"></div>

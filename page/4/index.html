@@ -8,17 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="a front-end developer&apos;s blog">
+  <meta name="description" content="a front-end developer&amp;apos;s blog">
 <meta name="keywords" content="front-end architecture">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lovesora&#39;s blog">
-<meta property="og:url" content="blog.lovesora.pro/page/4/index.html">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;page&#x2F;4&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="a front-end developer&apos;s blog">
+<meta property="og:description" content="a front-end developer&amp;apos;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lovesora&#39;s blog">
-<meta name="twitter:description" content="a front-end developer&apos;s blog">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -68,13 +66,13 @@
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)" target="_blank" rel="noopener">所有文章</a>
     			
             
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)" target="_blank" rel="noopener">关于我</a>
     			
             
 		</nav>
@@ -159,7 +157,7 @@
 
         
         <a href="/2018/05/31/devops/shell/basis/" class="archive-article-date">
-  	<time datetime="2018-05-30T16:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
+  	<time datetime="2018-05-31T00:48:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
 </a>
         
       </header>
@@ -219,6 +217,8 @@
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ROOT=<span class="variable">$PWD</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'$PWD'</span>; <span class="comment"># $PWD</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$PWD</span>"</span>; <span class="comment"># /path/to</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">createDir</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$before</span>; <span class="comment"># before ...</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$after</span>;  <span class="comment"># empty line</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    DIR=<span class="variable">$ROOT</span>/<span class="variable">$arg</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ -d <span class="variable">$DIR</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"<span class="variable">$DIR</span> is already a directory"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">read</span> -p <span class="string">"create <span class="variable">$DIR</span> ? (Y/n)"</span> isYes;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$isYes</span>"</span> = <span class="string">"Y"</span> ]] || [[ ! <span class="variable">$isYes</span> ]]; <span class="keyword">then</span></span><br><span class="line">        mkdir <span class="variable">$DIR</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"cancel create <span class="variable">$DIR</span>"</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">before=<span class="string">"before..."</span>;</span><br><span class="line"></span><br><span class="line">createDir <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">after=<span class="string">"after..."</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="string">"a a"</span> b c; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$var</span>; <span class="comment"># a a, b, c</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span>; <span class="comment"># 执行路径</span></span><br><span class="line"><span class="built_in">echo</span> $(dirname <span class="variable">$0</span>); <span class="comment"># 获取上层目录</span></span><br></pre></td></tr></table></figure>
+
+
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
 <li><a href="http://blog.51cto.com/lynnteng0/798365" target="_blank" rel="noopener">shell if 多条件 或 泛匹配</a></li>
 <li><a href="https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script" target="_blank" rel="noopener">How to iterate over arguments in a Bash script</a></li>
@@ -240,7 +240,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">shell</a>
         		</li>
       		
 		</ul>
@@ -264,7 +264,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -293,7 +293,7 @@
 
         
         <a href="/2018/05/29/javascript/exports/xlsx/" class="archive-article-date">
-  	<time datetime="2018-05-29T03:45:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
+  	<time datetime="2018-05-29T11:45:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-29</time>
 </a>
         
       </header>
@@ -301,13 +301,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Step-1-安装依赖-xlsx"><a href="#Step-1-安装依赖-xlsx" class="headerlink" title="Step 1. 安装依赖 xlsx"></a>Step 1. 安装依赖 <code>xlsx</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add xlsx</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-2-Import"><a href="#Step-2-Import" class="headerlink" title="Step 2. Import"></a>Step 2. Import</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-3-Usage"><a href="#Step-3-Usage" class="headerlink" title="Step 3. Usage"></a>Step 3. Usage</h2><p>xlsx支持多种格式导出，具体可以参考官方文档<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">github</a></p>
 <blockquote>
 <p><a href="https://stackblitz.com/edit/angular-pzkjbz" target="_blank" rel="noopener">demo</a></p>
 </blockquote>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Export &#123;</span><br><span class="line">  <span class="keyword">private</span> _wb: XLSX.WorkBook = XLSX.utils.book_new();</span><br><span class="line"></span><br><span class="line">  appendSheet(aoaData, &#123;</span><br><span class="line">    sheetName = <span class="string">'sheet'</span>,</span><br><span class="line">  &#125; = &#123;&#125;) &#123;</span><br><span class="line">    <span class="comment">// 与左上角和右下角确认一个矩形相似</span></span><br><span class="line">    <span class="keyword">const</span> merge = &#123;</span><br><span class="line">      <span class="comment">// start</span></span><br><span class="line">      s: &#123;</span><br><span class="line">        <span class="comment">// row</span></span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// column</span></span><br><span class="line">        c: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// end</span></span><br><span class="line">      e: &#123;</span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        c: <span class="number">1</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 与以下写法结果相同</span></span><br><span class="line">    <span class="comment">// const merge = XLSX.utils.decode_range("A1:A2");</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(aoaData);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!ws[<span class="string">'!merges'</span>]) &#123;</span><br><span class="line">       ws[<span class="string">'!merges'</span>] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    ws[<span class="string">'!merges'</span>].push(merge);</span><br><span class="line"></span><br><span class="line">    XLSX.utils.book_append_sheet(<span class="keyword">this</span>._wb, ws, sheetName);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  exportExcelFile(filename = <span class="string">'export.xlsx'</span>) &#123;</span><br><span class="line">    XLSX.writeFile(<span class="keyword">this</span>._wb, filename);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> exports = <span class="keyword">new</span> Export();</span><br><span class="line"></span><br><span class="line">exports.appendSheet([[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="string">'c'</span>], [<span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]]);</span><br><span class="line"></span><br><span class="line">exports.exportExcelFile();</span><br></pre></td></tr></table></figure>
+
 <p><img src="/assets/images/output/export.png" alt="output"></p>
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><blockquote>
 <p><a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">js-xlsx</a><br><a href="https://github.com/SheetJS/js-xlsx/issues/964" target="_blank" rel="noopener">merge cells from Array of Arrays</a></p>
@@ -325,7 +329,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">xlsx</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">xlsx</a>
         		</li>
       		
 		</ul>
@@ -349,7 +353,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -372,13 +376,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/fe/angular/杂文/library/">Angular Library 分离实践</a>
+      <a class="article-title" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/">Angular Library 分离实践</a>
     </h1>
   
 
         
-        <a href="/2018/05/28/fe/angular/杂文/library/" class="archive-article-date">
-  	<time datetime="2018-05-28T08:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+        <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/" class="archive-article-date">
+  	<time datetime="2018-05-28T16:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -398,13 +402,17 @@
 <p>本文主要是优化library项目在开发阶段和project项目之间的调试问题。</p>
 </blockquote>
 <h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root</span><br><span class="line">  |-projects</span><br><span class="line">    |-material</span><br><span class="line">    |-common</span><br><span class="line">    |-flux</span><br><span class="line">  |-src</span><br><span class="line">    |-tsconfig.app.json</span><br><span class="line">    |-tsconfig.spec.json</span><br><span class="line">  tsconfig.json</span><br></pre></td></tr></table></figure>
-<h2 id="去除-tsconfig-app-json-和-tsconfig-spec-json-中的-baseUrl"><a href="#去除-tsconfig-app-json-和-tsconfig-spec-json-中的-baseUrl" class="headerlink" title="去除 tsconfig.app.json 和 tsconfig.spec.json 中的 baseUrl"></a>去除 <code>tsconfig.app.json</code> 和 <code>tsconfig.spec.json</code> 中的 <code>baseUrl</code></h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// before</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"../tsconfig.json"</span>,</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"./"</span>,</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"../out-tsc/app"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: []</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"exclude"</span>: [</span><br><span class="line">    <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.spec.ts"</span>,</span><br><span class="line">    <span class="string">"../node_modules/@petkit/**/*"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// now</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"../tsconfig.json"</span>,</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"../out-tsc/app"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: []</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"exclude"</span>: [</span><br><span class="line">    <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.spec.ts"</span>,</span><br><span class="line">    <span class="string">"../node_modules/@petkit/**/*"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="去除-tsconfig-app-json-和-tsconfig-spec-json-中的-baseUrl"><a href="#去除-tsconfig-app-json-和-tsconfig-spec-json-中的-baseUrl" class="headerlink" title="去除 tsconfig.app.json 和 tsconfig.spec.json 中的 baseUrl"></a>去除 <code>tsconfig.app.json</code> 和 <code>tsconfig.spec.json</code> 中的 <code>baseUrl</code></h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"../tsconfig.json"</span>,</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"./"</span>,</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"../out-tsc/app"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: []</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"exclude"</span>: [</span><br><span class="line">    <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.spec.ts"</span>,</span><br><span class="line">    <span class="string">"../node_modules/@petkit/**/*"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// now</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"extends"</span>: <span class="string">"../tsconfig.json"</span>,</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"outDir"</span>: <span class="string">"../out-tsc/app"</span>,</span><br><span class="line">    <span class="attr">"module"</span>: <span class="string">"es2015"</span>,</span><br><span class="line">    <span class="attr">"types"</span>: []</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"exclude"</span>: [</span><br><span class="line">    <span class="string">"test.ts"</span>,</span><br><span class="line">    <span class="string">"**/*.spec.ts"</span>,</span><br><span class="line">    <span class="string">"../node_modules/@petkit/**/*"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="在-tsconfig-json-中添加-baseUrl-配置-paths"><a href="#在-tsconfig-json-中添加-baseUrl-配置-paths" class="headerlink" title="在 tsconfig.json 中添加 baseUrl, 配置 paths"></a>在 <code>tsconfig.json</code> 中添加 <code>baseUrl</code>, 配置 <code>paths</code></h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="attr">"baseUrl"</span>: <span class="string">"./"</span>,</span><br><span class="line">    <span class="attr">"paths"</span>: &#123;</span><br><span class="line">      <span class="attr">"@libs/*"</span>: [</span><br><span class="line">        <span class="string">"projects/*"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong> 注意 </strong></p>
+
+<p>** 注意 **</p>
 <ol>
 <li>library项目中需要在根路径加上<code>index.ts</code>，以便与实际生产环境下的引用方式保持一致</li>
 </ol>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.ts</span></span><br><span class="line"><span class="keyword">export</span> * <span class="keyword">from</span> <span class="string">'./public_api'</span>;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -418,11 +426,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">library</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">library</a>
         		</li>
       		
 		</ul>
@@ -432,7 +440,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/fe/angular/杂文/library/">ALL >></a>
+          <a class="article-more-a" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/">ALL >></a>
         </p>
       
 
@@ -446,7 +454,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -475,7 +483,7 @@
 
         
         <a href="/2018/05/28/fe/typescript/schema/" class="archive-article-date">
-  	<time datetime="2018-05-28T03:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+  	<time datetime="2018-05-28T11:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -498,11 +506,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">ts</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">schema</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">schema</a>
         		</li>
       		
 		</ul>
@@ -526,7 +534,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -555,7 +563,7 @@
 
         
         <a href="/2018/05/28/vcs/git/git-flow/" class="archive-article-date">
-  	<time datetime="2018-05-28T03:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+  	<time datetime="2018-05-28T11:21:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -563,17 +571,23 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Generate-the-Commit-Message"><a href="#Generate-the-Commit-Message" class="headerlink" title="Generate the Commit Message"></a>Generate the Commit Message</h1><h2 id="Install-commitizen"><a href="#Install-commitizen" class="headerlink" title="Install commitizen"></a>Install <code>commitizen</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># install</span></span><br><span class="line">yarn global add commitizen</span><br><span class="line"></span><br><span class="line"><span class="comment"># exec in project root</span></span><br><span class="line">commitizen init cz-conventional-changelog --save --save-exact</span><br></pre></td></tr></table></figure>
+
 <h1 id="Validate-the-Commit-Message"><a href="#Validate-the-Commit-Message" class="headerlink" title="Validate the Commit Message"></a>Validate the Commit Message</h1><h2 id="Install-husky-to-help-us-use-git-and-npm-hooks"><a href="#Install-husky-to-help-us-use-git-and-npm-hooks" class="headerlink" title="Install husky to help us use git and npm hooks"></a>Install <code>husky</code> to help us use git and npm hooks</h2><blockquote>
 <p><a href="https://github.com/typicode/husky/blob/master/HOOKS.md" target="_blank" rel="noopener">husky hooks</a></p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add husky --dev</span><br></pre></td></tr></table></figure>
+
 <h2 id="Install-commitlint"><a href="#Install-commitlint" class="headerlink" title="Install commitlint"></a>Install <code>commitlint</code></h2><blockquote>
 <p><a href="https://github.com/marionebl/commitlint#getting-started" target="_blank" rel="noopener">commitlint</a></p>
 </blockquote>
 <h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For Windows:</span></span><br><span class="line">yarn add --dev @commitlint/config-conventional @commitlint/cli</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configure commitlint to use angular config</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"module.exports = &#123;extends: ['@commitlint/config-conventional']&#125;"</span> &gt; commitlint.config.js</span><br></pre></td></tr></table></figure>
+
 <h3 id="Configuration"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"commitmsg"</span>: <span class="string">"commitlint -e $GIT_PARAMS"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="Generate-ChangeLog"><a href="#Generate-ChangeLog" class="headerlink" title="Generate ChangeLog"></a>Generate ChangeLog</h1><h2 id="Install-conventional-changelog-cli"><a href="#Install-conventional-changelog-cli" class="headerlink" title="Install conventional-changelog-cli"></a>Install <code>conventional-changelog-cli</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add --dev conventional-changelog-cli</span><br></pre></td></tr></table></figure>
+
 <h2 id="Configuration-1"><a href="#Configuration-1" class="headerlink" title="Configuration"></a>Configuration</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"conventional-changelog -p angular -i CHANGELOG.md -s -r 0 &amp;&amp; git add CHANGELOG.md"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h1 id="Branch-Management"><a href="#Branch-Management" class="headerlink" title="Branch Management"></a>Branch Management</h1><p>该分支模型值得借鉴的地方包括</p>
 <ul>
 <li>规范的分支命名</li>
@@ -586,7 +600,9 @@
 <li>feature/*，develop =&gt; 开发环境</li>
 </ul>
 <h1 id="git-flow-Installation"><a href="#git-flow-Installation" class="headerlink" title="git flow Installation"></a><code>git flow</code> Installation</h1><h2 id="Mac"><a href="#Mac" class="headerlink" title="Mac"></a>Mac</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install git-flow</span><br></pre></td></tr></table></figure>
+
 <h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -OL https://raw.github.com/nvie/gitflow/develop/contrib/gitflow-installer.sh</span><br><span class="line">chmod +x gitflow-installer.sh</span><br><span class="line">sudo ./gitflow-installer.sh</span><br></pre></td></tr></table></figure>
+
 <h1 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h1><ul>
 <li><a href="http://www.ruanyifeng.com/blog/2016/01/commit_message_change_log.html" target="_blank" rel="noopener">Commit message 和 Change log 编写指南</a></li>
 <li><a href="https://yuhongjun.github.io/tech/2017/04/28/git%E4%BB%93%E5%BA%93%E5%88%A0%E9%99%A4%E6%89%80%E6%9C%89%E6%8F%90%E4%BA%A4%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95-%E6%88%90%E4%B8%BA%E4%B8%80%E4%B8%AA%E5%B9%B2%E5%87%80%E7%9A%84%E6%96%B0%E4%BB%93%E5%BA%93.html" target="_blank" rel="noopener">git仓库删除所有提交历史记录，成为一个干净的新仓库</a></li>
@@ -604,11 +620,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">flow</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">flow</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -632,7 +648,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -655,13 +671,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/fe/angular/杂文/v5-to-v6/">angular v5升级至v6</a>
+      <a class="article-title" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/">angular v5升级至v6</a>
     </h1>
   
 
         
-        <a href="/2018/05/28/fe/angular/杂文/v5-to-v6/" class="archive-article-date">
-  	<time datetime="2018-05-28T03:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+        <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/" class="archive-article-date">
+  	<time datetime="2018-05-28T11:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -669,10 +685,15 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装v8版node-lts"><a href="#安装v8版node-lts" class="headerlink" title="安装v8版node lts"></a>安装v8版node lts</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># now is 8.11.2</span></span><br><span class="line">sudo n lts</span><br></pre></td></tr></table></figure>
+
 <h2 id="升级-angular-cli"><a href="#升级-angular-cli" class="headerlink" title="升级 @angular/cli"></a>升级 <code>@angular/cli</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g @angular/cli</span><br><span class="line">npm cache verify</span><br><span class="line">npm i -g @angular/cli@6.0.0</span><br></pre></td></tr></table></figure>
+
 <h2 id="修改所有angular依赖至v6"><a href="#修改所有angular依赖至v6" class="headerlink" title="修改所有angular依赖至v6"></a>修改所有angular依赖至v6</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"@angular-devkit/build-angular"</span>: <span class="string">"~0.6.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/animations"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/cdk"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/cli"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/common"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/compiler"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/compiler-cli"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/core"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/forms"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/http"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/material"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/platform-browser"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/platform-browser-dynamic"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/router"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"rxjs"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"rxjs-compat"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"tsickle"</span>: <span class="string">"0.27.5"</span>,</span><br><span class="line">    <span class="attr">"tslib"</span>: <span class="string">"1.9.0"</span>,</span><br><span class="line">    <span class="attr">"typescript"</span>: <span class="string">"2.7.2"</span>,</span><br><span class="line">    <span class="attr">"zone.js"</span>: <span class="string">"~0.8.26"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="重装-node-modules"><a href="#重装-node-modules" class="headerlink" title="重装 node_modules"></a>重装 <code>node_modules</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+
 <h2 id="删除-angular-cli-json，添加-angular-json"><a href="#删除-angular-cli-json，添加-angular-json" class="headerlink" title="删除.angular-cli.json，添加.angular.json"></a>删除<code>.angular-cli.json</code>，添加<code>.angular.json</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng update @angular/cli --migrate-only --from=1.7.4</span><br></pre></td></tr></table></figure>
+
 <h2 id="Finished"><a href="#Finished" class="headerlink" title="Finished"></a>Finished</h2><p>大功告成</p>
 <h2 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h2><ol>
 <li><a href="https://juejin.im/post/5aeebbce6fb9a07aa213406e" target="_blank" rel="noopener">angular</a></li>
@@ -684,18 +705,22 @@
 </li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line">source</span><br><span class="line"> .map(<span class="function"><span class="params">x</span> =&gt;</span> x + x)</span><br><span class="line"> .mergeMap(<span class="function"><span class="params">n</span> =&gt;</span> of(n + <span class="number">1</span>, n + <span class="number">2</span>)</span><br><span class="line">   .filter(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">1</span> == <span class="number">0</span>)</span><br><span class="line">   .scan(<span class="function">(<span class="params">acc, x</span>) =&gt;</span> acc + x, <span class="number">0</span>)</span><br><span class="line"> )</span><br><span class="line"> .catch(<span class="function"><span class="params">err</span> =&gt;</span> of(<span class="string">'error found'</span>))</span><br><span class="line"> .subscribe(printResult);</span><br><span class="line"></span><br><span class="line"><span class="comment">// now</span></span><br><span class="line">source.pipe(</span><br><span class="line"> map(<span class="function"><span class="params">x</span> =&gt;</span> x + x),</span><br><span class="line"> mergeMap(<span class="function"><span class="params">n</span> =&gt;</span> of(n + <span class="number">1</span>, n + <span class="number">2</span>).pipe(</span><br><span class="line">   filter(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">1</span> == <span class="number">0</span>),</span><br><span class="line">   scan(<span class="function">(<span class="params">acc, x</span>) =&gt;</span> acc + x, <span class="number">0</span>),</span><br><span class="line"> )),</span><br><span class="line"> catchError(<span class="function"><span class="params">err</span> =&gt;</span> of(<span class="string">'error found'</span>)),</span><br><span class="line">).subscribe(printResult);</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>操作符导入路径</li>
 </ul>
 <figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Observable, Subject, asapScheduler, pipe, of, <span class="keyword">from</span>, interval, merge, fromEvent &#125; <span class="keyword">from</span> <span class="string">'rxjs'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; map, filter, scan &#125; <span class="keyword">from</span> <span class="string">'rxjs/operators'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; webSocket &#125; <span class="keyword">from</span> <span class="string">'rxjs/webSocket'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ajax &#125; <span class="keyword">from</span> <span class="string">'rxjs/ajax'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; TestScheduler &#125; <span class="keyword">from</span> <span class="string">'rxjs/testing'</span>;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>部分操作符重命名</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">do -&gt; tap</span><br><span class="line">catch -&gt; catchError</span><br><span class="line">switch -&gt; switchAll</span><br><span class="line">finally -&gt; finalize</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>部分操作符在v7版将废弃</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mergeMap()</span><br><span class="line">mergeMapTo()</span><br><span class="line">concatMap()</span><br><span class="line">concatMapTo()</span><br><span class="line">switchMap</span><br><span class="line">switchMapTo()</span><br><span class="line">exhaustMap()</span><br><span class="line">forkJoin()</span><br><span class="line">zip()</span><br><span class="line">combineLatest()</span><br><span class="line">fromEvent()</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -709,11 +734,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">upgrade</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">upgrade</a>
         		</li>
       		
 		</ul>
@@ -723,7 +748,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/fe/angular/杂文/v5-to-v6/">ALL >></a>
+          <a class="article-more-a" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/">ALL >></a>
         </p>
       
 
@@ -737,7 +762,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -766,7 +791,7 @@
 
         
         <a href="/2018/05/28/open-source/github/git-page/" class="archive-article-date">
-  	<time datetime="2018-05-27T18:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+  	<time datetime="2018-05-28T02:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -783,6 +808,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blog.lovesora.pro</span><br></pre></td></tr></table></figure>
 
+
       
 
       
@@ -795,11 +821,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">pageg</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">pageg</a>
         		</li>
       		
 		</ul>
@@ -823,7 +849,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -846,13 +872,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/fe/angular/杂文/疑难杂症/">angular疑难杂症</a>
+      <a class="article-title" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">angular疑难杂症</a>
     </h1>
   
 
         
-        <a href="/2018/05/28/fe/angular/杂文/疑难杂症/" class="archive-article-date">
-  	<time datetime="2018-05-27T16:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+        <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" class="archive-article-date">
+  	<time datetime="2018-05-28T00:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
 </a>
         
       </header>
@@ -861,6 +887,7 @@
       
         <h2 id="执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错"><a href="#执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错" class="headerlink" title="执行 ng config xxx 后 ng xxx 命令报错 重装@angular/cli仍然报错"></a>执行 <code>ng config xxx</code> 后 <code>ng xxx</code> 命令报错 重装<code>@angular/cli</code>仍然报错</h2><p>报错信息</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Workspace needs to be loaded before it is used.</span><br><span class="line">Error: Workspace needs to be loaded before it is used.</span><br><span class="line">    at Workspace._assertLoaded (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:59:19)</span><br><span class="line">    at Workspace._getTool (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:145:14)</span><br><span class="line">    at Workspace.getCli (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:127:21)</span><br><span class="line">    at Object.getDefaultSchematicCollection (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/utilities/config.js:209:32)</span><br><span class="line">    at NewCommand.parseCollectionName (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:88:76)</span><br><span class="line">    at NewCommand.initialize (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:46:37)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:87:23)</span><br><span class="line">    at Generator.next (&lt;anonymous&gt;)</span><br><span class="line">    at fulfilled (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:4:58)</span><br><span class="line">    at &lt;anonymous&gt;</span><br></pre></td></tr></table></figure>
+
 <p>解决方案</p>
 <p>删除<code>angular-config.json</code>文件</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm ~/.angular-config.json</span><br></pre></td></tr></table></figure>
@@ -877,7 +904,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		
 		</ul>
@@ -887,7 +914,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/fe/angular/杂文/疑难杂症/">ALL >></a>
+          <a class="article-more-a" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">ALL >></a>
         </p>
       
 
@@ -901,7 +928,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -924,13 +951,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/27/fe/angular/入门系列/环境配置/">angular 入门系列 - 环境配置</a>
+      <a class="article-title" href="/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">angular 入门系列 - 环境配置</a>
     </h1>
   
 
         
-        <a href="/2018/05/27/fe/angular/入门系列/环境配置/" class="archive-article-date">
-  	<time datetime="2018-05-27T02:48:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
+        <a href="/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2018-05-27T10:48:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-27</time>
 </a>
         
       </header>
@@ -941,12 +968,18 @@
 <p>建议使用<a href="https://github.com/creationix/nvm#installation" target="_blank" rel="noopener">nvm</a>安装</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-2-使用n安装lts版nodejs"><a href="#Step-2-使用n安装lts版nodejs" class="headerlink" title="Step 2. 使用n安装lts版nodejs"></a>Step 2. 使用n安装lts版nodejs</h2><p>node版本管理神器 <code>n</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 需要roo权限</span></span><br><span class="line">sudo npm i -g n</span><br><span class="line">sudo n lts</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-3-安装-yarn"><a href="#Step-3-安装-yarn" class="headerlink" title="Step 3. 安装 yarn"></a>Step 3. 安装 <code>yarn</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g yarn</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-4-安装-angular-cli"><a href="#Step-4-安装-angular-cli" class="headerlink" title="Step 4. 安装 @angular/cli"></a>Step 4. 安装 <code>@angular/cli</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -g @angular/cli@6.0.0</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-5-创建angular项目"><a href="#Step-5-创建angular项目" class="headerlink" title="Step 5. 创建angular项目"></a>Step 5. 创建angular项目</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加css预处理器scss [angular cli css preprocessor](https://github.com/angular/angular-cli/wiki/stories-css-preprocessors)</span></span><br><span class="line">ng new angular6-demo --style=scss</span><br></pre></td></tr></table></figure>
+
 <h2 id="Step-6-运行angular"><a href="#Step-6-运行angular" class="headerlink" title="Step 6. 运行angular"></a>Step 6. 运行angular</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> angular6-demo</span><br><span class="line">yarn start</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -960,11 +993,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">beginner</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">beginner</a>
         		</li>
       		
 		</ul>
@@ -974,7 +1007,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/27/fe/angular/入门系列/环境配置/">ALL >></a>
+          <a class="article-more-a" href="/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">ALL >></a>
         </p>
       
 
@@ -988,7 +1021,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -1017,7 +1050,7 @@
 
         
         <a href="/2018/05/26/devops/nginx/config/" class="archive-article-date">
-  	<time datetime="2018-05-26T15:23:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
+  	<time datetime="2018-05-26T23:23:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-26</time>
 </a>
         
       </header>
@@ -1025,11 +1058,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+
 <h2 id="配置nginx"><a href="#配置nginx" class="headerlink" title="配置nginx"></a>配置nginx</h2><p>配置文件: <strong>/usr/local/etc/nginx/nginx.conf</strong></p>
 <ul>
 <li>将 <strong>http</strong> 部分修改成下面的配置</li>
 </ul>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">  <span class="attribute">include</span>       /etc/nginx/mime.types;</span><br><span class="line">  <span class="attribute">default_type</span>  application/octet-stream;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">log_format</span>    main  <span class="string">'<span class="variable">$remote_addr</span> - <span class="variable">$remote_user</span> [<span class="variable">$time_local</span>] "<span class="variable">$request</span>" '</span></span><br><span class="line">  <span class="string">'<span class="variable">$status</span> <span class="variable">$body_bytes_sent</span> "<span class="variable">$http_referer</span>" '</span></span><br><span class="line">  <span class="string">'"<span class="variable">$http_user_agent</span>" "<span class="variable">$http_x_forwarded_for</span>"'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">access_log</span>    /var/log/nginx/access.log  main;    <span class="comment">#日志文件存放位置</span></span><br><span class="line"></span><br><span class="line">  <span class="attribute">sendfile</span>      <span class="literal">on</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">keepalive_timeout</span>  <span class="number">65</span>;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">gzip</span> <span class="literal">on</span>;</span><br><span class="line">  <span class="attribute">gzip_http_version</span>  <span class="number">1</span>.<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">gzip_disable</span>       <span class="string">"MSIE [1-6]."</span>;</span><br><span class="line">  <span class="attribute">gzip_min_length</span>    <span class="number">512</span>;</span><br><span class="line">  <span class="attribute">gzip_types</span>         text/plain application/x-javascript text/css text/javascript application/javascript application/xml application/json;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">include</span> servers/<span class="regexp">*.conf</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>如果日志文件的路径不存在, 则需要先创建: sudo mkdir -p /var/log/nginx/</p>
 </blockquote>
@@ -1047,15 +1082,23 @@
 <li>proxy.conf的内容如下:</li>
 </ul>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">proxy_redirect</span>          <span class="literal">off</span>;</span><br><span class="line"><span class="attribute">proxy_set_header</span>        Host <span class="variable">$host</span>;</span><br><span class="line"><span class="attribute">proxy_set_header</span>        X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line"><span class="attribute">client_max_body_size</span>    <span class="number">10m</span>;</span><br><span class="line"><span class="attribute">client_body_buffer_size</span> <span class="number">128k</span>;</span><br><span class="line"><span class="attribute">proxy_connect_timeout</span>   <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_send_timeout</span>      <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_read_timeout</span>      <span class="number">300</span>;</span><br><span class="line"><span class="attribute">proxy_buffer_size</span>       <span class="number">4k</span>;</span><br><span class="line"><span class="attribute">proxy_buffers</span>           <span class="number">4</span> <span class="number">32k</span>;</span><br><span class="line"><span class="attribute">proxy_busy_buffers_size</span> <span class="number">64k</span>;</span><br><span class="line"><span class="attribute">proxy_temp_file_write_size</span> <span class="number">64k</span>;</span><br></pre></td></tr></table></figure>
+
 <h2 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h2><p>配置文件: <strong>/usr/local/etc/nginx/servers/food.conf</strong></p>
 <p><strong>注意</strong>: </p>
 <p>请将配置文件中的 <strong>/root/workspace/project/src</strong> 修改为本地路径</p>
 <p>#测试服务器</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> sandbox &#123;</span><br><span class="line">  <span class="attribute">server</span> sandbox.com:<span class="number">80</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>#正式服务器<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> deploy &#123;</span><br><span class="line">  <span class="attribute">server</span> deploy.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+<p>#正式服务器</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">upstream</span> deploy &#123;</span><br><span class="line">  <span class="attribute">server</span> deploy.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span>  localhost <span class="number">127.0.0.1</span>; <span class="comment">#可通过这二个地址访问</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件的存放位置</span></span><br><span class="line">  <span class="attribute">access_log</span>    /var/log/nginx/food-access.log  main;</span><br><span class="line">  <span class="attribute">error_log</span>     /var/log/nginx/food-<span class="literal">error</span>.log;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">index</span> index.html;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> /api &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span>              http://sandbox.com/api;</span><br><span class="line">    <span class="comment"># Host限定</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>        Host sandbox.com;</span><br><span class="line">    <span class="attribute">include</span> proxy.conf;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> /admin &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span>              http://sandbox.com/admin;</span><br><span class="line">    <span class="comment"># Host限定</span></span><br><span class="line">    <span class="attribute">proxy_set_header</span>        Host sandbox.com;</span><br><span class="line">    <span class="attribute">include</span> proxy.conf;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">root</span>        /root/workspace/project/src;  <span class="comment">#将该地址指向正确的项目路径</span></span><br><span class="line">    <span class="attribute">index</span>       index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@badrequest</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">400</span> <span class="string">"&#123;\"error\":&#123;\"code\":96,\"message\":\"请求不正确\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">400</span> <span class="string">"&#123;\"error\":&#123;\"code\":96,\"msg\":\"Bad request\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@versiontooold</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">404</span> <span class="string">"&#123;\"error\":&#123;\"code\":97,\"message\":\"App版本过低，请升级\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">404</span> <span class="string">"&#123;\"error\":&#123;\"code\":97,\"message\":\"App is too old, please upgrade\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@servererror</span> &#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">500</span> <span class="string">"&#123;\"error\":&#123;\"code\":98,\"message\":\"系统繁忙，请稍后重试\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">500</span> <span class="string">"&#123;\"error\":&#123;\"code\":98,\"message\":\"Unknown error, please retry later\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">location</span> <span class="variable">@maintenance</span>&#123;</span><br><span class="line">    <span class="attribute">default_type</span> <span class="string">"application/json; charset=utf-8"</span>;</span><br><span class="line">    <span class="attribute">if</span> (<span class="variable">$http_x_locale</span> <span class="regexp">~* "^zh")</span> &#123;</span><br><span class="line">      <span class="attribute">return</span> <span class="number">503</span> <span class="string">"&#123;\"error\":&#123;\"code\":99,\"message\":\"很抱歉，服务器维护中，请稍后重试\"&#125;&#125;"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="attribute">return</span> <span class="number">503</span> <span class="string">"&#123;\"error\":&#123;\"code\":99,\"message\":\"The server is under maintenance, please retry later\"&#125;&#125;"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">400</span> = <span class="variable">@badrequest</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">404</span> = <span class="variable">@versiontooold</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">500</span> = <span class="variable">@servererror</span>;</span><br><span class="line">  <span class="attribute">error_page</span> <span class="number">502</span> <span class="number">503</span> <span class="number">504</span> = <span class="variable">@maintenance</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="验证配置文件"><a href="#验证配置文件" class="headerlink" title="验证配置文件"></a>验证配置文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br></pre></td></tr></table></figure>
+
 <h1 id="启动nginx"><a href="#启动nginx" class="headerlink" title="启动nginx"></a>启动nginx</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx</span><br></pre></td></tr></table></figure>
+
 <h1 id="重启或重加载配置文件"><a href="#重启或重加载配置文件" class="headerlink" title="重启或重加载配置文件"></a>重启或重加载配置文件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
 
       
@@ -1070,11 +1113,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nginx</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">nginx</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">config</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">config</a>
         		</li>
       		
 		</ul>
@@ -1098,7 +1141,7 @@
     <div class="mod-side-operation">
         
         <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
                 <i class="icon-font icon-back"></i>
             </a>
             <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
@@ -1116,7 +1159,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1190,13 +1233,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:innerArchive">所有文章</a></li>
       
         
       
         
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" target="_blank" rel="noopener" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -1217,203 +1260,203 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">faq</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">config</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">mobile</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">enterprise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">compat</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">requirement</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sketch</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">tool</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">shortcut</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">mobile</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">compat</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ts</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">性能优化</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">array</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">angularjs</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">architecture</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">centos7</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">epel</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">centos</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">gitlab</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ci</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">centos7</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">epel</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">ci</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">summery</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">angular</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">route</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">upgrade</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">component</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">open source</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">os</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">open source</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">fish</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">fish</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sdkman</a>
               </li>
             
             <div class="clearfix"></div>
