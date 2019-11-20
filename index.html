@@ -241,7 +241,7 @@
 <p>If you run into issues, use the following command to receive the logs:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn taskrun logs build-docker-image-from-git-source-task-run</span><br></pre></td></tr></table></figure>
 
-<h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><p>A <a href="pipelines.md"><code>Pipeline</code></a> defines a list of <code>Tasks</code> to execute in order, while<br>also indicating if any outputs should be used as inputs of a following <code>Task</code> by<br>using <a href="pipelines.md#from">the <code>from</code> field</a> and also indicating<br><a href="pipelines.md#ordering">the order of executing (using the <code>runAfter</code> and <code>from</code> fields)</a>.<br>The same variable substitution you used in <code>Tasks</code> is also available in a <code>Pipeline</code>.</p>
+<h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><p>A <code>Pipeline</code> defines a list of <code>Tasks</code> to execute in order, while<br>also indicating if any outputs should be used as inputs of a following <code>Task</code> by<br>using the <code>from</code> field and also indicating<br>the order of executing (using the <code>runAfter</code> and <code>from</code> fields).<br>The same variable substitution you used in <code>Tasks</code> is also available in a <code>Pipeline</code>.</p>
 <p>For example:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pipeline</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tutorial-pipeline</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source-repo</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web-image</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">build-skaffold-web</span></span><br><span class="line">      <span class="attr">taskRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">build-docker-image-from-git-source</span></span><br><span class="line">      <span class="attr">params:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToDockerFile</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">Dockerfile</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToContext</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">/workspace/docker-source/examples/microservices/leeroy-web</span> <span class="comment">#configure: may change according to your source</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">inputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">docker-source</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">source-repo</span></span><br><span class="line">        <span class="attr">outputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">builtImage</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">web-image</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy-web</span></span><br><span class="line">      <span class="attr">taskRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">deploy-using-kubectl</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">inputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">source-repo</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">image</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">web-image</span></span><br><span class="line">            <span class="attr">from:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="string">build-skaffold-web</span></span><br><span class="line">      <span class="attr">params:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">path</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">/workspace/source/examples/microservices/leeroy-web/kubernetes/deployment.yaml</span> <span class="comment">#configure: may change according to your source</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">yamlPathToImage</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">"spec.template.spec.containers[0].image"</span></span><br></pre></td></tr></table></figure>
 
@@ -256,7 +256,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create clusterrolebinding tutorial-binding \</span><br><span class="line">             --clusterrole=tutorial-role \</span><br><span class="line">             --serviceaccount=default:tutorial-service</span><br></pre></td></tr></table></figure>
 
 
-<p>To run the <code>Pipeline</code>, create a <a href="pipelineruns.md"><code>PipelineRun</code></a> as follows:</p>
+<p>To run the <code>Pipeline</code>, create a <code>PipelineRun</code>as follows:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineRun</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tutorial-pipeline-run-1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceAccountName:</span> <span class="string">tutorial-service</span></span><br><span class="line">  <span class="attr">pipelineRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">tutorial-pipeline</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source-repo</span></span><br><span class="line">      <span class="attr">resourceRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">skaffold-git</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web-image</span></span><br><span class="line">      <span class="attr">resourceRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">skaffold-image-leeroy-web</span></span><br></pre></td></tr></table></figure>
 
 <p>The <code>PipelineRun</code> will create the <code>TaskRuns</code> corresponding to each <code>Task</code> and<br>collect the results.</p>
@@ -293,19 +293,19 @@
 </ul>
 <h3 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h3><ul>
 <li>Logs can remain in-memory only as opposed to sent to a service such as<br><a href="https://cloud.google.com/logging/" target="_blank" rel="noopener">Stackdriver</a>.</li>
-<li>See <a href="logs.md">docs on getting logs from Runs</a></li>
+<li>See docs on getting logs from Runs</li>
 </ul>
 <p>Elasticsearch, Beats and Kibana can be deployed locally as a means to view logs:<br>an example is provided at<br><a href="https://github.com/mgreau/tekton-pipelines-elastic-tutorials" target="_blank" rel="noopener">https://github.com/mgreau/tekton-pipelines-elastic-tutorials</a>.</p>
 <h2 id="Experimentation"><a href="#Experimentation" class="headerlink" title="Experimentation"></a>Experimentation</h2><p>Lines of code you may want to configure have the #configure annotation. This<br>annotation applies to subjects such as Docker registries, log output locations<br>and other nuances that may be specific to particular cloud providers or<br>services.</p>
-<p>The <code>TaskRuns</code> have been created in the following<br><a href="pipelines.md#ordering">order</a>:</p>
+<p>The <code>TaskRuns</code> have been created in the following<br>order:</p>
 <ol>
-<li><code>tutorial-pipeline-run-1-build-skaffold-web</code> - This runs the<br><a href="pipelines.md#pipeline-tasks">Pipeline Task</a> <code>build-skaffold-web</code> first,<br>because it has no <a href="pipelines.md#ordering"><code>from</code> or <code>runAfter</code> clauses</a></li>
-<li><code>tutorial-pipeline-run-1-deploy-web</code> - This runs <code>deploy-web</code> second, because<br>its <a href="tasks.md#inputs">input</a> <code>web-image</code> comes <a href="pipelines.md#from"><code>from</code></a><br><code>build-skaffold-web</code> (therefore <code>build-skaffold-web</code> must run before<br><code>deploy-web</code>).</li>
+<li><code>tutorial-pipeline-run-1-build-skaffold-web</code> - This runs the<br>Pipeline Task <code>build-skaffold-web</code> first,<br>because it has no <code>from</code> or <code>runAfter</code> clauses</li>
+<li><code>tutorial-pipeline-run-1-deploy-web</code> - This runs <code>deploy-web</code> second, because<br>its input](tasks.md#inputs) <code>web-image</code> comes <a href="pipelines.md#from"><code>from</code></a><br><code>build-skaffold-web</code> (therefore <code>build-skaffold-web</code> must run before<br><code>deploy-web</code>).</li>
 </ol>
 <hr>
 <p>Except as otherwise noted, the content of this page is licensed under the<br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 License</a>,<br>and code samples are licensed under the<br><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0 License</a>.</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0NTEwMDk3MjIsLTEzNjUwMDkwMl19
+eyJoaXN0b3J5IjpbMjQ3Mzc0Nzc2LC0xMzY1MDA5MDJdfQ==
 -->
       
 
@@ -1319,11 +1319,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,15 +1379,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,14 +1435,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">pageg</a>
               </li>
              
@@ -1467,7 +1459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1479,6 +1475,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
@@ -1487,11 +1487,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
