@@ -144,6 +144,153 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/angular/组件/ngx-os项目结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">Angualr 开源组件设计</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/" class="archive-article-date">
+  	<time datetime="2018-09-10T18:06:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="序"><a href="#序" class="headerlink" title="序"></a>序</h2><p>公司的技术展选择的是 <code>Angular</code> ，设计风格也是Google的 <code>Mateiral Design</code>。Goolge官方团队有提供一套Material Angular版本的组件库 <a href="https://material.angular.io" target="_blank" rel="noopener">material.angular.io</a>。但是国人的操作习惯与国外还是有一些区别，针对这部分业务，公司打算基于官方组件，封装一些自定义的组件，并且开源出来。这一过程当中，主要对以下几个方面做了一些考虑。希望能对大家的开源项目有所帮助。不足之处还望多多包含( ´ ▽ ` )。</p>
+<blockquote>
+<p><a href="https://github.com/petkit-io/ngx-os" target="_blank" rel="noopener">Github</a> 欢迎大家Star</p>
+</blockquote>
+<ul>
+<li>Debug</li>
+<li>Demo 及 Demo源代码</li>
+<li>Build</li>
+<li>Github开源</li>
+<li>npm发布</li>
+</ul>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p><img src="/assets/images/angular/os/ngx-os-directory.png" alt="directory"></p>
+<h2 id="Debug"><a href="#Debug" class="headerlink" title="Debug"></a>Debug</h2><p>Debug阶段主要考虑到的是路径引入问题，为了让 <code>Demo源代码</code> 能够和生产环境下的使用保持一致，在 <code>PROJECT_ROOT/tsconfig.json</code> (PROJECT_ROOT指项目根目录)中做了一些配置</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  "compilerOptions": &#123;</span><br><span class="line">    "baseUrl": ".",</span><br><span class="line">    "paths": &#123;</span><br><span class="line">      "@petkit/*": [</span><br><span class="line">        <span class="string">"./src/lib/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "demo/*": [</span><br><span class="line">        <span class="string">"./src/demo/*"</span></span><br><span class="line">      ],</span><br><span class="line">      "util/*": [</span><br><span class="line">        <span class="string">"./src/util/*"</span></span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将所有 <code>@petkit/</code> 开头的路径引入转换至 <code>src/lib/</code> 下 </p>
+<blockquote>
+<p><a href="http://json.schemastore.org/tsconfig" target="_blank" rel="noopener">schema</a></p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'@petkit/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>将被转换为</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; NgxHighlightModule &#125; <span class="keyword">from</span> <span class="string">'PROJECT_ROOT/src/lib/ngx-highlight'</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Demo-及-Demo源代码"><a href="#Demo-及-Demo源代码" class="headerlink" title="Demo 及 Demo源代码"></a>Demo 及 Demo源代码</h2><p>这里参考了Angualar Material官方团队的设计（此处Demo和Example概念与官方有出入，官方的示例代码是放在example目录下的，个人觉得都可以，只是项目已经配好了，就不想再去调整得与官方保持一致了）。</p>
+<blockquote>
+<p><a href="https://github.com/angular/material2/tree/master/src/material-examples" target="_blank" rel="noopener">material 2</a></p>
+</blockquote>
+<p>将所有demo目录下的文件作为静态资源，通过http请求源代码，使用 <code>ngx-highlight</code> 高亮语法。 <code>angular.json</code> 配置如下</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"projects"</span>: &#123;</span><br><span class="line">    <span class="attr">"example"</span>: &#123;</span><br><span class="line">      <span class="attr">"root"</span>: <span class="string">"."</span>,</span><br><span class="line">      <span class="attr">"sourceRoot"</span>: <span class="string">"src/example"</span>,</span><br><span class="line">      <span class="attr">"architect"</span>: &#123;</span><br><span class="line">        <span class="attr">"build"</span>: &#123;</span><br><span class="line">          <span class="attr">"options"</span>: &#123;</span><br><span class="line">            <span class="attr">"assets"</span>: [</span><br><span class="line">              &#123;</span><br><span class="line">                <span class="attr">"glob"</span>: <span class="string">"**/*"</span>,</span><br><span class="line">                <span class="attr">"input"</span>: <span class="string">"src/demo"</span>,</span><br><span class="line">                <span class="attr">"output"</span>: <span class="string">"assets/demo"</span></span><br><span class="line">              &#125;,</span><br><span class="line">              <span class="string">"src/example/assets"</span></span><br><span class="line">            ]</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注：<code>sourceRoot</code> 是 <code>ng g *</code> 的相对路径</p>
+</blockquote>
+<p><code>demo</code> 与 <code>example</code> 同级，直接引入会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;assets&quot;: [</span><br><span class="line">    // Error: The src/demo asset path must start with the project source root.</span><br><span class="line">    &quot;src/demo&quot;,</span><br><span class="line">    &quot;src/example/assets&quot;</span><br><span class="line">  ]</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>demo会被当作静态资源输出至 <code>dist/example/assets/demo</code>，此时使用http请求对应路径文件即可。</p>
+<h2 id="Build"><a href="#Build" class="headerlink" title="Build"></a>Build</h2><p>这部分已经有现成的库 <code>ng packagr</code> 可以帮助我们直接打包了</p>
+<blockquote>
+<p><a href="https://github.com/ng-packagr/ng-packagr" target="_blank" rel="noopener">ng-packagr</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng-packagr -p ./src/**/package.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="Github-开源"><a href="#Github-开源" class="headerlink" title="Github 开源"></a>Github 开源</h2><p>针对 <code>lib</code> 下的源代码，采用 <code>git submodule</code> 的方式可以帮助我们更好地维护开源组件。</p>
+<blockquote>
+<p>关于 <code>git submodule</code> segmentfault 上有篇文章写得蛮不错的 <a href="https://segmentfault.com/a/1190000003076028" target="_blank" rel="noopener">git submodule</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule add git@github.com:petkit-io/ngx-highlight.git src/lib/ngx-highlight</span><br></pre></td></tr></table></figure>
+
+<h2 id="npm发布"><a href="#npm发布" class="headerlink" title="npm发布"></a>npm发布</h2><p><code>ng-packagr</code> 打包出来的代码便可以直接发布。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish path --access public;</span><br></pre></td></tr></table></figure>
+
+<p>npm 上的 organization 需要加上 <code>--access public</code> 才能发布。每次发布完成后自动生成 <code>CHANGELOG</code>，打上新的版本号。</p>
+<blockquote>
+<p><a href="https://github.com/conventional-changelog/conventional-changelog" target="_blank" rel="noopener">conventional-changelog</a> 可以帮助我们自动生成Change Log<br><a href="https://github.com/marionebl/commitlint" target="_blank" rel="noopener">commitlint</a>可以帮助我们规范commit message</p>
+</blockquote>
+<h2 id="自动化"><a href="#自动化" class="headerlink" title="自动化"></a>自动化</h2><p><code>build</code> <code>github</code> <code>npm</code> 三个阶段可以通过脚本自动执行。<code>PROJECT_ROOT/bin/pub.sh</code>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line">libRoot=src/lib;</span><br><span class="line">distRoot=dist;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">buildLib</span></span>() &#123;</span><br><span class="line">  packagePath=<span class="variable">$1</span>;</span><br><span class="line"></span><br><span class="line">  npx ng-packagr -p <span class="variable">$packagePath</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">publishLib</span></span>() &#123;</span><br><span class="line">  libName=<span class="variable">$1</span>;</span><br><span class="line">  libPath=<span class="variable">$libRoot</span>/<span class="variable">$libName</span>;</span><br><span class="line"></span><br><span class="line">  buildLib <span class="variable">$libPath</span>/package.json;</span><br><span class="line">  npm publish <span class="variable">$distRoot</span>/<span class="variable">$libName</span> --access public;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">cd</span> <span class="variable">$libPath</span>;</span><br><span class="line">  git add .;</span><br><span class="line">  git commit -m <span class="string">"chore(version): publish npmjs"</span> 1&gt;/dev/null 2&gt;&amp;1;</span><br><span class="line">  npm version patch;</span><br><span class="line">  git push;</span><br><span class="line">  git push --tags;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">publishLib <span class="variable">$1</span></span><br></pre></td></tr></table></figure>
+
+<p><code>maidfile.md</code>：</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## pub</span></span><br><span class="line"></span><br><span class="line">发布类库</span><br><span class="line">命令格式 <span class="code">`npx maid pub [lib-name]`</span></span><br><span class="line"></span><br><span class="line">e.g.</span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ts-lib`</span></span><br><span class="line"><span class="bullet">- </span><span class="code">`npx maid pub ngx-material`</span></span><br><span class="line"></span><br><span class="line"><span class="code">```bash</span></span><br><span class="line"><span class="code">libName=$1</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">command="./bin/pub.sh $libName"</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">echo $command</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">$command</span></span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx maid pub ngx-highlight</span><br></pre></td></tr></table></figure>
+
+<h2 id="End"><a href="#End" class="headerlink" title="End"></a>End</h2><p>整体结构还有一些不完善的地方，希望大家多多提些建议，我们也会逐步改善。</p>
+<blockquote>
+<p><a href="https://github.com/petkit-io/ngx-os" target="_blank" rel="noopener">Github</a> Star Star Star 重要的事情说三遍o(≧v≦)o</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">os</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/angular/杂文/route-reuse" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1054,122 +1201,6 @@
 
 
   
-    <article id="post-be/spring-boot/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/05/be/spring-boot/mysql/">Spring Boot Mysql Guide</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/05/be/spring-boot/mysql/" class="archive-article-date">
-  	<time datetime="2018-07-05T15:57:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><p>主要是 <code>spring-boot-starter-data-jpa</code> 和 <code>mysql-connector-java</code> 。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>gs-mysql-data<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>0.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- JPA Data (We are going to use Repositories, Entities, Hibernate, etc...) --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-jpa<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Use MySQL Connector-J --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="添加配置"><a href="#添加配置" class="headerlink" title="添加配置"></a>添加配置</h2><p>打开文件<code>application.properties</code>，添加以下配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/db_example</span><br><span class="line">spring.datasource.username=springuser</span><br><span class="line">spring.datasource.password=ThePassword</span><br></pre></td></tr></table></figure>
-
-<h2 id="添加实体-Entity-映射"><a href="#添加实体-Entity-映射" class="headerlink" title="添加实体(@Entity)映射"></a>添加实体(<code>@Entity</code>)映射</h2><p><code>src/main/java/hello/User.java</code></p>
-<p><strong>注意：</strong>如果id是主键则将<code>@GeneratedValue(strategy=GenerationType.AUTO)</code>改为<code>@GeneratedValue(strategy=GenerationType.IDENTITY)</code>。</p>
-<blockquote>
-<p><a href="https://blog.csdn.net/danchaofan0534/article/details/53608832" target="_blank" rel="noopener">hibernate在数据库生成hibernate_sequence表问题</a></p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.Entity;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.GeneratedValue;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.GenerationType;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Id;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Entity</span> <span class="comment">// This tells Hibernate to make a table out of this class</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Id</span></span><br><span class="line">  <span class="meta">@GeneratedValue</span>(strategy=GenerationType.AUTO)</span><br><span class="line">  <span class="keyword">private</span> Integer id;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> String email;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getEmail</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> email;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setEmail</span><span class="params">(String email)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.email = email;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建仓库，用来操作数据库"><a href="#创建仓库，用来操作数据库" class="headerlink" title="创建仓库，用来操作数据库"></a>创建仓库，用来操作数据库</h2><p><code>src/main/java/hello/UserRepository.java</code></p>
-<p><code>CrudRepository</code>通过<code>@Autowired</code>引用会自动实现crud操作。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.data.repository.CrudRepository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hello.User;</span><br><span class="line"></span><br><span class="line"><span class="comment">// This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository</span></span><br><span class="line"><span class="comment">// CRUD refers Create, Read, Update, Delete</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">User</span>, <span class="title">Long</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="创建Controller"><a href="#创建Controller" class="headerlink" title="创建Controller"></a>创建Controller</h2><p><code>src/main/java/hello/MainController.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> hello;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.ResponseBody;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> hello.User;</span><br><span class="line"><span class="keyword">import</span> hello.UserRepository;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span>    <span class="comment">// This means that this class is a Controller</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(path=<span class="string">"/demo"</span>) <span class="comment">// This means URL's start with /demo (after Application path)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Autowired</span> <span class="comment">// This means to get the bean called userRepository</span></span><br><span class="line">	           <span class="comment">// Which is auto-generated by Spring, we will use it to handle the data</span></span><br><span class="line">	<span class="keyword">private</span> UserRepository userRepository;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@GetMapping</span>(path=<span class="string">"/add"</span>) <span class="comment">// Map ONLY GET Requests</span></span><br><span class="line">	<span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">String <span class="title">addNewUser</span> <span class="params">(@RequestParam String name</span></span></span><br><span class="line"><span class="function"><span class="params">			, @RequestParam String email)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// @ResponseBody means the returned String is the response, not a view name</span></span><br><span class="line">		<span class="comment">// @RequestParam means it is a parameter from the GET or POST request</span></span><br><span class="line"></span><br><span class="line">		User n = <span class="keyword">new</span> User();</span><br><span class="line">		n.setName(name);</span><br><span class="line">		n.setEmail(email);</span><br><span class="line">		userRepository.save(n);</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Saved"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@GetMapping</span>(path=<span class="string">"/all"</span>)</span><br><span class="line">	<span class="keyword">public</span> <span class="meta">@ResponseBody</span> <span class="function">Iterable&lt;User&gt; <span class="title">getAllUsers</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// This returns a JSON or XML with the users</span></span><br><span class="line">		<span class="keyword">return</span> userRepository.findAll();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Summery"><a href="#Summery" class="headerlink" title="Summery"></a>Summery</h2><ol>
-<li>创建操作数据库的Repository</li>
-</ol>
-<ul>
-<li>类名就是表名</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">UserRepository</span> <span class="keyword">extends</span> <span class="title">CrudRepository</span>&lt;<span class="title">User</span>, <span class="title">Long</span>&gt; </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>创建Entity</li>
-</ol>
-<ul>
-<li>不需要生成构造函数</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 注解实体</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="comment">// 注解主键</span></span><br><span class="line"><span class="meta">@Id</span></span><br><span class="line"><span class="comment">// 注解主键的创建方式</span></span><br><span class="line"><span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
-<li><a href="https://spring.io/guides/gs/accessing-data-mysql/" target="_blank" rel="noopener">Accessing data with MySQL</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">spring boot</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/05/be/spring-boot/mysql/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1277,6 +1308,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -1309,15 +1352,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,15 +1384,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">ts</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,10 +1408,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
@@ -1373,11 +1416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,10 +1433,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1421,11 +1460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">

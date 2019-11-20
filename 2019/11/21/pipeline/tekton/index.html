@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.lovesora.pro">
-  <title>Git Stash 保存和恢复进度 | lovesora&#39;s blog</title>
+  <title>Tekton Pipeline Intro | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="stash 使用的stack数据结构，先进先出  保存进度123456789101112# 不包括untracked的文件（比如新增的文件，不会被添加至储藏）# untrack 的文件在stash后依然可见——即依然在工作空间中，不会被保存到stash镜像中，因此对 untrack 文件的修改不能通过 stash pop 恢复——因为该命令不暂存未track的文件git stash# 添加 me">
-<meta name="keywords" content="git">
+  <meta name="description" content="Intro">
+<meta name="keywords" content="github,tekton,pipeline">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git Stash 保存和恢复进度">
-<meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;06&#x2F;14&#x2F;vcs&#x2F;git&#x2F;git-stash&#x2F;index.html">
+<meta property="og:title" content="Tekton Pipeline Intro">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;11&#x2F;21&#x2F;pipeline&#x2F;tekton&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="stash 使用的stack数据结构，先进先出  保存进度123456789101112# 不包括untracked的文件（比如新增的文件，不会被添加至储藏）# untrack 的文件在stash后依然可见——即依然在工作空间中，不会被保存到stash镜像中，因此对 untrack 文件的修改不能通过 stash pop 恢复——因为该命令不暂存未track的文件git stash# 添加 me">
+<meta property="og:description" content="Intro">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-20T16:16:08.892Z">
+<meta property="og:updated_time" content="2019-11-20T16:16:08.888Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -143,44 +143,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-vcs/git/git-stash" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-pipeline/tekton" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Git Stash 保存和恢复进度
+      Tekton Pipeline Intro
     </h1>
   
 
         
-        <a href="/2018/06/14/vcs/git/git-stash/" class="archive-article-date">
-  	<time datetime="2018-06-14T10:48:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
+        <a href="/2019/11/21/pipeline/tekton/" class="archive-article-date">
+  	<time datetime="2019-11-21T00:14:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <blockquote>
-<p><code>stash</code> 使用的<code>stack</code>数据结构，先进先出</p>
-</blockquote>
-<h2 id="保存进度"><a href="#保存进度" class="headerlink" title="保存进度"></a>保存进度</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不包括untracked的文件（比如新增的文件，不会被添加至储藏）</span></span><br><span class="line"><span class="comment"># untrack 的文件在stash后依然可见——即依然在工作空间中，不会被保存到stash镜像中，因此对 untrack 文件的修改不能通过 stash pop 恢复——因为该命令不暂存未track的文件</span></span><br><span class="line">git stash</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加 message</span></span><br><span class="line">git stash save <span class="string">'message...'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加(untracked)暂存区的文件（新增的文件会被移动至储藏）</span></span><br><span class="line">git stash save -u <span class="string">'message...'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加所有(--all)文件（包括.gitignore中忽略的文件)（比如node_modules，执行该命令后就也会被移除了，可以看作刚clone下来时的状态）</span></span><br><span class="line">git stash save -a <span class="string">'message...'</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="查看进度列表"><a href="#查看进度列表" class="headerlink" title="查看进度列表"></a>查看进度列表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git stash list</span><br><span class="line"><span class="comment"># stash@&#123;0&#125;: WIP on master: ef0f1dc message...</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="恢复进度"><a href="#恢复进度" class="headerlink" title="恢复进度"></a>恢复进度</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 恢复至最新进度并且删除</span></span><br><span class="line">git stash pop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定进度index</span></span><br><span class="line"><span class="comment"># 这里的 3 指的 git stash list 显示的列表里 stash@&#123;3&#125; 中括号里面的数字</span></span><br><span class="line">git stash pop 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 恢复但不删除</span></span><br><span class="line">git stash apply</span><br><span class="line">git stash apply 3</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除进度"><a href="#删除进度" class="headerlink" title="删除进度"></a>删除进度</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 删除最新进度</span></span><br><span class="line">git stash drop</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定进度index</span></span><br><span class="line">git stash drop 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除所有进度</span></span><br><span class="line">git stash clear</span><br></pre></td></tr></table></figure>
-
-<h2 id="从储藏中创建分支"><a href="#从储藏中创建分支" class="headerlink" title="从储藏中创建分支"></a>从储藏中创建分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个新的分支，检出你储藏工作时的所处的提交，重新应用你的工作，如果成功，将会丢弃储藏</span></span><br><span class="line">git stash branch stash/branchName 3</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
-<li><a href="https://git-scm.com/book/zh/v1/Git-%E5%B7%A5%E5%85%B7-%E5%82%A8%E8%97%8F%EF%BC%88Stashing%EF%BC%89" target="_blank" rel="noopener">Git-工具-储藏</a></li>
-</ul>
-
+        <h2 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h2><!--stackedit_data:
+eyJoaXN0b3J5IjpbLTEzNjUwMDkwMl19
+-->
       
 
       
@@ -224,7 +209,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">tekton</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">pipeline</a>
         		</li>
       		
 		</ul>
@@ -280,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/06/14/vcs/git/git-stash/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2019/11/21/pipeline/tekton/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,18 +287,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          浅谈angularjs架构演进
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/06/05/devops/docker/flow/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">docker flow</div>
+    <a href="/2019/11/19/mac/new-os/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mac 初始化</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -344,7 +328,7 @@
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Thu Jun 14 2018 10:48:09 GMT+0000",
+  id: "Thu Nov 21 2019 00:14:47 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
