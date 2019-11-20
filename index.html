@@ -165,20 +165,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Hello-World-Tutorial"><a href="#Hello-World-Tutorial" class="headerlink" title="Hello World Tutorial"></a>Hello World Tutorial</h1><p>Welcome to the Tekton Pipeline tutorial!</p>
-<p>This tutorial will walk you through creating and running some simple<br><code>Tasks</code> &amp; <code>Pipelines</code>](pipelines.md) and running them by creating<br><a href="taskruns.md"><code>TaskRuns</code></a> and <a href="pipelineruns.md"><code>PipelineRuns</code></a>.</p>
+<p>This tutorial will walk you through creating and running some simple<br><code>Tasks</code> &amp; <code>Pipelines</code>and running them by creating<br><code>TaskRuns</code> and <code>PipelineRuns</code>.</p>
 <ul>
 <li><a href="#task">Creating a hello world <code>Task</code></a></li>
 <li><a href="#pipeline">Creating a hello world <code>Pipeline</code></a></li>
 </ul>
 <p>Before starting this tutorial, please install the <a href="https://github.com/tektoncd/cli" target="_blank" rel="noopener">Tekton CLI</a>.</p>
-<p>For more details on using <code>Pipelines</code>, see <a href="README.md">our usage docs</a>.</p>
 <p><strong>Note:</strong> <a href="#local-development">This tutorial can be run on a local workstation</a></p>
 <h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><p>The main objective of Tekton Pipelines is to run your Task individually or as a<br>part of a Pipeline. Every <code>Task</code> runs as a Pod on your Kubernetes cluster with<br>each step as its own container.</p>
-<p>A <a href="tasks.md"><code>Task</code></a> defines the work that needs to be executed, for example the<br>following is a simple <code>Task</code> that will echo hello world:</p>
+<p>A <code>Task</code> defines the work that needs to be executed, for example the<br>following is a simple <code>Task</code> that will echo hello world:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Task</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">echo-hello-world</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">echo</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">ubuntu</span></span><br><span class="line">      <span class="attr">command:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">echo</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
 
 <p>The <code>steps</code> are a series of commands to be sequentially executed by the <code>Task</code>.</p>
-<p>A <a href="taskruns.md"><code>TaskRun</code></a> runs the <code>Task</code> you defined. Here is a simple example<br>of a <code>TaskRun</code> you can use to execute your <code>Task</code>:</p>
+<p>A <code>TaskRun</code> runs the <code>Task</code> you defined. Here is a simple example<br>of a <code>TaskRun</code> you can use to execute your <code>Task</code>:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TaskRun</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">echo-hello-world-task-run</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">taskRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">echo-hello-world</span></span><br></pre></td></tr></table></figure>
 
 <p>To apply the yaml files, use the following command:</p>
@@ -198,11 +197,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[echo] hello world</span><br></pre></td></tr></table></figure>
 
 <h3 id="Task-Inputs-and-Outputs"><a href="#Task-Inputs-and-Outputs" class="headerlink" title="Task Inputs and Outputs"></a>Task Inputs and Outputs</h3><p>In more common scenarios, a <code>Task</code> needs multiple steps with input and output<br>resources to process. For example a <code>Task</code> could fetch source code from a GitHub<br>repository and build a Docker image from it.</p>
-<p><a href="resources.md"><code>PipelineResources</code></a> are used to define the artifacts that can be<br>passed in and out of a <code>Task</code>. There are a few system defined resource types ready<br>to use, and the following are two examples of the resources commonly needed.</p>
-<p>The <a href="resources.md#git-resource"><code>git</code> resource</a> represents a git repository with<br>a specific revision:</p>
+<p><code>PipelineResources</code> are used to define the artifacts that can be<br>passed in and out of a <code>Task</code>. There are a few system defined resource types ready<br>to use, and the following are two examples of the resources commonly needed.</p>
+<p>The <code>git</code> resource represents a git repository with<br>a specific revision:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineResource</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">skaffold-git</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">revision</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">master</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">url</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">https://github.com/GoogleContainerTools/skaffold</span> <span class="comment">#configure: change if you want to build something else, perhaps from your own local git repository.</span></span><br></pre></td></tr></table></figure>
 
-<p>The <a href="resources.md#image-resource"><code>image</code> resource</a> represents the image to be<br>built by the <code>Task</code>:</p>
+<p>The <code>image</code> resource represents the image to be<br>built by the <code>Task</code>:</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineResource</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">skaffold-image-leeroy-web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">url</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">gcr.io/&lt;use</span> <span class="string">your</span> <span class="string">project&gt;/leeroy-web</span> <span class="comment">#configure: replace with where the image should go: perhaps your local registry or Dockerhub with a secret and configured service account</span></span><br></pre></td></tr></table></figure>
 
 <p>The following is a <code>Task</code> with inputs and outputs. The input resource is a<br>GitHub repository and the output is the image produced from that source. The<br>args of the <code>Task</code> command support variable substitution so that the definition of <code>Task</code> is<br>constant and the value of parameters can change in runtime.</p>
@@ -306,7 +305,7 @@
 <hr>
 <p>Except as otherwise noted, the content of this page is licensed under the<br><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 License</a>,<br>and code samples are licensed under the<br><a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank" rel="noopener">Apache 2.0 License</a>.</p>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMzA2NDM3NTMsLTEzNjUwMDkwMl19
+eyJoaXN0b3J5IjpbLTE0NTEwMDk3MjIsLTEzNjUwMDkwMl19
 -->
       
 
@@ -1316,27 +1315,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,15 +1347,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,31 +1403,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,6 +1432,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">centos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">ssl</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1477,6 +1464,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
