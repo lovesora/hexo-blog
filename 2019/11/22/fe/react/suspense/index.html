@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>React Suspense | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Data fetch waysApproach 1: Fetch-on-Render">
+  <meta name="description" content="Data fetch waysApproach 1: Fetch-on-Render123456789101112131415161718192021222324252627282930313233343536function ProfilePage() &amp;#123;  const [user, setUser] = useState(null);  useEffect(() =&amp;gt; &amp;#12">
 <meta name="keywords" content="react,data fetch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Suspense">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;11&#x2F;22&#x2F;fe&#x2F;react&#x2F;suspense&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="Data fetch waysApproach 1: Fetch-on-Render">
+<meta property="og:description" content="Data fetch waysApproach 1: Fetch-on-Render123456789101112131415161718192021222324252627282930313233343536function ProfilePage() &amp;#123;  const [user, setUser] = useState(null);  useEffect(() =&amp;gt; &amp;#12">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-22T08:55:48.740Z">
+<meta property="og:updated_time" content="2019-11-22T08:57:24.697Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -163,8 +163,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Data-fetch-ways"><a href="#Data-fetch-ways" class="headerlink" title="Data fetch ways"></a>Data fetch ways</h2><h3 id="Approach-1-Fetch-on-Render"><a href="#Approach-1-Fetch-on-Render" class="headerlink" title="Approach 1: Fetch-on-Render"></a>Approach 1: Fetch-on-Render</h3><!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE0OTA1Nzc2MjRdfQ==
+        <h2 id="Data-fetch-ways"><a href="#Data-fetch-ways" class="headerlink" title="Data fetch ways"></a>Data fetch ways</h2><h3 id="Approach-1-Fetch-on-Render"><a href="#Approach-1-Fetch-on-Render" class="headerlink" title="Approach 1: Fetch-on-Render"></a>Approach 1: Fetch-on-Render</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ProfilePage</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [user, setUser] = useState(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fetchUser().then(<span class="function"><span class="params">u</span> =&gt;</span> setUser(u));</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (user === <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Loading profile...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;&#123;user.name&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ProfileTimeline /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function ProfileTimeline() &#123;</span></span><br><span class="line"><span class="regexp">  const [posts, setPosts] = useState(null);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  useEffect(() =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    fetchPosts().then(p =&gt; setPosts(p));</span></span><br><span class="line"><span class="regexp">  &#125;, []);</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  if (posts === null) &#123;</span></span><br><span class="line"><span class="regexp">    return &lt;h2&gt;Loading posts...&lt;/</span>h2&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &#123;posts.map(<span class="function"><span class="params">post</span> =&gt;</span> (</span><br><span class="line">        &lt;li key=&#123;post.id&#125;&gt;&#123;post.text&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">      ))&#125;</span></span><br><span class="line"><span class="regexp">    &lt;/u</span>l&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Approach-2-Fetch-Then-Render-not-using-Suspense"><a href="#Approach-2-Fetch-Then-Render-not-using-Suspense" class="headerlink" title="Approach 2: Fetch-Then-Render (not using Suspense)"></a>Approach 2: Fetch-Then-Render (not using Suspense)</h3><!--stackedit_data:
+eyJoaXN0b3J5IjpbMjE0NDE0OTE1NF19
 -->
       
 
@@ -450,11 +452,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -550,15 +552,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,15 +608,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
