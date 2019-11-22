@@ -144,6 +144,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/架构/angular 架构演进" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">组件&amp;库 架构方案</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/" class="archive-article-date">
+  	<time datetime="2018-12-28T16:22:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="最原始方案"><a href="#最原始方案" class="headerlink" title="最原始方案"></a>最原始方案</h2><p>所有组件库各自独立维护，独立演进。<br>搭建私有<code>npm</code>，业务项目独立引用组件库对应版本。</p>
+<ul>
+<li>优势</li>
+</ul>
+<p>组件之间相互独立，各自互补相干。</p>
+<ul>
+<li>劣势</li>
+</ul>
+<p>组件库的研发比较麻烦，需要写独立demo。<br>如果在业务项目中发现组件库出现问题，调试极其麻烦。</p>
+<ul>
+<li><p>适用<br>大型团队，组件与业务彻底分离，各自独立演进。</p>
+</li>
+<li><p>不适用<br>小型团队使用成本极大，业务产出低。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/angular/杂文/lifecycle-ngif" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1053,108 +1141,6 @@
 
 
   
-    <article id="post-vcs/gitlab/runner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/19/vcs/gitlab/runner/">GitLab CI/CD Runner 入门</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/19/vcs/gitlab/runner/" class="archive-article-date">
-  	<time datetime="2018-07-19T14:05:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我自己用的 <code>Centos 7 x64</code> ，一下流程都是以 <code>Centos 7 x64</code> <code>roor</code>权限为基础的</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
-<p><a href="https://docs.gitlab.com/runner/install/linux-manually.html" target="_blank" rel="noopener">Linux手动安装</a><br><a href="https://docs.gitlab.com/runner/install/docker.html" target="_blank" rel="noopener">使用Docker</a></p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash</span><br><span class="line">yum install gitlab-runner</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
-<p><a href="https://docs.gitlab.com/runner/commands/README.html#gitlab-runner-install" target="_blank" rel="noopener">官方Runner命令手册</a></p>
-</blockquote>
-<h3 id="1-注册runner"><a href="#1-注册runner" class="headerlink" title="1. 注册runner"></a>1. 注册runner</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># register</span></span><br><span class="line">gitlab-runner register</span><br><span class="line"></span><br><span class="line"><span class="comment"># register</span></span><br><span class="line">gitlab-runner register \</span><br><span class="line">  --name runner-name \</span><br><span class="line">  --url http://gitlab.example.com \</span><br><span class="line">  --registration-token my-registration-token \</span><br><span class="line">  --executor shell</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看runner列表</span></span><br><span class="line">gitlab-runner list</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>这里遇到了个坑，不添加 <code>--executor</code> 会报错<br><code>running register from command line,</code>–executor X<code>results in:</code>ERROR: Invalid executor specified``<br>但是官方文档里却没有说必须要加</p>
-</blockquote>
-<h3 id="2-启动服务"><a href="#2-启动服务" class="headerlink" title="2. 启动服务"></a>2. 启动服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装服务</span></span><br><span class="line">gitlab-runner install runner-name --user root</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动</span></span><br><span class="line">gitlab-runner start runner-name</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看服务启动状态</span></span><br><span class="line">gitlab-runner status runner-name</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-配置runner-tag"><a href="#3-配置runner-tag" class="headerlink" title="3. 配置runner tag"></a>3. 配置runner tag</h3><p>先说一下 <code>Specific Runners</code> 。</p>
-<p>这个tag配置是用来 <code>标识</code> 该 <code>runner</code> 的。</p>
-<p>进入<code>[Settings -&gt; CI/CD -&gt; Specific Runners]</code> ，点击编辑按钮(这个按钮我是找了好久才找到)，添加一个tag，在job中可以通过指定tags来定位到对应的 <code>Runner</code></p>
-<p><img src="/assets/images/gitlab/runners.jpg" alt="runners"></p>
-<p><img src="/assets/images/gitlab/runners-tag.jpg" alt="runners tag"></p>
-<p>关于 <code>jobs</code> 这里有几篇很不错的文章，我就不多赘述了。</p>
-<blockquote>
-<p><a href="https://docs.gitlab.com/ce/ci/yaml/README.html#stages" target="_blank" rel="noopener">官方文档</a><br><a href="https://segmentfault.com/a/1190000011890710" target="_blank" rel="noopener">gitlab-ci配置详解(二)</a></p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">gitlab</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">ci</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/19/vcs/gitlab/runner/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1270,18 +1256,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -1346,6 +1320,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">data fetch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
@@ -1358,6 +1340,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
@@ -1366,7 +1360,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1414,15 +1416,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

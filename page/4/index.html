@@ -144,6 +144,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux/centos/yum-epel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/02/linux/centos/yum-epel/">centos 7 设置 yum 换源</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/02/linux/centos/yum-epel/" class="archive-article-date">
+  	<time datetime="2018-06-02T01:17:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-备份-CentOS-Base-repo"><a href="#1-备份-CentOS-Base-repo" class="headerlink" title="1. 备份 CentOS-Base.repo"></a>1. 备份 <code>CentOS-Base.repo</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.bak</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-替换-etc-yum-repos-d-CentOS-Base-repo-内容"><a href="#2-替换-etc-yum-repos-d-CentOS-Base-repo-内容" class="headerlink" title="2. 替换 /etc/yum.repos.d/CentOS-Base.repo 内容"></a>2. 替换 <code>/etc/yum.repos.d/CentOS-Base.repo</code> 内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CentOS-Base.repo</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The mirror system uses the connecting IP address of the client and the</span></span><br><span class="line"><span class="comment"># update status of each mirror to pick mirrors that are updated to and</span></span><br><span class="line"><span class="comment"># geographically close to the client.  You should use this for CentOS updates</span></span><br><span class="line"><span class="comment"># unless you are manually picking other mirrors.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># If the mirrorlist= does not work for you, as a fall back you can try the </span></span><br><span class="line"><span class="comment"># remarked out baseurl= line instead.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"> </span><br><span class="line">[base]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Base - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="variable">$releasever</span>/os/<span class="variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="variable">$releasever</span>/os/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=os</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"> </span><br><span class="line"><span class="comment">#released updates </span></span><br><span class="line">[updates]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Updates - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="variable">$releasever</span>/updates/<span class="variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="variable">$releasever</span>/updates/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"> </span><br><span class="line"><span class="comment">#additional packages that may be useful</span></span><br><span class="line">[extras]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Extras - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="variable">$releasever</span>/extras/<span class="variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="variable">$releasever</span>/extras/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"> </span><br><span class="line"><span class="comment">#additional packages that extend functionality of existing packages</span></span><br><span class="line">[centosplus]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Plus - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="variable">$releasever</span>/centosplus/<span class="variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="variable">$releasever</span>/centosplus/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=centosplus</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br><span class="line"> </span><br><span class="line"><span class="comment">#contrib - packages by Centos Users</span></span><br><span class="line">[contrib]</span><br><span class="line">name=CentOS-<span class="variable">$releasever</span> - Contrib - mirrors.aliyun.com</span><br><span class="line">failovermethod=priority</span><br><span class="line">baseurl=http://mirrors.aliyun.com/centos/<span class="variable">$releasever</span>/contrib/<span class="variable">$basearch</span>/</span><br><span class="line">        http://mirrors.aliyuncs.com/centos/<span class="variable">$releasever</span>/contrib/<span class="variable">$basearch</span>/</span><br><span class="line"><span class="comment">#mirrorlist=http://mirrorlist.centos.org/?release=$releasever&amp;arch=$basearch&amp;repo=contrib</span></span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=http://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Install-epel"><a href="#3-Install-epel" class="headerlink" title="3. Install epel"></a>3. Install epel</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install epel-release</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-替换-etc-yum-repos-d-epel-repo-内容"><a href="#4-替换-etc-yum-repos-d-epel-repo-内容" class="headerlink" title="4. 替换 /etc/yum.repos.d/epel.repo 内容"></a>4. 替换 <code>/etc/yum.repos.d/epel.repo</code> 内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">[epel]</span><br><span class="line">name=Extra Packages <span class="keyword">for</span> Enterprise Linux 7 - <span class="variable">$basearch</span></span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/<span class="variable">$basearch</span></span><br><span class="line">failovermethod=priority</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=1</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7</span><br><span class="line"></span><br><span class="line">[epel-debuginfo]</span><br><span class="line">name=Extra Packages <span class="keyword">for</span> Enterprise Linux 7 - <span class="variable">$basearch</span> - Debug</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/<span class="variable">$basearch</span>/debug</span><br><span class="line">failovermethod=priority</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7</span><br><span class="line">gpgcheck=1</span><br><span class="line"></span><br><span class="line">[epel-source]</span><br><span class="line">name=Extra Packages <span class="keyword">for</span> Enterprise Linux 7 - <span class="variable">$basearch</span> - Source</span><br><span class="line">baseurl=https://mirrors.tuna.tsinghua.edu.cn/epel/7/SRPMS</span><br><span class="line">failovermethod=priority</span><br><span class="line">enabled=0</span><br><span class="line">gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7</span><br><span class="line">gpgcheck=1</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">centos7</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">epel</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/02/linux/centos/yum-epel/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-devops/docker/faq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1087,93 +1172,6 @@
 
 
   
-    <article id="post-open-source/github/git-page" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/open-source/github/git-page/">github pages tips</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/28/open-source/github/git-page/" class="archive-article-date">
-  	<time datetime="2018-05-28T02:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><ul>
-<li><p>settings -&gt; github pages<br><img src="/assets/images/github/pages.png" alt="github pages"></p>
-</li>
-<li><p>设置一条CNAME的域名解析记录值为 <code>xxx.github.io</code><br><img src="/assets/images/github/dns.png" alt="dns"></p>
-</li>
-<li><p>在项目根路径中添加文件 <code>CNAME</code>, 添加一行记录，不然每次git提交都会重置GitHub pages域名配置</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blog.lovesora.pro</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">pageg</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/open-source/github/git-page/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1289,18 +1287,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -1365,6 +1351,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">data fetch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
               </li>
              
@@ -1377,6 +1371,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
               </li>
              
@@ -1385,7 +1391,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1433,15 +1447,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">xlsx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
