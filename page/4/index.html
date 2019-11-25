@@ -144,6 +144,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/ionic/install/sdk" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/05/fe/ionic/install/sdk/">在fish中使用sdkman</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/05/fe/ionic/install/sdk/" class="archive-article-date">
+  	<time datetime="2018-06-05T00:47:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装-sdkman"><a href="#安装-sdkman" class="headerlink" title="安装 sdkman"></a>安装 <code>sdkman</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">"https://get.sdkman.io"</span> | bash</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建文件-HOME-config-fish-conf-d-sdkman-fish"><a href="#创建文件-HOME-config-fish-conf-d-sdkman-fish" class="headerlink" title="创建文件 $HOME/.config/fish/conf.d/sdkman.fish"></a>创建文件 <code>$HOME/.config/fish/conf.d/sdkman.fish</code></h2><p>写入以下代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/fish</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sdk command</span></span><br><span class="line"><span class="keyword">function</span> sdk</span><br><span class="line">        bash -c <span class="string">"source <span class="variable">$HOME</span>/.sdkman/bin/sdkman-init.sh &amp;&amp; sdk <span class="variable">$argv</span>"</span></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment"># add paths</span></span><br><span class="line"><span class="keyword">for</span> ITEM <span class="keyword">in</span> <span class="variable">$HOME</span>/.sdkman/candidates/* ;</span><br><span class="line">        <span class="built_in">set</span> -gx PATH <span class="variable">$PATH</span> <span class="variable">$ITEM</span>/current/bin</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
+<li><a href="https://github.com/sdkman/sdkman-cli/issues/294" target="_blank" rel="noopener">sdkman doesn’t work with Fish shell</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color5">fish</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">sdkman</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/05/fe/ionic/install/sdk/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux/centos/yum-epel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1058,120 +1143,6 @@
 
 
   
-    <article id="post-fe/angular/杂文/v5-to-v6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/">angular v5升级至v6</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/" class="archive-article-date">
-  	<time datetime="2018-05-28T11:15:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="安装v8版node-lts"><a href="#安装v8版node-lts" class="headerlink" title="安装v8版node lts"></a>安装v8版node lts</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># now is 8.11.2</span></span><br><span class="line">sudo n lts</span><br></pre></td></tr></table></figure>
-
-<h2 id="升级-angular-cli"><a href="#升级-angular-cli" class="headerlink" title="升级 @angular/cli"></a>升级 <code>@angular/cli</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall -g @angular/cli</span><br><span class="line">npm cache verify</span><br><span class="line">npm i -g @angular/cli@6.0.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改所有angular依赖至v6"><a href="#修改所有angular依赖至v6" class="headerlink" title="修改所有angular依赖至v6"></a>修改所有angular依赖至v6</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"devDependencies"</span>: &#123;</span><br><span class="line">    <span class="attr">"@angular-devkit/build-angular"</span>: <span class="string">"~0.6.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/animations"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/cdk"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/cli"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/common"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/compiler"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/compiler-cli"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/core"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/forms"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/http"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/material"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/platform-browser"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/platform-browser-dynamic"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"@angular/router"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"rxjs"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"rxjs-compat"</span>: <span class="string">"^6.0.0"</span>,</span><br><span class="line">    <span class="attr">"tsickle"</span>: <span class="string">"0.27.5"</span>,</span><br><span class="line">    <span class="attr">"tslib"</span>: <span class="string">"1.9.0"</span>,</span><br><span class="line">    <span class="attr">"typescript"</span>: <span class="string">"2.7.2"</span>,</span><br><span class="line">    <span class="attr">"zone.js"</span>: <span class="string">"~0.8.26"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="重装-node-modules"><a href="#重装-node-modules" class="headerlink" title="重装 node_modules"></a>重装 <code>node_modules</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf node_modules</span><br><span class="line">yarn install</span><br></pre></td></tr></table></figure>
-
-<h2 id="删除-angular-cli-json，添加-angular-json"><a href="#删除-angular-cli-json，添加-angular-json" class="headerlink" title="删除.angular-cli.json，添加.angular.json"></a>删除<code>.angular-cli.json</code>，添加<code>.angular.json</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ng update @angular/cli --migrate-only --from=1.7.4</span><br></pre></td></tr></table></figure>
-
-<h2 id="Finished"><a href="#Finished" class="headerlink" title="Finished"></a>Finished</h2><p>大功告成</p>
-<h2 id="新特性"><a href="#新特性" class="headerlink" title="新特性"></a>新特性</h2><ol>
-<li><a href="https://juejin.im/post/5aeebbce6fb9a07aa213406e" target="_blank" rel="noopener">angular</a></li>
-</ol>
-<h2 id="break-change"><a href="#break-change" class="headerlink" title="break change"></a>break change</h2><ul>
-<li><a href="https://github.com/ReactiveX/rxjs/blob/master/MIGRATION.md" target="_blank" rel="noopener">rxjs v6</a><ul>
-<li>链式操作改为<code>pipe</code></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// before</span></span><br><span class="line">source</span><br><span class="line"> .map(<span class="function"><span class="params">x</span> =&gt;</span> x + x)</span><br><span class="line"> .mergeMap(<span class="function"><span class="params">n</span> =&gt;</span> of(n + <span class="number">1</span>, n + <span class="number">2</span>)</span><br><span class="line">   .filter(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">1</span> == <span class="number">0</span>)</span><br><span class="line">   .scan(<span class="function">(<span class="params">acc, x</span>) =&gt;</span> acc + x, <span class="number">0</span>)</span><br><span class="line"> )</span><br><span class="line"> .catch(<span class="function"><span class="params">err</span> =&gt;</span> of(<span class="string">'error found'</span>))</span><br><span class="line"> .subscribe(printResult);</span><br><span class="line"></span><br><span class="line"><span class="comment">// now</span></span><br><span class="line">source.pipe(</span><br><span class="line"> map(<span class="function"><span class="params">x</span> =&gt;</span> x + x),</span><br><span class="line"> mergeMap(<span class="function"><span class="params">n</span> =&gt;</span> of(n + <span class="number">1</span>, n + <span class="number">2</span>).pipe(</span><br><span class="line">   filter(<span class="function"><span class="params">x</span> =&gt;</span> x % <span class="number">1</span> == <span class="number">0</span>),</span><br><span class="line">   scan(<span class="function">(<span class="params">acc, x</span>) =&gt;</span> acc + x, <span class="number">0</span>),</span><br><span class="line"> )),</span><br><span class="line"> catchError(<span class="function"><span class="params">err</span> =&gt;</span> of(<span class="string">'error found'</span>)),</span><br><span class="line">).subscribe(printResult);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>操作符导入路径</li>
-</ul>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Observable, Subject, asapScheduler, pipe, of, <span class="keyword">from</span>, interval, merge, fromEvent &#125; <span class="keyword">from</span> <span class="string">'rxjs'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; map, filter, scan &#125; <span class="keyword">from</span> <span class="string">'rxjs/operators'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; webSocket &#125; <span class="keyword">from</span> <span class="string">'rxjs/webSocket'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ajax &#125; <span class="keyword">from</span> <span class="string">'rxjs/ajax'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; TestScheduler &#125; <span class="keyword">from</span> <span class="string">'rxjs/testing'</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>部分操作符重命名</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">do -&gt; tap</span><br><span class="line">catch -&gt; catchError</span><br><span class="line">switch -&gt; switchAll</span><br><span class="line">finally -&gt; finalize</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>部分操作符在v7版将废弃</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">mergeMap()</span><br><span class="line">mergeMapTo()</span><br><span class="line">concatMap()</span><br><span class="line">concatMapTo()</span><br><span class="line">switchMap</span><br><span class="line">switchMapTo()</span><br><span class="line">exhaustMap()</span><br><span class="line">forkJoin()</span><br><span class="line">zip()</span><br><span class="line">combineLatest()</span><br><span class="line">fromEvent()</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">angular</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">upgrade</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" target="_blank" rel="noopener" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1279,6 +1250,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">command</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">spec</a>
               </li>
              
@@ -1324,10 +1303,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,19 +1358,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">font</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1447,15 +1422,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
