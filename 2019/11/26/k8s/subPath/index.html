@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.lovesora.pro">
-  <title>K8S PVS | lovesora&#39;s blog</title>
+  <title>k8s pvc subPath | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="keywords" content="front-end architecture">
+  <meta name="description" content="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？ subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。   subPath: Path within the volume from which the container&amp;#39;s volume should be mounted。 12">
+<meta name="keywords" content="k8s,volume,subPath">
 <meta property="og:type" content="article">
-<meta property="og:title" content="K8S PVS">
+<meta property="og:title" content="k8s pvc subPath">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;11&#x2F;26&#x2F;k8s&#x2F;subPath&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
+<meta property="og:description" content="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？ subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。   subPath: Path within the volume from which the container&amp;#39;s volume should be mounted。 12">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T03:13:33.604Z">
+<meta property="og:updated_time" content="2019-11-26T03:15:06.916Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -148,21 +150,26 @@
         
   
     <h1 class="article-title" itemprop="name">
-      K8S PVS
+      k8s pvc subPath
     </h1>
   
 
         
         <a href="/2019/11/26/k8s/subPath/" class="archive-article-date">
-  	<time datetime="2019-11-26T03:13:33.604Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
+  	<time datetime="2019-11-26T03:15:06.916Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwOTU3MTg0OTFdfQ==
+        <h3 id="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？"><a href="#我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？" class="headerlink" title="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？"></a>我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？</h3><blockquote>
+<p>subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。</p>
+</blockquote>
+<p> <code>subPath</code>: <code>Path within the volume from which the container&#39;s volume should be mounted</code>。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbLTExMzg2ODA1ODldfQ==
 -->
       
 
@@ -202,6 +209,25 @@ eyJoaXN0b3J5IjpbLTIwOTU3MTg0OTFdfQ==
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">k8s</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">volume</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">subPath</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -307,7 +333,7 @@ eyJoaXN0b3J5IjpbLTIwOTU3MTg0OTFdfQ==
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Tue Nov 26 2019 03:13:33 GMT+0000",
+  id: "Tue Nov 26 2019 03:15:06 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -415,6 +441,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">k8s</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">volume</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">subPath</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
@@ -529,15 +567,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">angularjs</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -613,11 +651,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
