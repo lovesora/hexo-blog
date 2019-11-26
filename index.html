@@ -157,7 +157,7 @@
 
         
         <a href="/2019/11/26/k8s/subPath/" class="archive-article-date">
-  	<time datetime="2019-11-26T03:15:06.916Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
+  	<time datetime="2019-11-26T03:15:30.883Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-26</time>
 </a>
         
       </header>
@@ -168,9 +168,9 @@
 <p>subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。</p>
 </blockquote>
 <p> <code>subPath</code>: <code>Path within the volume from which the container&#39;s volume should be mounted</code>。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-lamp-site</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">    <span class="attr">containers:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mysql</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">mysql</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">"rootpasswd"</span> </span><br><span class="line">      <span class="attr">volumeMounts:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/lib/mysql</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">site-data</span></span><br><span class="line">        <span class="attr">subPath:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">php</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">php:7.0-apache</span></span><br><span class="line">      <span class="attr">volumeMounts:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/www/html</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">site-data</span></span><br><span class="line">        <span class="attr">subPath:</span> <span class="string">html</span></span><br><span class="line">    <span class="attr">volumes:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">site-data</span></span><br><span class="line">      <span class="attr">persistentVolumeClaim:</span></span><br><span class="line">        <span class="attr">claimName:</span> <span class="string">my-lamp-site-data</span></span><br></pre></td></tr></table></figure>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMzg2ODA1ODldfQ==
+eyJoaXN0b3J5IjpbMTM3MjA4MjE1MV19
 -->
       
 
@@ -1312,6 +1312,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -1321,14 +1333,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,6 +1353,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1384,15 +1396,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,10 +1413,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1488,11 +1488,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">library</a>
               </li>
              
               <li class="article-tag-list-item">
