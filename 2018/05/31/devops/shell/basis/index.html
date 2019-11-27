@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>shell 基础 | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="变量 语法 每句末尾的 ; 是可选的 赋值 赋值语句 = 两边不能有空格   取值 &amp;#39;&amp;#39; 内不会取到变量具体内容 &amp;quot;&amp;quot; 内的变量会被替换成值   判断 判断语句 [ ] 两边都需要有空格 -d 两边都需要空格 多重判断 [[]] 间使用 || 或者 &amp;amp;&amp;amp; 连接，|| 和 &amp;amp;&amp;amp; 两边空格是可选的   循环 for var in 1">
+  <meta name="description" content="变量 语法 每句末尾的 ; 是可选的 赋值 赋值语句 &#x3D; 两边不能有空格   取值 &amp;#39;&amp;#39; 内不会取到变量具体内容 &amp;quot;&amp;quot; 内的变量会被替换成值   判断 判断语句 [ ] 两边都需要有空格 -d 两边都需要空格 多重判断 [[]] 间使用 || 或者 &amp;amp;&amp;amp; 连接，|| 和 &amp;amp;&amp;amp; 两边空格是可选的   循环 for var in 1">
 <meta name="keywords" content="shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell 基础">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;05&#x2F;31&#x2F;devops&#x2F;shell&#x2F;basis&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="变量 语法 每句末尾的 ; 是可选的 赋值 赋值语句 = 两边不能有空格   取值 &amp;#39;&amp;#39; 内不会取到变量具体内容 &amp;quot;&amp;quot; 内的变量会被替换成值   判断 判断语句 [ ] 两边都需要有空格 -d 两边都需要空格 多重判断 [[]] 间使用 || 或者 &amp;amp;&amp;amp; 连接，|| 和 &amp;amp;&amp;amp; 两边空格是可选的   循环 for var in 1">
+<meta property="og:description" content="变量 语法 每句末尾的 ; 是可选的 赋值 赋值语句 &#x3D; 两边不能有空格   取值 &amp;#39;&amp;#39; 内不会取到变量具体内容 &amp;quot;&amp;quot; 内的变量会被替换成值   判断 判断语句 [ ] 两边都需要有空格 -d 两边都需要空格 多重判断 [[]] 间使用 || 或者 &amp;amp;&amp;amp; 连接，|| 和 &amp;amp;&amp;amp; 两边空格是可选的   循环 for var in 1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -215,7 +215,7 @@
 </ul>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">ROOT=<span class="variable">$PWD</span>;</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'$PWD'</span>; <span class="comment"># $PWD</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$PWD</span>"</span>; <span class="comment"># /path/to</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">createDir</span></span>() &#123;</span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$before</span>; <span class="comment"># before ...</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$after</span>;  <span class="comment"># empty line</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line">  <span class="keyword">do</span></span><br><span class="line">    DIR=<span class="variable">$ROOT</span>/<span class="variable">$arg</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> [ -d <span class="variable">$DIR</span> ]; <span class="keyword">then</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"<span class="variable">$DIR</span> is already a directory"</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">      <span class="built_in">read</span> -p <span class="string">"create <span class="variable">$DIR</span> ? (Y/n)"</span> isYes;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$isYes</span>"</span> = <span class="string">"Y"</span> ]] || [[ ! <span class="variable">$isYes</span> ]]; <span class="keyword">then</span></span><br><span class="line">        mkdir <span class="variable">$DIR</span>;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">"cancel create <span class="variable">$DIR</span>"</span>;</span><br><span class="line">      <span class="keyword">fi</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">before=<span class="string">"before..."</span>;</span><br><span class="line"></span><br><span class="line">createDir <span class="built_in">test</span></span><br><span class="line"></span><br><span class="line">after=<span class="string">"after..."</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="string">"a a"</span> b c; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$var</span>; <span class="comment"># a a, b, c</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span>; <span class="comment"># 执行路径</span></span><br><span class="line"><span class="built_in">echo</span> $(dirname <span class="variable">$0</span>); <span class="comment"># 获取上层目录</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">ROOT=<span class="variable">$PWD</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'$PWD'</span>; <span class="comment"># $PWD</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$PWD</span>"</span>; <span class="comment"># /path/to</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">createDir</span></span>() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">echo</span> <span class="variable">$before</span>; <span class="comment"># before ...</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">echo</span> <span class="variable">$after</span>;  <span class="comment"># empty line</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">for</span> arg <span class="keyword">in</span> <span class="string">"<span class="variable">$@</span>"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">do</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">    DIR=<span class="variable">$ROOT</span>/<span class="variable">$arg</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> [ -d <span class="variable">$DIR</span> ]; <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">      <span class="built_in">echo</span> <span class="string">"<span class="variable">$DIR</span> is already a directory"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">      <span class="built_in">read</span> -p <span class="string">"create <span class="variable">$DIR</span> ? (Y/n)"</span> isYes;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">if</span> [[ <span class="string">"<span class="variable">$isYes</span>"</span> = <span class="string">"Y"</span> ]] || [[ ! <span class="variable">$isYes</span> ]]; <span class="keyword">then</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        mkdir <span class="variable">$DIR</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">else</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">echo</span> <span class="string">"cancel create <span class="variable">$DIR</span>"</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">      <span class="keyword">fi</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">fi</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">done</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">before=<span class="string">"before..."</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line">createDir <span class="built_in">test</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">after=<span class="string">"after..."</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> var <span class="keyword">in</span> <span class="string">"a a"</span> b c; <span class="keyword">do</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">echo</span> <span class="variable">$var</span>; <span class="comment"># a a, b, c</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">done</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">39</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$0</span>; <span class="comment"># 执行路径</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">40</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> $(dirname <span class="variable">$0</span>); <span class="comment"># 获取上层目录</span></span></pre></td></tr></table></figure>
 
 
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
@@ -532,18 +532,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -604,6 +592,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -612,7 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,6 +621,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,10 +689,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>记 `*ngIf` 生命周期导致的一个坑 | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="情景*ngIf 中的 ViewChild 要在 ngAfterViewInit 生命周期钩子中才能拿到。 12345678910111213141516&amp;#123;  condition = true;  @ViewChild(&amp;apos;div&amp;apos;) div: ElementRef;  ngOnInit() &amp;#123;    console.log(this.div); &#x2F;&#x2F; undefined  &amp;#1">
+  <meta name="description" content="情景*ngIf 中的 ViewChild 要在 ngAfterViewInit 生命周期钩子中才能拿到。 1&amp;#123;2  condition &#x3D; true;3  @ViewChild(&amp;apos;div&amp;apos;) div: ElementRef;45  ngOnInit() &amp;#123;6    console.log(this.div); &#x2F;&#x2F; undefined7  &amp;#125;89  ngAfterCo">
 <meta name="keywords" content="front-end architecture">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记 &#96;*ngIf&#96; 生命周期导致的一个坑">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;09&#x2F;19&#x2F;fe&#x2F;angular&#x2F;%E6%9D%82%E6%96%87&#x2F;lifecycle-ngif&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="情景*ngIf 中的 ViewChild 要在 ngAfterViewInit 生命周期钩子中才能拿到。 12345678910111213141516&amp;#123;  condition = true;  @ViewChild(&amp;apos;div&amp;apos;) div: ElementRef;  ngOnInit() &amp;#123;    console.log(this.div); &#x2F;&#x2F; undefined  &amp;#1">
+<meta property="og:description" content="情景*ngIf 中的 ViewChild 要在 ngAfterViewInit 生命周期钩子中才能拿到。 1&amp;#123;2  condition &#x3D; true;3  @ViewChild(&amp;apos;div&amp;apos;) div: ElementRef;45  ngOnInit() &amp;#123;6    console.log(this.div); &#x2F;&#x2F; undefined7  &amp;#125;89  ngAfterCo">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -164,9 +164,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="情景"><a href="#情景" class="headerlink" title="情景"></a>情景</h2><p><code>*ngIf</code> 中的 <code>ViewChild</code> 要在 <code>ngAfterViewInit</code> 生命周期钩子中才能拿到。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  condition = <span class="literal">true</span>;</span><br><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'div'</span>) div: ElementRef;</span><br><span class="line"></span><br><span class="line">  ngOnInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterContentInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ngAfterViewInit() &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// ElementRef</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  condition = <span class="literal">true</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="meta">@ViewChild</span>(<span class="string">'div'</span>) div: ElementRef;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  ngOnInit() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  ngAfterContentInit() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// undefined</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">  ngAfterViewInit() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.div); <span class="comment">// ElementRef</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ng-container</span> *<span class="attr">ngIf</span>=<span class="string">"condition"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> #<span class="attr">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ng-container</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ng-container</span> *<span class="attr">ngIf</span>=<span class="string">"condition"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> #<span class="attr">div</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">ng-container</span>&gt;</span></span></pre></td></tr></table></figure>
 
 
 
@@ -467,18 +467,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -539,6 +527,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -547,7 +539,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -556,6 +556,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,10 +624,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

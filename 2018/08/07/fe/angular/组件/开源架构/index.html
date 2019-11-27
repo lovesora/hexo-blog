@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="lovesora&#39;s blog">
 <meta property="og:description" content="CommonCommon 的定义是 公共，参考的 angular，所有开源组件公共的代码都放在这个项目中，包括两部分：  ts sass  这部分定义了基于 typescript 的所有公共库，类似lodash，包含组件需要使用的公共的功能。目前包含以下部分：  util net error global  代码最终会被编译成 js，并且包含 *.d.ts，无论是 js 还是 ts 项目都可引用。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -176,7 +176,7 @@
 <li>global</li>
 </ul>
 <p>代码最终会被编译成 <code>js</code>，并且包含 <code>*.d.ts</code>，无论是 <code>js</code> 还是 <code>ts</code> 项目都可引用。</p>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  SearchArray,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@petkit/common'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  SearchArray,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">&#125; <span class="keyword">from</span> <span class="string">'@petkit/common'</span>;</span></pre></td></tr></table></figure>
 
 <h2 id="Style"><a href="#Style" class="headerlink" title="Style"></a>Style</h2><p>这部分定义了基于 <code>sass</code> 的公共样式。目前包含以下部分：</p>
 <ul>
@@ -187,7 +187,7 @@
 <li>mp</li>
 </ul>
 <p>该部分样式针对不同平台（Web, PC,公众号,小程序等）做了兼容处理，需要在配置文件中配置，默认 <code>750</code> 占满屏幕宽度（类似微信小程序）。</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// _theming.config.scss</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">'~@petkit/style/theming'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$app-primary</span>: mat-palette(<span class="variable">$mat-cyan</span>);</span><br><span class="line"><span class="variable">$app-accent</span>: mat-palette(<span class="variable">$mat-orange</span>);</span><br><span class="line"><span class="variable">$app-warn</span>: mat-palette(<span class="variable">$mat-yellow</span>, <span class="number">700</span>, <span class="number">300</span>, <span class="number">900</span>);</span><br><span class="line"><span class="variable">$app-theme</span>: mat-light-theme(<span class="variable">$app-primary</span>, <span class="variable">$app-accent</span>, <span class="variable">$app-warn</span>);</span><br><span class="line"><span class="variable">$app-size</span>: size(wp);</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment">// _theming.config.scss</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">@<span class="keyword">import</span> <span class="string">'~@petkit/style/theming'</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$app-primary</span>: mat-palette(<span class="variable">$mat-cyan</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$app-accent</span>: mat-palette(<span class="variable">$mat-orange</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$app-warn</span>: mat-palette(<span class="variable">$mat-yellow</span>, <span class="number">700</span>, <span class="number">300</span>, <span class="number">900</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$app-theme</span>: mat-light-theme(<span class="variable">$app-primary</span>, <span class="variable">$app-accent</span>, <span class="variable">$app-warn</span>);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="variable">$app-size</span>: size(wp);</span></pre></td></tr></table></figure>
 
 
 
@@ -500,18 +500,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -572,6 +560,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -580,7 +572,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,6 +589,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,10 +657,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

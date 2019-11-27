@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>在fish中使用sdkman | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装 sdkman1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash  创建文件 $HOME&#x2F;.config&#x2F;fish&#x2F;conf.d&#x2F;sdkman.fish写入以下代码 1234567891011#!&#x2F;usr&#x2F;bin&#x2F;fish# sdk commandfunction sdk        bash -c &quot;source $HOME&#x2F;.sdkman&#x2F;bin&#x2F;sdkman">
+  <meta name="description" content="安装 sdkman1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash  创建文件 $HOME&#x2F;.config&#x2F;fish&#x2F;conf.d&#x2F;sdkman.fish写入以下代码 1#!&#x2F;usr&#x2F;bin&#x2F;fish23# sdk command4function sdk5        bash -c &quot;source $HOME&#x2F;.sdkman&#x2F;bin&#x2F;sdkman-init.sh">
 <meta name="keywords" content="fish,sdkman">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在fish中使用sdkman">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;06&#x2F;05&#x2F;fe&#x2F;ionic&#x2F;install&#x2F;sdk&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="安装 sdkman1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash  创建文件 $HOME&#x2F;.config&#x2F;fish&#x2F;conf.d&#x2F;sdkman.fish写入以下代码 1234567891011#!&#x2F;usr&#x2F;bin&#x2F;fish# sdk commandfunction sdk        bash -c &quot;source $HOME&#x2F;.sdkman&#x2F;bin&#x2F;sdkman">
+<meta property="og:description" content="安装 sdkman1curl -s &quot;https:&#x2F;&#x2F;get.sdkman.io&quot; | bash  创建文件 $HOME&#x2F;.config&#x2F;fish&#x2F;conf.d&#x2F;sdkman.fish写入以下代码 1#!&#x2F;usr&#x2F;bin&#x2F;fish23# sdk command4function sdk5        bash -c &quot;source $HOME&#x2F;.sdkman&#x2F;bin&#x2F;sdkman-init.sh">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -163,10 +163,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装-sdkman"><a href="#安装-sdkman" class="headerlink" title="安装 sdkman"></a>安装 <code>sdkman</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">"https://get.sdkman.io"</span> | bash</span><br></pre></td></tr></table></figure>
+        <h2 id="安装-sdkman"><a href="#安装-sdkman" class="headerlink" title="安装 sdkman"></a>安装 <code>sdkman</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">curl -s <span class="string">"https://get.sdkman.io"</span> | bash</span></pre></td></tr></table></figure>
 
 <h2 id="创建文件-HOME-config-fish-conf-d-sdkman-fish"><a href="#创建文件-HOME-config-fish-conf-d-sdkman-fish" class="headerlink" title="创建文件 $HOME/.config/fish/conf.d/sdkman.fish"></a>创建文件 <code>$HOME/.config/fish/conf.d/sdkman.fish</code></h2><p>写入以下代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/fish</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sdk command</span></span><br><span class="line"><span class="keyword">function</span> sdk</span><br><span class="line">        bash -c <span class="string">"source <span class="variable">$HOME</span>/.sdkman/bin/sdkman-init.sh &amp;&amp; sdk <span class="variable">$argv</span>"</span></span><br><span class="line">end</span><br><span class="line"></span><br><span class="line"><span class="comment"># add paths</span></span><br><span class="line"><span class="keyword">for</span> ITEM <span class="keyword">in</span> <span class="variable">$HOME</span>/.sdkman/candidates/* ;</span><br><span class="line">        <span class="built_in">set</span> -gx PATH <span class="variable">$PATH</span> <span class="variable">$ITEM</span>/current/bin</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/fish</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># sdk command</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> sdk</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        bash -c <span class="string">"source <span class="variable">$HOME</span>/.sdkman/bin/sdkman-init.sh &amp;&amp; sdk <span class="variable">$argv</span>"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">end</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># add paths</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ITEM <span class="keyword">in</span> <span class="variable">$HOME</span>/.sdkman/candidates/* ;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">        <span class="built_in">set</span> -gx PATH <span class="variable">$PATH</span> <span class="variable">$ITEM</span>/current/bin</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">end</span></pre></td></tr></table></figure>
 
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
 <li><a href="https://github.com/sdkman/sdkman-cli/issues/294" target="_blank" rel="noopener">sdkman doesn’t work with Fish shell</a></li>
@@ -481,18 +481,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -553,6 +541,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -561,7 +553,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,6 +570,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -634,10 +638,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

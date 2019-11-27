@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>Gitlab Docker安装 | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装 GitLab1docker pull gitlab  运行容器12345678910docker run --detach \  --hostname gitlab.example.com \  --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &amp;apos;http:&#x2F;&#x2F;gitlab.example.com&amp;apos;;&quot; \  --publish 443:443 --publ">
+  <meta name="description" content="安装 GitLab1docker pull gitlab  运行容器1docker run --detach \2  --hostname gitlab.example.com \3  --env GITLAB_OMNIBUS_CONFIG&#x3D;&quot;external_url &amp;apos;http:&#x2F;&#x2F;gitlab.example.com&amp;apos;;&quot; \4  --publish 443:443 --publish 800">
 <meta name="keywords" content="gitlab">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Gitlab Docker安装">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;07&#x2F;19&#x2F;vcs&#x2F;gitlab&#x2F;install&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="安装 GitLab1docker pull gitlab  运行容器12345678910docker run --detach \  --hostname gitlab.example.com \  --env GITLAB_OMNIBUS_CONFIG=&quot;external_url &amp;apos;http:&#x2F;&#x2F;gitlab.example.com&amp;apos;;&quot; \  --publish 443:443 --publ">
+<meta property="og:description" content="安装 GitLab1docker pull gitlab  运行容器1docker run --detach \2  --hostname gitlab.example.com \3  --env GITLAB_OMNIBUS_CONFIG&#x3D;&quot;external_url &amp;apos;http:&#x2F;&#x2F;gitlab.example.com&amp;apos;;&quot; \4  --publish 443:443 --publish 800">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.280Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -163,15 +163,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="安装-GitLab"><a href="#安装-GitLab" class="headerlink" title="安装 GitLab"></a>安装 <code>GitLab</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull gitlab</span><br></pre></td></tr></table></figure>
+        <h2 id="安装-GitLab"><a href="#安装-GitLab" class="headerlink" title="安装 GitLab"></a>安装 <code>GitLab</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker pull gitlab</span></pre></td></tr></table></figure>
 
-<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run --detach \</span><br><span class="line">  --hostname gitlab.example.com \</span><br><span class="line">  --env GITLAB_OMNIBUS_CONFIG=<span class="string">"external_url 'http://gitlab.example.com';"</span> \</span><br><span class="line">  --publish 443:443 --publish 8000:80 --publish 22:22 \</span><br><span class="line">  --name gitlab \</span><br><span class="line">  --restart always \</span><br><span class="line">  --volume /srv/gitlab/config:/etc/gitlab \</span><br><span class="line">  --volume /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \</span><br><span class="line">  --volume /srv/gitlab/data:/var/opt/gitlab \</span><br><span class="line">  gitlab/gitlab-ce:latest</span><br></pre></td></tr></table></figure>
+<h2 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">docker run --detach \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  --hostname gitlab.example.com \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  --env GITLAB_OMNIBUS_CONFIG=<span class="string">"external_url 'http://gitlab.example.com';"</span> \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  --publish 443:443 --publish 8000:80 --publish 22:22 \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  --name gitlab \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  --restart always \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  --volume /srv/gitlab/config:/etc/gitlab \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">  --volume /srv/gitlab/logs:/var/<span class="built_in">log</span>/gitlab \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  --volume /srv/gitlab/data:/var/opt/gitlab \</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">  gitlab/gitlab-ce:latest</span></pre></td></tr></table></figure>
 
-<h2 id="配置-Nginx-反向代理"><a href="#配置-Nginx-反向代理" class="headerlink" title="配置 Nginx 反向代理"></a>配置 <code>Nginx</code> 反向代理</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/conf.d/gitlab.conf</span></span><br><span class="line"></span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">server_name</span> gitlab.example.com;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">access_log</span>  /var/log/nginx/gitlab.access.log  main;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8000;</span><br><span class="line">    <span class="attribute">index</span>  index.html index.htm;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="配置-Nginx-反向代理"><a href="#配置-Nginx-反向代理" class="headerlink" title="配置 Nginx 反向代理"></a>配置 <code>Nginx</code> 反向代理</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># /etc/nginx/conf.d/gitlab.conf</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">server_name</span> gitlab.example.com;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">access_log</span>  /var/log/nginx/gitlab.access.log  main;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="attribute">location</span> / &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">proxy_pass</span> http://localhost:8000;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    <span class="attribute">index</span>  index.html index.htm;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
 <h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>第一次访问 <code>gitlab.example.com</code> 会提示输入密码，用户名默认是 <code>root</code>。</p>
 <h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="docker0-iptables-No-chain-target-match-by-that-name"><a href="#docker0-iptables-No-chain-target-match-by-that-name" class="headerlink" title="docker0: iptables: No chain/target/match by that name"></a><code>docker0: iptables: No chain/target/match by that name</code></h3><p>重启docker即可</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart docker.service</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">systemctl restart docker.service</span></pre></td></tr></table></figure>
 
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
 <li><a href="https://docs.gitlab.com/omnibus/docker/" target="_blank" rel="noopener">官方文档</a></li>
@@ -482,18 +482,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -554,6 +542,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -562,7 +554,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -571,6 +571,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,10 +639,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

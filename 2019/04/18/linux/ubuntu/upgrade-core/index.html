@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>Ubuntu 内核升级 | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="查看发布版本号123cat &#x2F;etc&#x2F;issuelsb_release -a  查看内核版本号12345# 内核信息uname -sr# 所有信息uname -a  升级方式一 到官网kernel.ubuntu.com下载对应deb文件    下载 *all.deb 和所有 *generic*.deb 文件后，到对应文件夹下执行 1sudo dpkg -i *.deb   我是64位操作系统所以选">
+  <meta name="description" content="查看发布版本号1cat &#x2F;etc&#x2F;issue23lsb_release -a  查看内核版本号1# 内核信息2uname -sr34# 所有信息5uname -a  升级方式一 到官网kernel.ubuntu.com下载对应deb文件    下载 *all.deb 和所有 *generic*.deb 文件后，到对应文件夹下执行 1sudo dpkg -i *.deb   我是64位操作系统所以选">
 <meta name="keywords" content="ubuntu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 内核升级">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;04&#x2F;18&#x2F;linux&#x2F;ubuntu&#x2F;upgrade-core&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="查看发布版本号123cat &#x2F;etc&#x2F;issuelsb_release -a  查看内核版本号12345# 内核信息uname -sr# 所有信息uname -a  升级方式一 到官网kernel.ubuntu.com下载对应deb文件    下载 *all.deb 和所有 *generic*.deb 文件后，到对应文件夹下执行 1sudo dpkg -i *.deb   我是64位操作系统所以选">
+<meta property="og:description" content="查看发布版本号1cat &#x2F;etc&#x2F;issue23lsb_release -a  查看内核版本号1# 内核信息2uname -sr34# 所有信息5uname -a  升级方式一 到官网kernel.ubuntu.com下载对应deb文件    下载 *all.deb 和所有 *generic*.deb 文件后，到对应文件夹下执行 1sudo dpkg -i *.deb   我是64位操作系统所以选">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;linux&#x2F;ubuntu-kernel.png">
 <meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;linux&#x2F;ubuntu-kernel-download.png">
 <meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;linux&#x2F;ubuntu-kernel-install.png">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.280Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="&#x2F;assets&#x2F;images&#x2F;linux&#x2F;ubuntu-kernel.png">
   
@@ -167,9 +167,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="查看发布版本号"><a href="#查看发布版本号" class="headerlink" title="查看发布版本号"></a>查看发布版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br><span class="line"></span><br><span class="line">lsb_release -a</span><br></pre></td></tr></table></figure>
+        <h2 id="查看发布版本号"><a href="#查看发布版本号" class="headerlink" title="查看发布版本号"></a>查看发布版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">lsb_release -a</span></pre></td></tr></table></figure>
 
-<h2 id="查看内核版本号"><a href="#查看内核版本号" class="headerlink" title="查看内核版本号"></a>查看内核版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内核信息</span></span><br><span class="line">uname -sr</span><br><span class="line"></span><br><span class="line"><span class="comment"># 所有信息</span></span><br><span class="line">uname -a</span><br></pre></td></tr></table></figure>
+<h2 id="查看内核版本号"><a href="#查看内核版本号" class="headerlink" title="查看内核版本号"></a>查看内核版本号</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内核信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">uname -sr</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 所有信息</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">uname -a</span></pre></td></tr></table></figure>
 
 <h2 id="升级方式一"><a href="#升级方式一" class="headerlink" title="升级方式一"></a>升级方式一</h2><blockquote>
 <p>到官网<a href="https://kernel.ubuntu.com/~kernel-ppa/mainline/" target="_blank" rel="noopener">kernel.ubuntu.com</a>下载对应deb文件</p>
@@ -177,22 +177,22 @@
 <p><img src="/assets/images/linux/ubuntu-kernel.png" alt="列表"></p>
 <p><img src="/assets/images/linux/ubuntu-kernel-download.png" alt="文件"></p>
 <p>下载 <code>*all.deb</code> 和所有 <code>*generic*.deb</code> 文件后，到对应文件夹下执行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo dpkg -i *.deb</span></pre></td></tr></table></figure>
 
 <blockquote>
 <p>我是64位操作系统所以选择的 <code>amd64</code>，32位的小伙伴选 <code>i386</code>即可</p>
 </blockquote>
-<h2 id="升级方式二（推荐）"><a href="#升级方式二（推荐）" class="headerlink" title="升级方式二（推荐）"></a>升级方式二（推荐）</h2><h3 id="查看需要更新的内核命令"><a href="#查看需要更新的内核命令" class="headerlink" title="查看需要更新的内核命令"></a>查看需要更新的内核命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-cache search linux</span><br></pre></td></tr></table></figure>
+<h2 id="升级方式二（推荐）"><a href="#升级方式二（推荐）" class="headerlink" title="升级方式二（推荐）"></a>升级方式二（推荐）</h2><h3 id="查看需要更新的内核命令"><a href="#查看需要更新的内核命令" class="headerlink" title="查看需要更新的内核命令"></a>查看需要更新的内核命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt-cache search linux</span></pre></td></tr></table></figure>
 
-<h3 id="安装对应版本内核"><a href="#安装对应版本内核" class="headerlink" title="安装对应版本内核"></a>安装对应版本内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install linux-headers-5.0.8-050008-generic</span><br></pre></td></tr></table></figure>
+<h3 id="安装对应版本内核"><a href="#安装对应版本内核" class="headerlink" title="安装对应版本内核"></a>安装对应版本内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt install linux-headers-5.0.8-050008-generic</span></pre></td></tr></table></figure>
 
 <p><img src="/assets/images/linux/ubuntu-kernel-install.png" alt="install"></p>
 <blockquote>
 <p>安装完成后默认启动最新内核</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内核启动顺序</span></span><br><span class="line">grep menuentry /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看内核启动顺序</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">grep menuentry /boot/grub/grub.cfg</span></pre></td></tr></table></figure>
 
-<h2 id="卸载多余内核"><a href="#卸载多余内核" class="headerlink" title="卸载多余内核"></a>卸载多余内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span><br></pre></td></tr></table></figure>
+<h2 id="卸载多余内核"><a href="#卸载多余内核" class="headerlink" title="卸载多余内核"></a>卸载多余内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove</span></pre></td></tr></table></figure>
 
 
       
@@ -500,18 +500,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -572,6 +560,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -580,7 +572,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -589,6 +589,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,10 +657,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

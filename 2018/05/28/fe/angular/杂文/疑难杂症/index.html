@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>angular疑难杂症 | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="执行 ng config xxx 后 ng xxx 命令报错 重装@angular&#x2F;cli仍然报错报错信息 123456789101112Workspace needs to be loaded before it is used.Error: Workspace needs to be loaded before it is used.    at Workspace._assertLoaded">
+  <meta name="description" content="执行 ng config xxx 后 ng xxx 命令报错 重装@angular&#x2F;cli仍然报错报错信息 1Workspace needs to be loaded before it is used.2Error: Workspace needs to be loaded before it is used.3    at Workspace._assertLoaded (&#x2F;usr&#x2F;local">
 <meta name="keywords" content="angular">
 <meta property="og:type" content="article">
 <meta property="og:title" content="angular疑难杂症">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;05&#x2F;28&#x2F;fe&#x2F;angular&#x2F;%E6%9D%82%E6%96%87&#x2F;%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="执行 ng config xxx 后 ng xxx 命令报错 重装@angular&#x2F;cli仍然报错报错信息 123456789101112Workspace needs to be loaded before it is used.Error: Workspace needs to be loaded before it is used.    at Workspace._assertLoaded">
+<meta property="og:description" content="执行 ng config xxx 后 ng xxx 命令报错 重装@angular&#x2F;cli仍然报错报错信息 1Workspace needs to be loaded before it is used.2Error: Workspace needs to be loaded before it is used.3    at Workspace._assertLoaded (&#x2F;usr&#x2F;local">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -164,11 +164,11 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错"><a href="#执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错" class="headerlink" title="执行 ng config xxx 后 ng xxx 命令报错 重装@angular/cli仍然报错"></a>执行 <code>ng config xxx</code> 后 <code>ng xxx</code> 命令报错 重装<code>@angular/cli</code>仍然报错</h2><p>报错信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Workspace needs to be loaded before it is used.</span><br><span class="line">Error: Workspace needs to be loaded before it is used.</span><br><span class="line">    at Workspace._assertLoaded (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:59:19)</span><br><span class="line">    at Workspace._getTool (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:145:14)</span><br><span class="line">    at Workspace.getCli (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:127:21)</span><br><span class="line">    at Object.getDefaultSchematicCollection (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/utilities/config.js:209:32)</span><br><span class="line">    at NewCommand.parseCollectionName (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:88:76)</span><br><span class="line">    at NewCommand.initialize (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:46:37)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:87:23)</span><br><span class="line">    at Generator.next (&lt;anonymous&gt;)</span><br><span class="line">    at fulfilled (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:4:58)</span><br><span class="line">    at &lt;anonymous&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Workspace needs to be loaded before it is used.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Error: Workspace needs to be loaded before it is used.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    at Workspace._assertLoaded (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:59:19)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    at Workspace._getTool (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:145:14)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    at Workspace.getCli (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:127:21)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    at Object.getDefaultSchematicCollection (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/utilities/config.js:209:32)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    at NewCommand.parseCollectionName (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:88:76)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    at NewCommand.initialize (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:46:37)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">    at Object.&lt;anonymous&gt; (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:87:23)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">    at Generator.next (&lt;anonymous&gt;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">    at fulfilled (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:4:58)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">    at &lt;anonymous&gt;</span></pre></td></tr></table></figure>
 
 <p>解决方案</p>
 <p>删除<code>angular-config.json</code>文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm ~/.angular-config.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">rm ~/.angular-config.json</span></pre></td></tr></table></figure>
 
       
 
@@ -475,18 +475,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -547,6 +535,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -555,7 +547,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -564,6 +564,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -628,10 +632,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">

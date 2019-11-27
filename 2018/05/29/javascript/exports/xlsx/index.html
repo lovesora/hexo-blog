@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>XLSX 导出excel文件 (TS) | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Step 1. 安装依赖 xlsx1yarn add xlsx  Step 2. Import1import * as XLSX from &amp;apos;xlsx&amp;apos;;  Step 3. Usagexlsx支持多种格式导出，具体可以参考官方文档github  demo  1234567891011121314151617181920212223242526272829303132333435363738clas">
+  <meta name="description" content="Step 1. 安装依赖 xlsx1yarn add xlsx  Step 2. Import1import * as XLSX from &amp;apos;xlsx&amp;apos;;  Step 3. Usagexlsx支持多种格式导出，具体可以参考官方文档github  demo  1class Export &amp;#123;2  private _wb: XLSX.WorkBook &#x3D; XLSX.utils.book_new">
 <meta name="keywords" content="xlsx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XLSX 导出excel文件 (TS)">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;05&#x2F;29&#x2F;javascript&#x2F;exports&#x2F;xlsx&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="Step 1. 安装依赖 xlsx1yarn add xlsx  Step 2. Import1import * as XLSX from &amp;apos;xlsx&amp;apos;;  Step 3. Usagexlsx支持多种格式导出，具体可以参考官方文档github  demo  1234567891011121314151617181920212223242526272829303132333435363738clas">
+<meta property="og:description" content="Step 1. 安装依赖 xlsx1yarn add xlsx  Step 2. Import1import * as XLSX from &amp;apos;xlsx&amp;apos;;  Step 3. Usagexlsx支持多种格式导出，具体可以参考官方文档github  demo  1class Export &amp;#123;2  private _wb: XLSX.WorkBook &#x3D; XLSX.utils.book_new">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;output&#x2F;export.png">
-<meta property="og:updated_time" content="2019-11-26T12:56:16.396Z">
+<meta property="og:updated_time" content="2019-11-27T08:28:44.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="&#x2F;assets&#x2F;images&#x2F;output&#x2F;export.png">
   
@@ -165,17 +165,17 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Step-1-安装依赖-xlsx"><a href="#Step-1-安装依赖-xlsx" class="headerlink" title="Step 1. 安装依赖 xlsx"></a>Step 1. 安装依赖 <code>xlsx</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add xlsx</span><br></pre></td></tr></table></figure>
+        <h2 id="Step-1-安装依赖-xlsx"><a href="#Step-1-安装依赖-xlsx" class="headerlink" title="Step 1. 安装依赖 xlsx"></a>Step 1. 安装依赖 <code>xlsx</code></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">yarn add xlsx</span></pre></td></tr></table></figure>
 
-<h2 id="Step-2-Import"><a href="#Step-2-Import" class="headerlink" title="Step 2. Import"></a>Step 2. Import</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="Step-2-Import"><a href="#Step-2-Import" class="headerlink" title="Step 2. Import"></a>Step 2. Import</h2><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> XLSX <span class="keyword">from</span> <span class="string">'xlsx'</span>;</span></pre></td></tr></table></figure>
 
 <h2 id="Step-3-Usage"><a href="#Step-3-Usage" class="headerlink" title="Step 3. Usage"></a>Step 3. Usage</h2><p>xlsx支持多种格式导出，具体可以参考官方文档<a href="https://github.com/SheetJS/js-xlsx" target="_blank" rel="noopener">github</a></p>
 <blockquote>
 <p><a href="https://stackblitz.com/edit/angular-pzkjbz" target="_blank" rel="noopener">demo</a></p>
 </blockquote>
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Export &#123;</span><br><span class="line">  <span class="keyword">private</span> _wb: XLSX.WorkBook = XLSX.utils.book_new();</span><br><span class="line"></span><br><span class="line">  appendSheet(aoaData, &#123;</span><br><span class="line">    sheetName = <span class="string">'sheet'</span>,</span><br><span class="line">  &#125; = &#123;&#125;) &#123;</span><br><span class="line">    <span class="comment">// 与左上角和右下角确认一个矩形相似</span></span><br><span class="line">    <span class="keyword">const</span> merge = &#123;</span><br><span class="line">      <span class="comment">// start</span></span><br><span class="line">      s: &#123;</span><br><span class="line">        <span class="comment">// row</span></span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        <span class="comment">// column</span></span><br><span class="line">        c: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="comment">// end</span></span><br><span class="line">      e: &#123;</span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        c: <span class="number">1</span>,</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 与以下写法结果相同</span></span><br><span class="line">    <span class="comment">// const merge = XLSX.utils.decode_range("A1:A2");</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(aoaData);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!ws[<span class="string">'!merges'</span>]) &#123;</span><br><span class="line">       ws[<span class="string">'!merges'</span>] = [];</span><br><span class="line">    &#125;</span><br><span class="line">    ws[<span class="string">'!merges'</span>].push(merge);</span><br><span class="line"></span><br><span class="line">    XLSX.utils.book_append_sheet(<span class="keyword">this</span>._wb, ws, sheetName);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  exportExcelFile(filename = <span class="string">'export.xlsx'</span>) &#123;</span><br><span class="line">    XLSX.writeFile(<span class="keyword">this</span>._wb, filename);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> Export &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="keyword">private</span> _wb: XLSX.WorkBook = XLSX.utils.book_new();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  appendSheet(aoaData, &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">    sheetName = <span class="string">'sheet'</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  &#125; = &#123;&#125;) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 与左上角和右下角确认一个矩形相似</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> merge = &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">// start</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      s: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// row</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">        r: <span class="number">0</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        <span class="comment">// column</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        c: <span class="number">0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">      &#125;,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">      <span class="comment">// end</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">      e: &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">        r: <span class="number">0</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        c: <span class="number">1</span>,</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">      &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    &#125;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// 与以下写法结果相同</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="comment">// const merge = XLSX.utils.decode_range("A1:A2");</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">const</span> ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(aoaData);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="keyword">if</span> (!ws[<span class="string">'!merges'</span>]) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line">       ws[<span class="string">'!merges'</span>] = [];</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line">    ws[<span class="string">'!merges'</span>].push(merge);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">32</span></pre></td><td class="code"><pre><span class="line">    XLSX.utils.book_append_sheet(<span class="keyword">this</span>._wb, ws, sheetName);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">33</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">34</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">35</span></pre></td><td class="code"><pre><span class="line">  exportExcelFile(filename = <span class="string">'export.xlsx'</span>) &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">36</span></pre></td><td class="code"><pre><span class="line">    XLSX.writeFile(<span class="keyword">this</span>._wb, filename);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">37</span></pre></td><td class="code"><pre><span class="line">  &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">38</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
-<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> exports = <span class="keyword">new</span> Export();</span><br><span class="line"></span><br><span class="line">exports.appendSheet([[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="string">'c'</span>], [<span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]]);</span><br><span class="line"></span><br><span class="line">exports.exportExcelFile();</span><br></pre></td></tr></table></figure>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> exports = <span class="keyword">new</span> Export();</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">exports.appendSheet([[<span class="string">'a'</span>, <span class="string">'b'</span>], [<span class="string">'c'</span>], [<span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]]);</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">exports.exportExcelFile();</span></pre></td></tr></table></figure>
 
 <p><img src="/assets/images/output/export.png" alt="output"></p>
 <h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><blockquote>
@@ -487,18 +487,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
@@ -559,6 +547,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">react</a>
               </li>
              
@@ -567,7 +559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">函数式编程</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,6 +576,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -640,10 +644,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">summery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
               </li>
              
               <li class="article-tag-list-item">
