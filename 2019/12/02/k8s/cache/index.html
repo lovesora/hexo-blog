@@ -6,17 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.lovesora.pro">
-  <title>k8s pvc subPath | lovesora&#39;s blog</title>
+  <title>The Cache of React Pipeline | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？ subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。   subPath: Path within the volume from which the container&amp;#39;s volume should be mounted。 1apiVersion: v12kind:">
-<meta name="keywords" content="k8s,volume,subPath">
+  <meta name="keywords" content="cache,pipeline">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k8s pvc subPath">
-<meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;11&#x2F;29&#x2F;k8s&#x2F;subPath&#x2F;index.html">
+<meta property="og:title" content="The Cache of React Pipeline">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;12&#x2F;02&#x2F;k8s&#x2F;cache&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？ subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。   subPath: Path within the volume from which the container&amp;#39;s volume should be mounted。 1apiVersion: v12kind:">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-29T04:32:29.540Z">
+<meta property="og:updated_time" content="2019-12-02T03:42:11.278Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -143,35 +141,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-k8s/subPath" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-k8s/cache" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      k8s pvc subPath
+      The Cache of React Pipeline
     </h1>
   
 
         
-        <a href="/2019/11/29/k8s/subPath/" class="archive-article-date">
-  	<time datetime="2019-11-29T04:32:29.540Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-29</time>
+        <a href="/2019/12/02/k8s/cache/" class="archive-article-date">
+  	<time datetime="2019-12-02T11:41:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？"><a href="#我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？" class="headerlink" title="我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？"></a>我们希望将文件挂载到某个目录，但希望只是挂载该文件，不要影响挂载目录下的其他文件。有办法吗？</h3><blockquote>
-<p>subPath 的目的是为了在单一Pod中多次使用同一个volume而设计的。</p>
-</blockquote>
-<p> <code>subPath</code>: <code>Path within the volume from which the container&#39;s volume should be mounted</code>。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">kind:</span> <span class="string">Pod</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">metadata:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">name:</span> <span class="string">my-lamp-site</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">spec:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">containers:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">mysql</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">image:</span> <span class="string">mysql</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">env:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">value:</span> <span class="string">"rootpasswd"</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">volumeMounts:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">      <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/lib/mysql</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">name:</span> <span class="string">site-data</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">subPath:</span> <span class="string">mysql</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">php</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">image:</span> <span class="string">php:7.0-apache</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">volumeMounts:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">      <span class="bullet">-</span> <span class="attr">mountPath:</span> <span class="string">/var/www/html</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">name:</span> <span class="string">site-data</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">subPath:</span> <span class="string">html</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">volumes:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">site-data</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">      <span class="attr">persistentVolumeClaim:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">        <span class="attr">claimName:</span> <span class="string">my-lamp-site-data</span></span></pre></td></tr></table></figure>
-
-
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgzMjAwODM1LDEzNzIwODIxNTFdfQ==
+        <!--stackedit_data:
+eyJoaXN0b3J5IjpbMTIxNDIwNDA3MV19
 -->
       
 
@@ -216,15 +207,11 @@ eyJoaXN0b3J5IjpbMjgzMjAwODM1LDEzNzIwODIxNTFdfQ==
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">k8s</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">cache</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">volume</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color3">subPath</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">pipeline</a>
         		</li>
       		
 		</ul>
@@ -280,7 +267,7 @@ eyJoaXN0b3J5IjpbMjgzMjAwODM1LDEzNzIwODIxNTFdfQ==
     <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2019/11/29/k8s/subPath/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2019/12/02/k8s/cache/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,8 +282,8 @@ eyJoaXN0b3J5IjpbMjgzMjAwODM1LDEzNzIwODIxNTFdfQ==
 <nav id="article-nav">
   
   
-    <a href="/2019/11/25/shell/commands/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Shell Common Commands</div>
+    <a href="/2019/12/01/k8s/subPath/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">k8s pvc subPath</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,7 +322,7 @@ eyJoaXN0b3J5IjpbMjgzMjAwODM1LDEzNzIwODIxNTFdfQ==
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Fri Nov 29 2019 04:32:29 GMT+0000",
+  id: "Mon Dec 02 2019 11:41:02 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -457,6 +444,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
               </li>
              
@@ -485,19 +480,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">spring boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">mysql</a>
               </li>
              
               <li class="article-tag-list-item">
