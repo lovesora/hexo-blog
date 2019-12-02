@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>The Cache of React Pipeline | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存，cache 我们试过很多种: ebs, efs, s3， The cache of CRA webpack build cache">
+  <meta name="description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存，cache 我们试过很多种: ebs, efs, s3，最开始我们尝试过缓存 node_modules， The cache of CRA webpack build cache">
 <meta name="keywords" content="cache,pipeline">
 <meta property="og:type" content="article">
 <meta property="og:title" content="The Cache of React Pipeline">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;12&#x2F;02&#x2F;k8s&#x2F;cache&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存，cache 我们试过很多种: ebs, efs, s3， The cache of CRA webpack build cache">
+<meta property="og:description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存，cache 我们试过很多种: ebs, efs, s3，最开始我们尝试过缓存 node_modules， The cache of CRA webpack build cache">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-02T03:47:59.917Z">
+<meta property="og:updated_time" content="2019-12-02T03:48:33.041Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -164,12 +164,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Build-Cache"><a href="#Build-Cache" class="headerlink" title="Build Cache"></a>Build Cache</h2><p>我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。</p>
-<p>基本思路就是每次 <code>build</code> 之前 <code>restore</code> 上次的缓存，构建完成后 <code>rebuild</code> 当前缓存，<code>cache</code> 我们试过很多种: <code>ebs</code>, <code>efs</code>, <code>s3</code>，</p>
+<p>基本思路就是每次 <code>build</code> 之前 <code>restore</code> 上次的缓存，构建完成后 <code>rebuild</code> 当前缓存，<code>cache</code> 我们试过很多种: <code>ebs</code>, <code>efs</code>, <code>s3</code>，最开始我们尝试过缓存 <code>node_modules</code>，</p>
 <h3 id="The-cache-of-CRA"><a href="#The-cache-of-CRA" class="headerlink" title="The cache of CRA"></a>The cache of CRA</h3><blockquote>
 <p><a href="https://webpack.js.org/configuration/other-options/#cache" target="_blank" rel="noopener">webpack build cache</a></p>
 </blockquote>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI5OTc0NzQ2OF19
+eyJoaXN0b3J5IjpbLTExMDIxNTE4MjRdfQ==
 -->
       
 
@@ -439,14 +439,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">k8s</a>
               </li>
              
@@ -456,6 +448,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">subPath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">pipeline</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,10 +499,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sketch</a>
               </li>
              
@@ -511,19 +507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -567,7 +559,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -635,14 +643,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">性能优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">array</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">angular</a>
               </li>
              
@@ -659,15 +659,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">upgrade</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color1">route</a>
               </li>
              
               <li class="article-tag-list-item">
