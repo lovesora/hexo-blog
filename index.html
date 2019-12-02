@@ -168,14 +168,15 @@
 <p>基本思路就是每次 <code>build</code> 之前 <code>restore</code> 上次的缓存，构建完成后 <code>rebuild</code> 当前缓存。</p>
 <p><code>cache</code> 我们试过几种种:</p>
 <ul>
-<li>node 上的 <code>volume</code>： ebs(RWO), efs(RWX)等</li>
+<li>node 上的 <code>volume</code>： EBS(RWO), EFS(RWX)等</li>
 <li>s3</li>
 </ul>
+<p>EBS只支持 <code>ReadWriteOnly</code>, EFS支持 <code>ReadWriteMany</code>，</p>
 <h3 id="The-cache-of-CRA"><a href="#The-cache-of-CRA" class="headerlink" title="The cache of CRA"></a>The cache of CRA</h3><blockquote>
 <p><a href="https://webpack.js.org/configuration/other-options/#cache" target="_blank" rel="noopener">webpack build cache</a></p>
 </blockquote>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDAyNzg2NzAzXX0=
+eyJoaXN0b3J5IjpbLTMxMDc3NjM5NF19
 -->
       
 
