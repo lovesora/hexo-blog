@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.lovesora.pro">
-  <title>k8s/docker | lovesora&#39;s blog</title>
+  <title>Differences about Docker in k8s | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: Differences about Docker in k8sdate: 2019-12-03 15:50:36tag">
-<meta name="keywords" content="front-end architecture">
+  <meta name="description" content="Difference between Docker ENTRYPOINT and Kubernetes container spec COMMANDKubernetes provides us with multiple options on how to use these commands: When you override the default Entrypoint and Cmd in">
+<meta name="keywords" content="k8s,docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="k8s&#x2F;docker">
+<meta property="og:title" content="Differences about Docker in k8s">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;12&#x2F;03&#x2F;k8s&#x2F;docker&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="title: Differences about Docker in k8sdate: 2019-12-03 15:50:36tag">
+<meta property="og:description" content="Difference between Docker ENTRYPOINT and Kubernetes container spec COMMANDKubernetes provides us with multiple options on how to use these commands: When you override the default Entrypoint and Cmd in">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T07:51:22.394Z">
+<meta property="og:updated_time" content="2019-12-03T07:52:36.352Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -150,24 +150,29 @@
         
   
     <h1 class="article-title" itemprop="name">
-      k8s/docker
+      Differences about Docker in k8s
     </h1>
   
 
         
         <a href="/2019/12/03/k8s/docker/" class="archive-article-date">
-  	<time datetime="2019-12-03T07:51:22.394Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
+  	<time datetime="2019-12-03T15:50:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: Differences about Docker in k8s<br>date: 2019-12-03 15:50:36<br>tag</p>
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTA4Njc2OTcxMV19
--->
+        <h2 id="Difference-between-Docker-ENTRYPOINT-and-Kubernetes-container-spec-COMMAND"><a href="#Difference-between-Docker-ENTRYPOINT-and-Kubernetes-container-spec-COMMAND" class="headerlink" title="Difference between Docker ENTRYPOINT and Kubernetes container spec COMMAND"></a>Difference between Docker ENTRYPOINT and Kubernetes container spec COMMAND</h2><p>Kubernetes provides us with multiple options on how to use these commands:</p>
+<p>When you override the default Entrypoint and Cmd in Kubernetes .yaml file, these rules apply:</p>
+<ul>
+<li>If you do not supply command or args for a Container, the defaults defined in the Docker image are used.</li>
+<li>If you supply a command but no args for a Container, only the supplied command is used. The default EntryPoint and the default Cmd defined in the Docker image are ignored.</li>
+<li>If you supply only args for a Container, the default Entrypoint defined in the Docker image is run with the args that you supplied.</li>
+<li>If you supply a command and args, the default Entrypoint and the default Cmd defined in the Docker image are ignored. Your command is run with your args.<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTE1MTczNTI0OTFdfQ==</li>
+<li>-&gt;</li>
+</ul>
+
       
 
       
@@ -206,6 +211,21 @@ eyJoaXN0b3J5IjpbMTA4Njc2OTcxMV19
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">k8s</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -311,7 +331,7 @@ eyJoaXN0b3J5IjpbMTA4Njc2OTcxMV19
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Tue Dec 03 2019 07:51:22 GMT+0000",
+  id: "Tue Dec 03 2019 15:50:36 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -441,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
               </li>
              
@@ -486,10 +510,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">

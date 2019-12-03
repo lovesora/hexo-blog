@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="lovesora&#39;s blog">
 <meta property="og:description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存。 cache 我们试过几种种:  node 上的 volume： EBS(RWO), EFS(RWX)等 s3  EBS只支持 ReadWriteOnly, EFS支持 Read">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-03T07:51:22.394Z">
+<meta property="og:updated_time" content="2019-12-03T07:52:36.352Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -176,7 +176,7 @@
 
 <h3 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h3><ul>
 <li><a href="https://webpack.js.org/configuration/other-options/#cache" target="_blank" rel="noopener">webpack build cache</a></li>
-<li><a href="https://github.com/tektoncd/pipeline/tree/master/docs" target="_blank" rel="noopener">tekton</a><br>&lt;!–stackedit_data:<h1 id="eyJoaXN0b3J5IjpbLTEzMTYxMjgwMTMsLTE1MjI3MDAzNDJdfQ"><a href="#eyJoaXN0b3J5IjpbLTEzMTYxMjgwMTMsLTE1MjI3MDAzNDJdfQ" class="headerlink" title="eyJoaXN0b3J5IjpbLTEzMTYxMjgwMTMsLTE1MjI3MDAzNDJdfQ"></a>eyJoaXN0b3J5IjpbLTEzMTYxMjgwMTMsLTE1MjI3MDAzNDJdfQ</h1></li>
+<li><a href="https://github.com/tektoncd/pipeline/tree/master/docs" target="_blank" rel="noopener">tekton</a><br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTc3NDQ4MzMyNiwtMTMxNjEyODAxMywtMT<br>UyMjcwMDM0Ml19</li>
 <li>-&gt;</li>
 </ul>
 
@@ -301,7 +301,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          k8s/docker
+          Differences about Docker in k8s
         
       </div>
     </a>
@@ -477,6 +477,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">mac</a>
               </li>
              
@@ -522,10 +526,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">shortcut</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
