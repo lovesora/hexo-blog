@@ -6,21 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.lovesora.pro">
-  <title>github pages tips | lovesora&#39;s blog</title>
+  <title>lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="自定义域名 settings -&amp;gt; github pages  设置一条CNAME的域名解析记录值为 xxx.github.io  在项目根路径中添加文件 CNAME, 添加一行记录，不然每次git提交都会重置GitHub pages域名配置   1blog.lovesora.pro">
-<meta name="keywords" content="github,pageg">
-<meta property="og:type" content="article">
-<meta property="og:title" content="github pages tips">
-<meta property="og:url" content="blog.lovesora.pro&#x2F;2018&#x2F;05&#x2F;28&#x2F;open-source&#x2F;github&#x2F;git-page&#x2F;index.html">
+  <meta name="description" content="a front-end developer&amp;apos;s blog">
+<meta name="keywords" content="front-end architecture">
+<meta property="og:type" content="website">
+<meta property="og:title" content="lovesora&#39;s blog">
+<meta property="og:url" content="blog.lovesora.pro&#x2F;page&#x2F;6&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="自定义域名 settings -&amp;gt; github pages  设置一条CNAME的域名解析记录值为 xxx.github.io  在项目根路径中添加文件 CNAME, 添加一行记录，不然每次git提交都会重置GitHub pages域名配置   1blog.lovesora.pro">
+<meta property="og:description" content="a front-end developer&amp;apos;s blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;github&#x2F;pages.png">
-<meta property="og:image" content="&#x2F;assets&#x2F;images&#x2F;github&#x2F;dns.png">
-<meta property="og:updated_time" content="2019-12-03T09:18:57.608Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="&#x2F;assets&#x2F;images&#x2F;github&#x2F;pages.png">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
   
@@ -146,70 +142,40 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-open-source/github/git-page" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-vcs/git/git-cammand" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      github pages tips
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/25/vcs/git/git-cammand/">git常用命令</a>
     </h1>
   
 
         
-        <a href="/2018/05/28/open-source/github/git-page/" class="archive-article-date">
-  	<time datetime="2018-05-28T02:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+        <a href="/2018/05/25/vcs/git/git-cammand/" class="archive-article-date">
+  	<time datetime="2018-05-25T22:08:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="自定义域名"><a href="#自定义域名" class="headerlink" title="自定义域名"></a>自定义域名</h2><ul>
-<li><p>settings -&gt; github pages<br><img src="/assets/images/github/pages.png" alt="github pages"></p>
-</li>
-<li><p>设置一条CNAME的域名解析记录值为 <code>xxx.github.io</code><br><img src="/assets/images/github/dns.png" alt="dns"></p>
-</li>
-<li><p>在项目根路径中添加文件 <code>CNAME</code>, 添加一行记录，不然每次git提交都会重置GitHub pages域名配置</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">blog.lovesora.pro</span></pre></td></tr></table></figure>
+        <h2 id="git检出远程分支"><a href="#git检出远程分支" class="headerlink" title="git检出远程分支"></a>git检出远程分支</h2><p><code>git checkout -b localBranch remote/branchName</code></p>
+<h2 id="回退到制定版本"><a href="#回退到制定版本" class="headerlink" title="回退到制定版本"></a>回退到制定版本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git <span class="built_in">log</span> <span class="comment">#查看版本提交日志</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git reset --hard 61e0e8b94667afe99c8dcd4f954ad69d0d6f49e8</span></pre></td></tr></table></figure>
+
+<h2 id="列出远程tag列表"><a href="#列出远程tag列表" class="headerlink" title="列出远程tag列表"></a>列出远程tag列表</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git ls-remote --tag</span></pre></td></tr></table></figure>
+
+<h2 id="检出所有远程分支"><a href="#检出所有远程分支" class="headerlink" title="检出所有远程分支"></a>检出所有远程分支</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> branch <span class="keyword">in</span> $(git branch --all | grep <span class="string">'^\s*remotes'</span> | egrep --invert-match <span class="string">'(:?HEAD|master)$'</span>); <span class="keyword">do</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    git branch --track <span class="string">"<span class="variable">$&#123;branch##*/&#125;</span>"</span> <span class="string">"<span class="variable">$branch</span>"</span> 2&gt;/dev/null</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">done</span></span></pre></td></tr></table></figure>
+
+<h2 id="删除所有远程tag"><a href="#删除所有远程tag" class="headerlink" title="删除所有远程tag"></a>删除所有远程tag</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># xargs -p 可打印出将执行的命令</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">git tag | xargs -n1 git push origin --delete</span></pre></td></tr></table></figure>
 
 
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" target="_blank" rel="noopener" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢老板~(≧▽≦)/~<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/images/reward/alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/assets/images/reward/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -220,11 +186,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color1">pageg</a>
+        			<a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag article-tag-list-link color4">cli</a>
         		</li>
       		
 		</ul>
@@ -233,84 +199,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/25/vcs/git/git-cammand/">ALL >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" target="_blank" rel="noopener" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" target="_blank" rel="noopener" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" target="_blank" rel="noopener" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;" target="_blank" rel="noopener"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:blog.lovesora.pro/2018/05/28/open-source/github/git-page/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          angular v5升级至v6
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">angular疑难杂症</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -330,31 +228,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-
-  
-  <div id="gitment-ctn"></div>
-<link rel="stylesheet" href="//lovesora.github.io/gitment/style/default.css">
-<script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-  id: "Mon May 28 2018 02:08:11 GMT+0000",
-  owner: 'lovesora',
-  repo: 'hexo-blog',
-  oauth: {
-    client_id: 'a99e18411625212e1e3b',
-    client_secret: '36f116a53a0843a1e3d0cd73e4ccef421c12ea1c',
-  },
-})
-gitment.render('gitment-ctn')
-</script>
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    </nav>
   
 
 
@@ -377,8 +256,8 @@ gitment.render('gitment-ctn')
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
