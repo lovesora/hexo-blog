@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="blog.lovesora.pro">
   <title>Shell Common Commands | lovesora&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Volume1# Show Mounted Hard Drives Partition2df -aTh  Task1# parallel run task2wget url1 &amp;amp;3wget url2 &amp;amp;4wait  1# calc command time2time cp a_large_file .  Compress1# tar zip2tar -czf &#x2F;path&#x2F;to&#x2F;ar">
+  <meta name="description" content="Traverse1# read lines from file2while read line; do3  echo $line4done &amp;lt; &#x2F;path&#x2F;to&#x2F;file  Volume1# Show Mounted Hard Drives Partition2df -aTh  Task1# parallel run task2wget url1 &amp;amp;3wget url2 &amp;amp;4">
 <meta name="keywords" content="shell,command">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Shell Common Commands">
 <meta property="og:url" content="blog.lovesora.pro&#x2F;2019&#x2F;11&#x2F;25&#x2F;shell&#x2F;commands&#x2F;index.html">
 <meta property="og:site_name" content="lovesora&#39;s blog">
-<meta property="og:description" content="Volume1# Show Mounted Hard Drives Partition2df -aTh  Task1# parallel run task2wget url1 &amp;amp;3wget url2 &amp;amp;4wait  1# calc command time2time cp a_large_file .  Compress1# tar zip2tar -czf &#x2F;path&#x2F;to&#x2F;ar">
+<meta property="og:description" content="Traverse1# read lines from file2while read line; do3  echo $line4done &amp;lt; &#x2F;path&#x2F;to&#x2F;file  Volume1# Show Mounted Hard Drives Partition2df -aTh  Task1# parallel run task2wget url1 &amp;amp;3wget url2 &amp;amp;4">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-06T06:19:43.559Z">
+<meta property="og:updated_time" content="2019-12-06T06:20:49.020Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="lovesora&#39;s blog" type="application/atom+xml">
@@ -163,7 +163,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show Mounted Hard Drives Partition</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df -aTh</span></pre></td></tr></table></figure>
+        <h2 id="Traverse"><a href="#Traverse" class="headerlink" title="Traverse"></a>Traverse</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># read lines from file</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="built_in">echo</span> <span class="variable">$line</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">done</span> &lt; /path/to/file</span></pre></td></tr></table></figure>
+
+<h2 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show Mounted Hard Drives Partition</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">df -aTh</span></pre></td></tr></table></figure>
 
 <h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># parallel run task</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">wget url1 &amp;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">wget url2 &amp;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">wait</span></span></pre></td></tr></table></figure>
 
@@ -175,10 +177,10 @@
 
 <h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># base</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># echo $&#123;str:start-index&#125; or echo $&#123;str:start-index:length&#125;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">str=<span class="string">'12345'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2&#125;</span> <span class="comment"># 345</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2:1&#125;</span> <span class="comment"># 3</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str: -2&#125;</span> <span class="comment"># 45(there is a space beteew ':' and '-')</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># cut</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">  <span class="comment"># get Add and Modified files</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">git diff-tree --no-commit-id --name-status -r HEAD | grep <span class="string">'^[AM]'</span> | cut -f 2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># rm last substring</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">filename=path-to-test-dev</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">str=$(<span class="built_in">echo</span> <span class="variable">$&#123;filename%-*&#125;</span>)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># path-to-test</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$str</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># regex</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">[[ <span class="string">"1234"</span> =~ ^12 ]] &amp;&amp; <span class="built_in">echo</span> y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># trim</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">trim</span></span>() &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">local</span> var=<span class="string">"$*"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    var=<span class="string">"<span class="variable">$&#123;var#"$&#123;var%%[![:space:]]*&#125;</span>"</span>&#125;<span class="string">"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line"><span class="string">    var="</span><span class="variable">$&#123;var%"$&#123;var##*[![:space:]]&#125;</span><span class="string">"&#125;"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$var</span>"</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># 123 1221</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line">trim <span class="string">' 123 1221  '</span></span></pre></td></tr></table></figure>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTMzMzA5MzgyMywxNzIxODAxOTYyLC0xMT
-Y5OTYxMzkwLC0xMDQ2OTEzMzM5LC04MzE2MDQyNzEsMTk2Njk3
-MDU5NSwtMTMzODk5ODcwNSwtMTkyNjkwMzM2OCwtMzM2MDcxMi
-wyMTI2MjUwMzc3LDM1OTI4MzkwM119
+eyJoaXN0b3J5IjpbODY2ODU4NTUwLDE3MjE4MDE5NjIsLTExNj
+k5NjEzOTAsLTEwNDY5MTMzMzksLTgzMTYwNDI3MSwxOTY2OTcw
+NTk1LC0xMzM4OTk4NzA1LC0xOTI2OTAzMzY4LC0zMzYwNzEyLD
+IxMjYyNTAzNzcsMzU5MjgzOTAzXX0=
 -->
       
 
@@ -529,11 +531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color4">faq</a>
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">flow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,6 +687,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color5">component</a>
               </li>
              
@@ -698,10 +704,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color2">sdkman</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" target="_blank" rel="noopener" class="js-tag color3">os</a>
               </li>
             
             <div class="clearfix"></div>
