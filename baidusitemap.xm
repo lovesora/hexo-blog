@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2018/05/28/open-source/github/git-page/</loc>
+    <loc>blog.lovesora.pro/2018/05/28/vcs/git/git-flow/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/11/25/shell/commands/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/11/22/web/spec/</loc>
@@ -16,22 +13,10 @@
     <loc>blog.lovesora.pro/2019/11/21/pipeline/tekton/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/27/linux/centos/ssl/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/11/19/mac/new-os/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
     <loc>blog.lovesora.pro/2018/05/25/vcs/git/git-cammand/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/28/vcs/git/git-flow/</loc>
+    <loc>blog.lovesora.pro/2019/11/25/shell/commands/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/12/03/vcs/git/git-shallow-clone/</loc>
@@ -47,6 +32,21 @@
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/04/09/blog/hexo/plugin/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/08/03/design/sketch/shortcut/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/31/devops/docker/basis/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/26/devops/nginx/config/</loc>
@@ -88,10 +88,25 @@
     <loc>blog.lovesora.pro/2018/05/29/javascript/exports/xlsx/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
+    <loc>blog.lovesora.pro/2018/07/27/linux/centos/ssl/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/28/open-source/github/git-page/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
     <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/12/01/k8s/subPath/</loc>
+    <lastmod>2019-12-09</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/11/19/mac/new-os/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</loc>
@@ -104,21 +119,6 @@
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/10/blog/hexo/hexo-gitment/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/04/09/blog/hexo/plugin/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/08/03/design/sketch/shortcut/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/31/devops/docker/basis/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
-    <lastmod>2019-12-09</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
     <lastmod>2019-12-09</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>
