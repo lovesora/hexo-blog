@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2019/11/22/web/spec/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/14/vcs/git/git-stash/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/install/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
     <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/12/01/k8s/subPath/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/11/19/mac/new-os/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/11/25/shell/commands/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/11/22/web/spec/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/11/21/pipeline/tekton/</loc>
@@ -109,16 +109,16 @@
     <loc>blog.lovesora.pro/2019/12/03/vcs/git/git-shallow-clone/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/01/k8s/subPath/</loc>
+    <loc>blog.lovesora.pro/2018/06/14/vcs/git/git-stash/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/11/19/mac/new-os/</loc>
+    <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/install/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/11/25/shell/commands/</loc>
+    <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
+    <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>
@@ -139,13 +139,13 @@
     <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
+    <lastmod>2019-12-12</lastmod>
+  </url>  <url>
     <loc>blog.lovesora.pro/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/</loc>
-    <lastmod>2019-12-12</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
     <lastmod>2019-12-12</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/</loc>
