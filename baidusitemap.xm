@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
+    <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</loc>
@@ -20,12 +20,6 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/11/21/pipeline/tekton/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/26/blog/hexo/hexo-faq/</loc>
@@ -79,7 +73,7 @@
     <loc>blog.lovesora.pro/2019/12/03/k8s/docker/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
+    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/05/21/javascript/dynamic/font/</loc>
@@ -148,13 +142,19 @@
     <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
     <loc>blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
+    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
     <loc>blog.lovesora.pro/2019/12/16/bazel/basic/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>
 </urlset>
