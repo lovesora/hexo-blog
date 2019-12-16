@@ -145,6 +145,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/typescript/tsconfig" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/09/fe/typescript/tsconfig/">tsconfig 浅析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/09/fe/typescript/tsconfig/" class="archive-article-date">
+  	<time datetime="2018-08-09T11:24:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="相对-vs-非相对模块导入"><a href="#相对-vs-非相对模块导入" class="headerlink" title="相对 vs. 非相对模块导入"></a>相对 vs. 非相对模块导入</h3><p>根据模块引用是相对的还是非相对的，模块导入会以不同的方式解析。</p>
+<p>相对导入是以/，./或../开头的。 下面是一些例子：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Entry <span class="keyword">from</span> <span class="string">"./components/Entry"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; DefaultHeaders &#125; <span class="keyword">from</span> <span class="string">"../constants/http"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"/mod"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>所有其它形式的导入被当作非相对的。 下面是一些例子：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> $ <span class="keyword">from</span> <span class="string">"jQuery"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Component &#125; <span class="keyword">from</span> <span class="string">"@angular/core"</span>;</span><br></pre></td></tr></table></figure>
+
+<p>相对导入在解析时是相对于导入它的文件，并且不能解析为一个外部模块声明。 你应该为你自己写的模块使用相对导入，这样能确保它们在运行时的相对位置。</p>
+<p>非相对模块的导入可以相对于 <code>baseUrl</code> 或通过下文会讲到的路径映射来进行解析。 它们还可以被解析成 <a href="https://www.tslang.cn/docs/handbook/modules.html#ambient-modules" target="_blank" rel="noopener">外部模块声明</a>。 使用非相对路径来导入你的外部依赖</p>
+<h3 id="路径映射"><a href="#路径映射" class="headerlink" title="路径映射"></a>路径映射</h3><p>有时模块不是直接放在<code>baseUrl</code>下面。 比如，充分 <code>&quot;jquery&quot;</code>模块地导入，在运行时可能被解释为 <code>&quot;node_modules/jquery/dist/jquery.slim.min.js&quot;</code>。加载器使用映射配置来将模块名映射到运行时的文件。</p>
+<p>TypeScript编译器通过使用tsconfig.json文件里的”paths”来支持这样的声明映射。 下面是一个如何指定 jquery的”paths”的例子。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"compilerOptions"</span>: &#123;</span><br><span class="line">    <span class="string">"baseUrl"</span>: <span class="string">"."</span>, <span class="comment">// This must be specified if "paths" is.</span></span><br><span class="line">    <span class="string">"paths"</span>: &#123;</span><br><span class="line">      <span class="string">"jquery"</span>: [<span class="string">"node_modules/jquery/dist/jquery"</span>] <span class="comment">// 此处映射是相对于"baseUrl"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意<code>&quot;paths&quot;</code>是相对于<code>&quot;baseUrl&quot;</code>进行解析。 如果 <code>&quot;baseUrl&quot;</code>被设置成了除<code>&quot;.&quot;</code>外的其它值，比如<code>tsconfig.json</code>所在的目录，那么映射必须要做相应的改变。<br>如果你在上例中设置了 <code>&quot;baseUrl&quot;: &quot;./src&quot;</code>，那么<code>jquery</code>应该映射到<code>&quot;../node_modules/jquery/dist/jquery&quot;</code>。</p>
+<h3 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h3><ul>
+<li><a href="https://www.tslang.cn/docs/handbook/module-resolution.html" target="_blank" rel="noopener">tslang.cn</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/21629069" target="_blank" rel="noopener">zhihu</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ts</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/09/fe/typescript/tsconfig/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/angular/组件/开源架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1082,89 +1173,6 @@
 
 
   
-    <article id="post-fe/mobile/ios兼容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/">IOS移动端兼容性</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/" class="archive-article-date">
-  	<time datetime="2018-07-03T20:40:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Safari如何阻止“橡皮筋效果”？"><a href="#Safari如何阻止“橡皮筋效果”？" class="headerlink" title="Safari如何阻止“橡皮筋效果”？"></a>Safari如何阻止“橡皮筋效果”？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.body.addEventListener(<span class="string">'touchmove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//阻止默认的处理方式(阻止下拉滑动的效果)</span></span><br><span class="line">  e.preventDefault();</span><br><span class="line">&#125;, &#123;</span><br><span class="line">  <span class="comment">//passive 参数不能省略，用来兼容ios和android</span></span><br><span class="line">  passive: <span class="literal">false</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p><strong>Refs</strong></p>
-<ul>
-<li><a href="https://link.zhihu.com/?target=https%3A//segmentfault.com/a/1190000014134234">阻止微信浏览器下拉滑动效果（ios11.3 橡皮筋效果）</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">mobile</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">compat</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1266,6 +1274,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">bazel</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">build cache</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">cache</a>
