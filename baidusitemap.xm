@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</loc>
+    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</loc>
@@ -20,6 +20,36 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/11/21/pipeline/tekton/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/26/blog/hexo/hexo-faq/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/04/10/blog/hexo/hexo-gitment/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2019/04/09/blog/hexo/plugin/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/08/03/design/sketch/shortcut/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/31/devops/docker/basis/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
+    <lastmod>2019-12-16</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/26/devops/nginx/config/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/31/devops/shell/basis/</loc>
@@ -46,7 +76,7 @@
     <loc>blog.lovesora.pro/2019/04/29/fe/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/array/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
+    <loc>blog.lovesora.pro/2019/12/03/k8s/docker/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
@@ -61,7 +91,7 @@
     <loc>blog.lovesora.pro/2018/07/27/linux/centos/ssl/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/03/k8s/docker/</loc>
+    <loc>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</loc>
@@ -122,36 +152,6 @@
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/beginner/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/07/05/be/spring-boot/mysql/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/26/blog/hexo/hexo-faq/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/04/10/blog/hexo/hexo-gitment/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2019/04/09/blog/hexo/plugin/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/08/03/design/sketch/shortcut/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/31/devops/docker/basis/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
-    <lastmod>2019-12-16</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/26/devops/nginx/config/</loc>
     <lastmod>2019-12-16</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/12/16/bazel/basic/</loc>
