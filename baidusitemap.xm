@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
+    <loc>blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</loc>
+    <loc>blog.lovesora.pro/2019/12/16/bazel/basic/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/12/03/k8s/docker/</loc>
@@ -16,7 +16,7 @@
     <loc>blog.lovesora.pro/2019/11/19/mac/new-os/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/11/25/shell/commands/</loc>
+    <loc>blog.lovesora.pro/2019/12/17/shell/commands/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/11/22/web/spec/</loc>
@@ -121,7 +121,7 @@
     <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/16/bazel/basic/</loc>
+    <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-12-17</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>

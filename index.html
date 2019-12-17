@@ -145,6 +145,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-shell/commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/17/shell/commands/">Shell Common Commands</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/17/shell/commands/" class="archive-article-date">
+  	<time datetime="2019-12-17T11:12:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Traverse"><a href="#Traverse" class="headerlink" title="Traverse"></a>Traverse</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read lines from file</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line"><span class="keyword">done</span> &lt; /path/to/file</span><br></pre></td></tr></table></figure>
+
+<h2 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show Mounted Hard Drives Partition</span></span><br><span class="line">df -aTh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parallel run task</span></span><br><span class="line">wget url1 &amp;</span><br><span class="line">wget url2 &amp;</span><br><span class="line"><span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># calc command time</span></span><br><span class="line">time cp a_large_file .</span><br></pre></td></tr></table></figure>
+
+<h2 id="Compress"><a href="#Compress" class="headerlink" title="Compress"></a>Compress</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tar zip</span></span><br><span class="line">tar -czf /path/to/archive.zip /src/to/be/zipped</span><br><span class="line"></span><br><span class="line"><span class="comment"># tar unzip</span></span><br><span class="line"><span class="comment"># notice: This will be extracted to /src/to/be/zipped</span></span><br><span class="line"><span class="comment"># not /zipped</span></span><br><span class="line">tar -xzf /path/to/archive.zip -C /</span><br></pre></td></tr></table></figure>
+
+<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check whether the site is healthy</span></span><br><span class="line">curl -<span class="keyword">if</span> https://xxx.xx/health-check</span><br><span class="line"></span><br><span class="line"><span class="comment"># curl: (48) An unknown option was passed in to libcurl</span></span><br><span class="line">apk add curl-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># how to test gateway</span></span><br><span class="line">kubectl -n istio-system port-forward svc/istio-ingressgateway 3000:80</span><br><span class="line">curl -H <span class="string">"Host: www.xxx.com"</span> http://localhost:3000</span><br></pre></td></tr></table></figure>
+
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># base</span></span><br><span class="line"><span class="comment"># echo $&#123;str:start-index&#125; or echo $&#123;str:start-index:length&#125;</span></span><br><span class="line">str=<span class="string">'12345'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2&#125;</span> <span class="comment"># 345</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2:1&#125;</span> <span class="comment"># 3</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str: -2&#125;</span> <span class="comment"># 45(there is a space beteew ':' and '-')</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cut</span></span><br><span class="line">  <span class="comment"># get Add and Modified files</span></span><br><span class="line">git diff-tree --no-commit-id --name-status -r HEAD | grep <span class="string">'^[AM]'</span> | cut -f 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># rm last substring</span></span><br><span class="line">filename=path-to-test-dev</span><br><span class="line">str=$(<span class="built_in">echo</span> <span class="variable">$&#123;filename%-*&#125;</span>)</span><br><span class="line"><span class="comment"># path-to-test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># regex</span></span><br><span class="line">[[ <span class="string">"1234"</span> =~ ^12 ]] &amp;&amp; <span class="built_in">echo</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment"># trim</span></span><br><span class="line"><span class="function"><span class="title">trim</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> var=<span class="string">"$*"</span></span><br><span class="line">    var=<span class="string">"<span class="variable">$&#123;var#"$&#123;var%%[![:space:]]*&#125;</span>"</span>&#125;<span class="string">"</span></span><br><span class="line"><span class="string">    var="</span><span class="variable">$&#123;var%"$&#123;var##*[![:space:]]&#125;</span><span class="string">"&#125;"</span></span><br><span class="line">    <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$var</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 123 1221</span></span><br><span class="line">trim <span class="string">' 123 1221  '</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get json value</span></span><br><span class="line">JSON=<span class="string">'[&#123;"a": "line\nnewline"&#125;, &#123;"a": "line1\nnewline"&#125;]'</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$line</span> | base64 --decode</span><br><span class="line"><span class="keyword">done</span> &lt; &lt;(<span class="built_in">echo</span> <span class="variable">$JSON</span> | jq -r <span class="string">".[].a | @base64"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to JSON</span></span><br><span class="line">jq -aRs . &lt;&lt;&lt; <span class="string">'line</span></span><br><span class="line"><span class="string">newline'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># use variable as JSON string</span></span><br><span class="line">JSON_STRING=<span class="string">'&#123;"bucketname":"'</span><span class="string">"<span class="variable">$BUCKET_NAME</span>"</span><span class="string">'","objectname":"'</span><span class="string">"<span class="variable">$OBJECT_NAME</span>"</span><span class="string">'","targetlocation":"'</span><span class="string">"<span class="variable">$TARGET_LOCATION</span>"</span><span class="string">'"&#125;'</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date -D <span class="string">"2019-12-11T07:25:34Z"</span> <span class="string">"+%Y-%m-%d %H:%M:%S"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Process-Subsititution"><a href="#Process-Subsititution" class="headerlink" title="Process Subsititution"></a>Process Subsititution</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grammar</span></span><br><span class="line"><span class="comment"># &lt;(command) 或 &gt;(command)</span></span><br><span class="line">cat &lt;(ls)</span><br><span class="line">ls &gt; &gt;(cat)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r line; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$line</span>"</span></span><br><span class="line"><span class="keyword">done</span> &lt; &lt;(ls)</span><br></pre></td></tr></table></figure>
+<!--stackedit_data:
+eyJoaXN0b3J5IjpbOTgyMzg5NjY5LC0xOTc4NjA0OTg3LDU3MD
+g0MTk5NCwtMjQ2ODA2MDgwLC0yMTU3MzYxNDUsODY2ODU4NTUw
+LDE3MjE4MDE5NjIsLTExNjk5NjEzOTAsLTEwNDY5MTMzMzksLT
+gzMTYwNDI3MSwxOTY2OTcwNTk1LC0xMzM4OTk4NzA1LC0xOTI2
+OTAzMzY4LC0zMzYwNzEyLDIxMjYyNTAzNzcsMzU5MjgzOTAzXX
+0=
+-->
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">command</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/17/shell/commands/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-bazel/basic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -557,108 +660,6 @@ gzMjAwODM1LDEzNzIwODIxNTFdfQ==
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/01/k8s/subPath/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shell/commands" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/25/shell/commands/">Shell Common Commands</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/25/shell/commands/" class="archive-article-date">
-  	<time datetime="2019-11-25T15:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Traverse"><a href="#Traverse" class="headerlink" title="Traverse"></a>Traverse</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># read lines from file</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="variable">$line</span></span><br><span class="line"><span class="keyword">done</span> &lt; /path/to/file</span><br></pre></td></tr></table></figure>
-
-<h2 id="Volume"><a href="#Volume" class="headerlink" title="Volume"></a>Volume</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Show Mounted Hard Drives Partition</span></span><br><span class="line">df -aTh</span><br></pre></td></tr></table></figure>
-
-<h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># parallel run task</span></span><br><span class="line">wget url1 &amp;</span><br><span class="line">wget url2 &amp;</span><br><span class="line"><span class="built_in">wait</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># calc command time</span></span><br><span class="line">time cp a_large_file .</span><br></pre></td></tr></table></figure>
-
-<h2 id="Compress"><a href="#Compress" class="headerlink" title="Compress"></a>Compress</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tar zip</span></span><br><span class="line">tar -czf /path/to/archive.zip /src/to/be/zipped</span><br><span class="line"></span><br><span class="line"><span class="comment"># tar unzip</span></span><br><span class="line"><span class="comment"># notice: This will be extracted to /src/to/be/zipped</span></span><br><span class="line"><span class="comment"># not /zipped</span></span><br><span class="line">tar -xzf /path/to/archive.zip -C /</span><br></pre></td></tr></table></figure>
-
-<h2 id="Network"><a href="#Network" class="headerlink" title="Network"></a>Network</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># check whether the site is healthy</span></span><br><span class="line">curl -<span class="keyword">if</span> https://xxx.xx/health-check</span><br><span class="line"></span><br><span class="line"><span class="comment"># curl: (48) An unknown option was passed in to libcurl</span></span><br><span class="line">apk add curl-dev</span><br><span class="line"></span><br><span class="line"><span class="comment"># how to test gateway</span></span><br><span class="line">kubectl -n istio-system port-forward svc/istio-ingressgateway 3000:80</span><br><span class="line">curl -H <span class="string">"Host: www.xxx.com"</span> http://localhost:3000</span><br></pre></td></tr></table></figure>
-
-<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># base</span></span><br><span class="line"><span class="comment"># echo $&#123;str:start-index&#125; or echo $&#123;str:start-index:length&#125;</span></span><br><span class="line">str=<span class="string">'12345'</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2&#125;</span> <span class="comment"># 345</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str:2:1&#125;</span> <span class="comment"># 3</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;str: -2&#125;</span> <span class="comment"># 45(there is a space beteew ':' and '-')</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># cut</span></span><br><span class="line">  <span class="comment"># get Add and Modified files</span></span><br><span class="line">git diff-tree --no-commit-id --name-status -r HEAD | grep <span class="string">'^[AM]'</span> | cut -f 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># rm last substring</span></span><br><span class="line">filename=path-to-test-dev</span><br><span class="line">str=$(<span class="built_in">echo</span> <span class="variable">$&#123;filename%-*&#125;</span>)</span><br><span class="line"><span class="comment"># path-to-test</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$str</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># regex</span></span><br><span class="line">[[ <span class="string">"1234"</span> =~ ^12 ]] &amp;&amp; <span class="built_in">echo</span> y</span><br><span class="line"></span><br><span class="line"><span class="comment"># trim</span></span><br><span class="line"><span class="function"><span class="title">trim</span></span>() &#123;</span><br><span class="line">    <span class="built_in">local</span> var=<span class="string">"$*"</span></span><br><span class="line">    var=<span class="string">"<span class="variable">$&#123;var#"$&#123;var%%[![:space:]]*&#125;</span>"</span>&#125;<span class="string">"</span></span><br><span class="line"><span class="string">    var="</span><span class="variable">$&#123;var%"$&#123;var##*[![:space:]]&#125;</span><span class="string">"&#125;"</span></span><br><span class="line">    <span class="built_in">echo</span> -n <span class="string">"<span class="variable">$var</span>"</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 123 1221</span></span><br><span class="line">trim <span class="string">' 123 1221  '</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># get json value</span></span><br><span class="line">JSON=<span class="string">'[&#123;"a": "line\nnewline"&#125;, &#123;"a": "line1\nnewline"&#125;]'</span></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> line; <span class="keyword">do</span></span><br><span class="line">	<span class="built_in">echo</span> <span class="variable">$line</span> | base64 --decode</span><br><span class="line"><span class="keyword">done</span> &lt; &lt;(<span class="built_in">echo</span> <span class="variable">$JSON</span> | jq -r <span class="string">".[].a | @base64"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># convert string to JSON</span></span><br><span class="line">jq -aRs . &lt;&lt;&lt; <span class="string">'line</span></span><br><span class="line"><span class="string">newline'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># use variable as JSON string</span></span><br><span class="line">JSON_STRING=<span class="string">'&#123;"bucketname":"'</span><span class="string">"<span class="variable">$BUCKET_NAME</span>"</span><span class="string">'","objectname":"'</span><span class="string">"<span class="variable">$OBJECT_NAME</span>"</span><span class="string">'","targetlocation":"'</span><span class="string">"<span class="variable">$TARGET_LOCATION</span>"</span><span class="string">'"&#125;'</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date -D <span class="string">"2019-12-11T07:25:34Z"</span> <span class="string">"+%Y-%m-%d %H:%M:%S"</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Process-Subsititution"><a href="#Process-Subsititution" class="headerlink" title="Process Subsititution"></a>Process Subsititution</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># grammar</span></span><br><span class="line"><span class="comment"># &lt;(command) 或 &gt;(command)</span></span><br><span class="line">cat &lt;(ls)</span><br><span class="line">ls &gt; &gt;(cat)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r line; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$line</span>"</span></span><br><span class="line"><span class="keyword">done</span> &lt; &lt;(ls)</span><br></pre></td></tr></table></figure>
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE5Nzg2MDQ5ODcsNTcwODQxOTk0LC0yND
-Y4MDYwODAsLTIxNTczNjE0NSw4NjY4NTg1NTAsMTcyMTgwMTk2
-MiwtMTE2OTk2MTM5MCwtMTA0NjkxMzMzOSwtODMxNjA0MjcxLD
-E5NjY5NzA1OTUsLTEzMzg5OTg3MDUsLTE5MjY5MDMzNjgsLTMz
-NjA3MTIsMjEyNjI1MDM3NywzNTkyODM5MDNdfQ==
--->
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">command</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/25/shell/commands/">ALL >></a>
         </p>
       
 
