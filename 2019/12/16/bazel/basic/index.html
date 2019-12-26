@@ -16,7 +16,7 @@
 <meta property="og:description" content="Concepts and Terminology Workspace Repositories Packages Targets files source files generated files   rules   Labels labels belones to only the first parent package(otherwise, it will throw a error “c">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-16T14:22:53.000Z">
-<meta property="article:modified_time" content="2019-12-26T09:08:42.814Z">
+<meta property="article:modified_time" content="2019-12-26T09:10:43.914Z">
 <meta property="article:author" content="Sora Liu">
 <meta property="article:tag" content="bazel">
 <meta property="article:tag" content="build cache">
@@ -184,13 +184,16 @@
 </ul>
 </li>
 </ul>
-<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><blockquote>
+<h2 id="Rules"><a href="#Rules" class="headerlink" title="Rules"></a>Rules</h2><h3 id="Phases"><a href="#Phases" class="headerlink" title="Phases"></a>Phases</h3><blockquote>
+<p>It will be important to understand the three phases of a build (loading, analysis and execution)</p>
+</blockquote>
+<h3 id="Attributes"><a href="#Attributes" class="headerlink" title="Attributes"></a>Attributes</h3><blockquote>
 <ul>
 <li><em>Dependency attributes</em>, such as  <code>attr.label</code>  and  <code>attr.label_list</code>, declare a dependency from the target that owns the attribute to the target whose label appears in the attribute’s value. This kind of attribute forms the basis of the target graph.</li>
 </ul>
 </blockquote>
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ2NzIzNTc0LDQyNTc0MjAsLTYyMTU0ND
+eyJoaXN0b3J5IjpbNjc0MTM5NTY3LDQyNTc0MjAsLTYyMTU0ND
 I5OSwtMjI3NzM5MjUwXX0=
 -->
       
@@ -490,15 +493,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">volume</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">subPath</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
