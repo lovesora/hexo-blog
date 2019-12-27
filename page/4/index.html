@@ -145,6 +145,109 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-be/spring-boot/beginner" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/be/spring-boot/beginner/">Spring Boot Building a RESTful Web Service</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/05/be/spring-boot/beginner/" class="archive-article-date">
+  	<time datetime="2018-07-05T10:14:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><p><code>idea -&gt; new project -&gt; Spring Initializr -&gt; check web/web dependency -&gt; finish</code></p>
+<h2 id="创建VO"><a href="#创建VO" class="headerlink" title="创建VO"></a>创建VO</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sora.rest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Greeting</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String content;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Greeting</span><span class="params">(<span class="keyword">long</span> id, String content)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.content = content;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getContent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> content;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="创建Controller"><a href="#创建Controller" class="headerlink" title="创建Controller"></a>创建Controller</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sora.rest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicLong;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GreetingController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String template = <span class="string">"Hello, %s! Your id is %s"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> AtomicLong counter = <span class="keyword">new</span> AtomicLong();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Greeting <span class="title">greeting</span><span class="params">(@RequestParam(value = <span class="string">"/greeting"</span>, defaultValue = <span class="string">"world"</span>)</span> String name) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Greeting(counter.incrementAndGet(), String.format(template, name, counter.get()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>Press <code>Option + Control + D</code> ，编辑配置，如图所示</p>
+<p><img src="/assets/images/spring/debug-configuration.jpg" alt="configuration"></p>
+<p>再次按下 <code>Option + Control + D</code> ，选择刚才配置的spring boot，启动。</p>
+<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>打开终端，进入项目目录，执行 <code>./mvnw clean package</code></p>
+<h2 id="部署执行"><a href="#部署执行" class="headerlink" title="部署执行"></a>部署执行</h2><ol>
+<li>安装jre</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install java-1.8.0-openjdk</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>将 <code>target</code> 目录下的 <code>jar</code> 文件copy至服务器，执行 <code>java -jar xxxx.jar</code>即可。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">scp target/xxx.jar user@ip:xxx.jar</span><br><span class="line">java -jar xxx.jar</span><br></pre></td></tr></table></figure>
+
+<h2 id="Summery"><a href="#Summery" class="headerlink" title="Summery"></a>Summery</h2><ol>
+<li>创建REST项目需要添加 <code>spring-boot-starter-web</code> 依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>通过注解的方式关联API请求</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射路径，方法，默认值等</span></span><br><span class="line"><span class="meta">@RequestMapping</span></span><br><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射参数</span></span><br><span class="line"><span class="meta">@RequestParam</span></span><br><span class="line"><span class="meta">@RequestBody</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 映射返回值</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><p>-<a href="https://linuxize.com/post/install-java-on-centos-7/" target="_blank" rel="noopener">How to install Java on CentOS 7</a><br>-<a href="http://spring.io/guides/gs/rest-service/#initial" target="_blank" rel="noopener">Building a RESTful Web Service</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring boot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/05/be/spring-boot/beginner/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fe/mobile/ios兼容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1027,138 +1130,6 @@
 
 
   
-    <article id="post-devops/docker/basis" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/31/devops/docker/basis/">docker 基础</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/31/devops/docker/basis/" class="archive-article-date">
-  	<time datetime="2018-05-31T14:30:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>所有命令均在 centOS 7 上执行</p>
-</blockquote>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
-<li>镜像(<code>Image</code>)<ul>
-<li>相当于是一个 root 文件系统</li>
-<li>提供容器运行时所需的程序、库、资源、配置等文件</li>
-<li>还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）</li>
-<li>镜像不包含任何动态数据，其内容在构建之后也不会被改变</li>
-<li>镜像是分层存储的，由多层文件系统联合组成</li>
-<li>镜像构建时，会一层层构建，前一层是后一层的基础。</li>
-<li>每一层构建完就不会再发生改变，后一层上的任何改变只发生在自己这一层。</li>
-</ul>
-</li>
-<li>容器(<code>Container</code>)<ul>
-<li>镜像和容器的关系，就像是面向对象程序设计中的 <code>类</code> 和 <code>实例</code> 一样</li>
-<li>容器的实质是进程</li>
-<li>容器进程运行于属于自己的独立的命名空间</li>
-<li>容器也是使用的是分层存储(<code>容器存储层</code>)</li>
-<li>容器消亡时，容器存储层也随之消亡。因此，任何保存于容器存储层的信息都会随容器删除而丢失。</li>
-<li>容器不应该向其存储层内写入任何数据，容器存储层要保持无状态化</li>
-<li>所有的文件写入操作，都应该使用 <code>数据卷（Volume）</code>、或者绑定宿主目录</li>
-<li>数据卷的生存周期独立于容器，容器消亡，数据卷不会消亡</li>
-</ul>
-</li>
-<li>仓库(Registry)<ul>
-<li>registry/repository:tag</li>
-<li>默认registry地址 <a href="https://hub.docker.com/explore/" target="_blank" rel="noopener">docker hub</a></li>
-<li>默认registry名 <code>library</code></li>
-</ul>
-</li>
-<li>构建(build)<ul>
-<li>Docker 在运行时分为 Docker 引擎（也就是服务端守护进程）和客户端工具</li>
-<li>Docker 的引擎提供了一组 REST API，被称为 Docker Remote API</li>
-<li>而如 docker 命令这样的客户端工具，则是通过这组 API 与 Docker 引擎交互</li>
-<li>虽然表面上我们好像是在本机执行各种 docker 功能，但实际上，一切都是使用的远程调用形式在服务端（Docker 引擎）完成</li>
-<li>也因为这种 C/S 设计，让我们操作远程服务器的 Docker 引擎变得轻而易举</li>
-<li><code>docker build -t nginx:v3 .</code> 中的这个 <code>.</code>，实际上是在指定上下文的目录</li>
-<li>docker build 命令会将该目录下的内容打包交给 Docker 引擎以帮助构建镜像</li>
-<li>一般来说，应该会将 Dockerfile 置于一个空目录下，或者项目根目录下</li>
-<li>如果该目录下没有所需文件，那么应该把所需文件复制一份过来</li>
-<li>如果目录下有些东西确实不希望构建时传给 Docker 引擎，那么可以用 .gitignore 一样的语法写一个 .dockerignore，该文件是用于剔除不需要作为上下文传递给 Docker 引擎的。</li>
-</ul>
-</li>
-</ul>
-<h2 id="Commands"><a href="#Commands" class="headerlink" title="Commands"></a>Commands</h2><h3 id="Image"><a href="#Image" class="headerlink" title="Image"></a>Image</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># pull</span></span><br><span class="line">docker pull [选项] [Docker Registry 地址[:端口号]/]仓库名[:标签]</span><br><span class="line"></span><br><span class="line">docker pull ubuntu:16.04</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># image</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 列出镜像</span></span><br><span class="line">docker image ls</span><br><span class="line"><span class="comment"># 列出所有镜像(包括中间层镜像)</span></span><br><span class="line">docker image ls -a</span><br><span class="line"><span class="comment"># 列出指定仓库镜像</span></span><br><span class="line">docker image ls ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment"># 虚悬镜像(dangling image)</span></span><br><span class="line">docker image ls -f dangling=<span class="literal">true</span></span><br><span class="line"><span class="comment"># 删除虚悬镜像(dangling image)</span></span><br><span class="line">docker image prune</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除镜像</span></span><br><span class="line">docker image rm [选项] &lt;镜像1&gt; [&lt;镜像2&gt; ...]</span><br><span class="line">docker image rm [Image ID]</span><br><span class="line">docker image rm centos</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># system</span></span><br><span class="line"><span class="comment"># 查看docker所占空间</span></span><br><span class="line">docker system df</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">history</span> imageName:imageTag</span><br></pre></td></tr></table></figure>
-
-<h3 id="commit"><a href="#commit" class="headerlink" title="commit"></a><code>commit</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker commit(慎用)(臃肿) 生成的镜像也被称为黑箱镜像</span></span><br><span class="line">docker commit \</span><br><span class="line">  --author <span class="string">'liuxin'</span> \</span><br><span class="line">  --message <span class="string">'commit msg'</span> \</span><br><span class="line">  containerName \</span><br><span class="line">  imageName:imageTag</span><br></pre></td></tr></table></figure>
-
-<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a><code>exec</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it containerName bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="build"><a href="#build" class="headerlink" title="build"></a><code>build</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build [选项] &lt;上下文路径/URL/-&gt;</span><br><span class="line"></span><br><span class="line">docker build -t imageName:imageTag .</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/31/devops/docker/basis/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1267,6 +1238,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">build cache</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">dep</a>
               </li>
              
               <li class="article-tag-list-item">
