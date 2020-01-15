@@ -16,7 +16,7 @@
 <meta property="og:description" content="Build Cache我们在做pipeline相关优化的时候，一个很重要的指标就是构建时间，最基本的优化就是构建缓存。 基本思路就是每次 build 之前 restore 上次的缓存，构建完成后 rebuild 当前缓存。 cache 我们试过几种种:  node 上的 volume： EBS(RWO), EFS(RWX)等 s3  EBS只支持 ReadWriteOnly, EFS支持 Read">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-12-02T11:41:02.000Z">
-<meta property="article:modified_time" content="2019-12-27T09:26:22.872Z">
+<meta property="article:modified_time" content="2020-01-15T07:01:48.089Z">
 <meta property="article:author" content="Sora Liu">
 <meta property="article:tag" content="cache">
 <meta property="article:tag" content="pipeline">
@@ -371,7 +371,7 @@ gitment.render('gitment-ctn')
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Sora Liu
+    		&copy; 2020 Sora Liu
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -476,11 +476,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
+                <a href="javascript:void(0)" class="js-tag color1">cache</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">k8s</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,11 +496,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">cache</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pipeline</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
