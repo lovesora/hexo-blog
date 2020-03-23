@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</loc>
+    <loc>blog.lovesora.pro/2019/12/27/go/dep/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
@@ -46,7 +46,7 @@
     <loc>blog.lovesora.pro/2018/12/28/fe/%E6%9E%B6%E6%9E%84/angular%20%E6%9E%B6%E6%9E%84%E6%BC%94%E8%BF%9B/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/27/go/dep/</loc>
+    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/05/21/javascript/dynamic/font/</loc>
@@ -61,7 +61,7 @@
     <loc>blog.lovesora.pro/2018/06/02/linux/centos/yum-epel/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/12/02/k8s/cache/</loc>
+    <loc>blog.lovesora.pro/2019/04/18/linux/ubuntu/upgrade-core/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/28/open-source/github/git-page/</loc>
@@ -91,46 +91,7 @@
     <loc>blog.lovesora.pro/2020/03/24/work/summary/2020.03/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
     <loc>blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/02/enterprise/tools/requirements/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/26/devops/nginx/config/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/31/devops/shell/basis/</loc>
@@ -158,6 +119,45 @@
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2018/05/31/devops/docker/basis/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/02/devops/docker/faq/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/05/devops/docker/flow/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/06/02/enterprise/tools/requirements/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/09/19/fe/angular/%E6%9D%82%E6%96%87/lifecycle-ngif/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/09/06/fe/angular/%E6%9D%82%E6%96%87/route-reuse/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/v5-to-v6/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/09/10/fe/angular/%E7%BB%84%E4%BB%B6/ngx-os%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/08/07/fe/angular/%E7%BB%84%E4%BB%B6/%E5%BC%80%E6%BA%90%E6%9E%B6%E6%9E%84/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/26/devops/nginx/config/</loc>
+    <lastmod>2020-03-23</lastmod>
+  </url>  <url>
+    <loc>blog.lovesora.pro/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
     <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>
