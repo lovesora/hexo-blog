@@ -145,6 +145,70 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-work/summery/2020.03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/23/work/summery/2020.03/">过去半年，我做了什么</a>
+    </h1>
+  
+
+        
+        <a href="/2020/03/23/work/summery/2020.03/" class="archive-article-date">
+  	<time datetime="2020-03-23T22:18:45.745Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!--stackedit_data:
+eyJoaXN0b3J5IjpbNjAwOTMyNjEzXX0=
+-->
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/23/work/summery/2020.03/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-go/dep" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -977,227 +1041,6 @@ eyJoaXN0b3J5IjpbMjAyODYwNjI0LC03NjYxNDk5ODJdfQ==
 
 
   
-    <article id="post-pipeline/tekton" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/21/pipeline/tekton/">Tekton Pipeline Hello World Tutorial</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/21/pipeline/tekton/" class="archive-article-date">
-  	<time datetime="2019-11-21T00:14:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hello-World-Tutorial"><a href="#Hello-World-Tutorial" class="headerlink" title="Hello World Tutorial"></a>Hello World Tutorial</h1><p>Welcome to the Tekton Pipeline tutorial!</p>
-<p>This tutorial will walk you through creating and running some simple<br><code>Tasks</code> &amp; <code>Pipelines</code>and running them by creating<br><code>TaskRuns</code> and <code>PipelineRuns</code>.</p>
-<ul>
-<li><a href="#task">Creating a hello world <code>Task</code></a></li>
-<li><a href="#pipeline">Creating a hello world <code>Pipeline</code></a></li>
-</ul>
-<p>Before starting this tutorial, please install the <a href="https://github.com/tektoncd/cli" target="_blank" rel="noopener">Tekton CLI</a>.</p>
-<p><strong>Note:</strong> <a href="#local-development">This tutorial can be run on a local workstation</a></p>
-<h2 id="Task"><a href="#Task" class="headerlink" title="Task"></a>Task</h2><p>The main objective of Tekton Pipelines is to run your Task individually or as a<br>part of a Pipeline. Every <code>Task</code> runs as a Pod on your Kubernetes cluster with<br>each step as its own container.</p>
-<p>A <code>Task</code> defines the work that needs to be executed, for example the<br>following is a simple <code>Task</code> that will echo hello world:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Task</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">echo-hello-world</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">echo</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">ubuntu</span></span><br><span class="line">      <span class="attr">command:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">echo</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
-
-<p>The <code>steps</code> are a series of commands to be sequentially executed by the <code>Task</code>.</p>
-<p>A <code>TaskRun</code> runs the <code>Task</code> you defined. Here is a simple example<br>of a <code>TaskRun</code> you can use to execute your <code>Task</code>:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TaskRun</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">echo-hello-world-task-run</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">taskRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">echo-hello-world</span></span><br></pre></td></tr></table></figure>
-
-<p>To apply the yaml files, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f &lt;name-of-file.yaml&gt;</span><br></pre></td></tr></table></figure>
-
-<p>To see the output of the <code>TaskRun</code>, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn taskrun describe <span class="built_in">echo</span>-hello-world-task-run</span><br></pre></td></tr></table></figure>
-
-<p>You will get an output similar to the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Name:        echo-hello-world-task-run</span><br><span class="line">Namespace:   default</span><br><span class="line">Task Ref:    echo-hello-world</span><br><span class="line"></span><br><span class="line">Status</span><br><span class="line">STARTED         DURATION    STATUS</span><br><span class="line">4 minutes ago   9 seconds   Succeeded</span><br><span class="line"></span><br><span class="line">Input Resources</span><br><span class="line">No resources</span><br><span class="line"></span><br><span class="line">Output Resources</span><br><span class="line">No resources</span><br><span class="line"></span><br><span class="line">Params</span><br><span class="line">No params</span><br><span class="line"></span><br><span class="line">Steps</span><br><span class="line">NAME</span><br><span class="line">echo</span><br></pre></td></tr></table></figure>
-
-<p>The status of type <code>Succeeded</code> shows that the <code>Task</code> ran successfully.</p>
-<p>To see the actual outcome, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn taskrun logs <span class="built_in">echo</span>-hello-world-task-run</span><br></pre></td></tr></table></figure>
-
-<p>You will get an output similar to this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[echo] hello world</span><br></pre></td></tr></table></figure>
-
-<h3 id="Task-Inputs-and-Outputs"><a href="#Task-Inputs-and-Outputs" class="headerlink" title="Task Inputs and Outputs"></a>Task Inputs and Outputs</h3><p>In more common scenarios, a <code>Task</code> needs multiple steps with input and output<br>resources to process. For example a <code>Task</code> could fetch source code from a GitHub<br>repository and build a Docker image from it.</p>
-<p><code>PipelineResources</code> are used to define the artifacts that can be<br>passed in and out of a <code>Task</code>. There are a few system defined resource types ready<br>to use, and the following are two examples of the resources commonly needed.</p>
-<p>The <code>git</code> resource represents a git repository with<br>a specific revision:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineResource</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">skaffold-git</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">revision</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">master</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">url</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">https://github.com/GoogleContainerTools/skaffold</span> <span class="comment">#configure: change if you want to build something else, perhaps from your own local git repository.</span></span><br></pre></td></tr></table></figure>
-
-<p>The <code>image</code> resource represents the image to be<br>built by the <code>Task</code>:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineResource</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">skaffold-image-leeroy-web</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">  <span class="attr">params:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">url</span></span><br><span class="line">      <span class="attr">value:</span> <span class="string">gcr.io/&lt;use</span> <span class="string">your</span> <span class="string">project&gt;/leeroy-web</span> <span class="comment">#configure: replace with where the image should go: perhaps your local registry or Dockerhub with a secret and configured service account</span></span><br></pre></td></tr></table></figure>
-
-<p>The following is a <code>Task</code> with inputs and outputs. The input resource is a<br>GitHub repository and the output is the image produced from that source. The<br>args of the <code>Task</code> command support variable substitution so that the definition of <code>Task</code> is<br>constant and the value of parameters can change in runtime.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Task</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">build-docker-image-from-git-source</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">docker-source</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">params:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToDockerFile</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">The</span> <span class="string">path</span> <span class="string">to</span> <span class="string">the</span> <span class="string">dockerfile</span> <span class="string">to</span> <span class="string">build</span></span><br><span class="line">        <span class="attr">default:</span> <span class="string">/workspace/docker-source/Dockerfile</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToContext</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line">        <span class="attr">description:</span></span><br><span class="line">          <span class="string">The</span> <span class="string">build</span> <span class="string">context</span> <span class="string">used</span> <span class="string">by</span> <span class="string">Kaniko</span></span><br><span class="line">          <span class="string">(https://github.com/GoogleContainerTools/kaniko#kaniko-build-contexts)</span></span><br><span class="line">        <span class="attr">default:</span> <span class="string">/workspace/docker-source</span></span><br><span class="line">  <span class="attr">outputs:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">builtImage</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">  <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">build-and-push</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">gcr.io/kaniko-project/executor:v0.14.0</span></span><br><span class="line">      <span class="comment"># specifying DOCKER_CONFIG is required to allow kaniko to detect docker credential</span></span><br><span class="line">      <span class="attr">env:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">"DOCKER_CONFIG"</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">"/builder/home/.docker/"</span></span><br><span class="line">      <span class="attr">command:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">/kaniko/executor</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--dockerfile=$(inputs.params.pathToDockerFile)</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--destination=$(outputs.resources.builtImage.url)</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">--context=$(inputs.params.pathToContext)</span></span><br></pre></td></tr></table></figure>
-
-<p>Before you continue with the <code>TaskRun</code> you will have to<br>create a <code>secret</code> to push your image to your desired registry.</p>
-<p>To do so, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kubectl create secret docker-registry regcred \</span><br><span class="line">                    --docker-server=&lt;your-registry-server&gt; \</span><br><span class="line">                    --docker-username=&lt;your-name&gt; \</span><br><span class="line">                    --docker-password=&lt;your-pword&gt; \</span><br><span class="line">                    --docker-email=&lt;your-email&gt;</span><br></pre></td></tr></table></figure>
-
-<p>To be able to use this <code>secret</code> the <code>TaskRun</code> needs to use a <code>ServiceAccount</code>.</p>
-<p>The <code>ServiceAccount</code> should look similar to this:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ServiceAccount</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tutorial-service</span></span><br><span class="line"><span class="attr">secrets:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">regcred</span></span><br></pre></td></tr></table></figure>
-
-<p>You need to put your new <code>ServiceAccount</code> into action, to do so, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f &lt;name-of-file.yaml&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Now you are ready for your first <code>TaskRun</code>.</p>
-<p>A <code>TaskRun</code> binds the inputs and outputs to already defined <code>PipelineResources</code>,<br>sets values to the parameters used for variable substitution in addition to executing the<br><code>Task</code> steps.</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">TaskRun</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">build-docker-image-from-git-source-task-run</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceAccountName:</span> <span class="string">tutorial-service</span></span><br><span class="line">  <span class="attr">taskRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">build-docker-image-from-git-source</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">docker-source</span></span><br><span class="line">        <span class="attr">resourceRef:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">skaffold-git</span></span><br><span class="line">    <span class="attr">params:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToDockerFile</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">Dockerfile</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToContext</span></span><br><span class="line">        <span class="attr">value:</span> <span class="string">/workspace/docker-source/examples/microservices/leeroy-web</span> <span class="comment">#configure: may change according to your source</span></span><br><span class="line">  <span class="attr">outputs:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">builtImage</span></span><br><span class="line">        <span class="attr">resourceRef:</span></span><br><span class="line">          <span class="attr">name:</span> <span class="string">skaffold-image-leeroy-web</span></span><br></pre></td></tr></table></figure>
-
-<p>To apply the yaml files use the following command, you need to apply the two<br><code>PipelineResources</code>, the <code>Task</code> and <code>TaskRun</code>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f &lt;name-of-file.yaml&gt;</span><br></pre></td></tr></table></figure>
-
-<p>To see all the resource created so far as part of Tekton Pipelines, run the<br>command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl get tekton-pipelines</span><br></pre></td></tr></table></figure>
-
-<p>You will get an output similar to the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">NAME                                                   AGE</span><br><span class="line">taskruns&#x2F;build-docker-image-from-git-source-task-run   30s</span><br><span class="line"></span><br><span class="line">NAME                                          AGE</span><br><span class="line">pipelineresources&#x2F;skaffold-git                6m</span><br><span class="line">pipelineresources&#x2F;skaffold-image-leeroy-web   7m</span><br><span class="line"></span><br><span class="line">NAME                                       AGE</span><br><span class="line">tasks&#x2F;build-docker-image-from-git-source   7m</span><br></pre></td></tr></table></figure>
-
-<p>To see the output of the TaskRun, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn taskrun describe build-docker-image-from-git-source-task-run</span><br></pre></td></tr></table></figure>
-
-<p>You will get an output similar to the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Name:        build-docker-image-from-git-source-task-run</span><br><span class="line">Namespace:   default</span><br><span class="line">Task Ref:    build-docker-image-from-git-source</span><br><span class="line"></span><br><span class="line">Status</span><br><span class="line">STARTED       DURATION     STATUS</span><br><span class="line">2 hours ago   56 seconds   Succeeded</span><br><span class="line"></span><br><span class="line">Input Resources</span><br><span class="line">NAME            RESOURCE REF</span><br><span class="line">docker-source   skaffold-git</span><br><span class="line"></span><br><span class="line">Output Resources</span><br><span class="line">NAME         RESOURCE REF</span><br><span class="line">builtImage   skaffold-image-leeroy-web</span><br><span class="line"></span><br><span class="line">Params</span><br><span class="line">NAME               VALUE</span><br><span class="line">pathToDockerFile   Dockerfile</span><br><span class="line">pathToContext      &#x2F;workspace&#x2F;docker-source&#x2F;examples&#x2F;microservices&#x2F;leeroy-web</span><br><span class="line"></span><br><span class="line">Steps</span><br><span class="line">NAME</span><br><span class="line">build-and-push</span><br><span class="line">create-dir-builtimage-wtjh9</span><br><span class="line">git-source-skaffold-git-tck6k</span><br><span class="line">image-digest-exporter-hlbsq</span><br></pre></td></tr></table></figure>
-
-<p>The status of type <code>Succeeded</code> shows the Task ran successfully and you<br>can also validate the Docker image is created in the location specified in the<br>resource definition.</p>
-<p>If you run into issues, use the following command to receive the logs:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn taskrun logs build-docker-image-from-git-source-task-run</span><br></pre></td></tr></table></figure>
-
-<h2 id="Pipeline"><a href="#Pipeline" class="headerlink" title="Pipeline"></a>Pipeline</h2><p>A <code>Pipeline</code> defines a list of <code>Tasks</code> to execute in order, while<br>also indicating if any outputs should be used as inputs of a following <code>Task</code> by<br>using the <code>from</code> field and also indicating<br>the order of executing (using the <code>runAfter</code> and <code>from</code> fields).<br>The same variable substitution you used in <code>Tasks</code> is also available in a <code>Pipeline</code>.</p>
-<p>For example:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Pipeline</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tutorial-pipeline</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source-repo</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web-image</span></span><br><span class="line">      <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">  <span class="attr">tasks:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">build-skaffold-web</span></span><br><span class="line">      <span class="attr">taskRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">build-docker-image-from-git-source</span></span><br><span class="line">      <span class="attr">params:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToDockerFile</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">Dockerfile</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">pathToContext</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">/workspace/docker-source/examples/microservices/leeroy-web</span> <span class="comment">#configure: may change according to your source</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">inputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">docker-source</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">source-repo</span></span><br><span class="line">        <span class="attr">outputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">builtImage</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">web-image</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">deploy-web</span></span><br><span class="line">      <span class="attr">taskRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">deploy-using-kubectl</span></span><br><span class="line">      <span class="attr">resources:</span></span><br><span class="line">        <span class="attr">inputs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">source-repo</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">image</span></span><br><span class="line">            <span class="attr">resource:</span> <span class="string">web-image</span></span><br><span class="line">            <span class="attr">from:</span></span><br><span class="line">              <span class="bullet">-</span> <span class="string">build-skaffold-web</span></span><br><span class="line">      <span class="attr">params:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">path</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">/workspace/source/examples/microservices/leeroy-web/kubernetes/deployment.yaml</span> <span class="comment">#configure: may change according to your source</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">yamlPathToImage</span></span><br><span class="line">          <span class="attr">value:</span> <span class="string">"spec.template.spec.containers[0].image"</span></span><br></pre></td></tr></table></figure>
-
-<p>The above <code>Pipeline</code> is referencing a <code>Task</code> called <code>deploy-using-kubectl</code> which<br>can be found here:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Task</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">deploy-using-kubectl</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">inputs:</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">image</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">image</span></span><br><span class="line">    <span class="attr">params:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">path</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line">        <span class="attr">description:</span> <span class="string">Path</span> <span class="string">to</span> <span class="string">the</span> <span class="string">manifest</span> <span class="string">to</span> <span class="string">apply</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">yamlPathToImage</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">string</span></span><br><span class="line">        <span class="attr">description:</span></span><br><span class="line">          <span class="string">The</span> <span class="string">path</span> <span class="string">to</span> <span class="string">the</span> <span class="string">image</span> <span class="string">to</span> <span class="string">replace</span> <span class="string">in</span> <span class="string">the</span> <span class="string">yaml</span> <span class="string">manifest</span> <span class="string">(arg</span> <span class="string">to</span> <span class="string">yq)</span></span><br><span class="line">  <span class="attr">steps:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">replace-image</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">mikefarah/yq</span></span><br><span class="line">      <span class="attr">command:</span> <span class="string">["yq"]</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"w"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"-i"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"$(inputs.params.path)"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"$(inputs.params.yamlPathToImage)"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"$(inputs.resources.image.url)"</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">run-kubectl</span></span><br><span class="line">      <span class="attr">image:</span> <span class="string">lachlanevenson/k8s-kubectl</span></span><br><span class="line">      <span class="attr">command:</span> <span class="string">["kubectl"]</span></span><br><span class="line">      <span class="attr">args:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"apply"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"-f"</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">"$(inputs.params.path)"</span></span><br></pre></td></tr></table></figure>
-
-<p>With the new <code>Task</code> inside of your <code>Pipeline</code>,<br>you need to give your <code>ServiceAccount</code> additional permissions to be able to execute the <code>run-kubectl</code> step.</p>
-<p>First you have to create a new role, which you have to assign to your <code>ServiceAccount</code>,<br>to do so, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create clusterrole tutorial-role \</span><br><span class="line">               --verb=get,list,watch,create,update,patch,delete \</span><br><span class="line">               --resource=deployments</span><br></pre></td></tr></table></figure>
-
-<p>Now you need to assign this new role <code>tutorial-role</code> to your <code>ServiceAccount</code>,<br>to do so, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kubectl create clusterrolebinding tutorial-binding \</span><br><span class="line">             --clusterrole=tutorial-role \</span><br><span class="line">             --serviceaccount=default:tutorial-service</span><br></pre></td></tr></table></figure>
-
-
-<p>To run the <code>Pipeline</code>, create a <code>PipelineRun</code>as follows:</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">tekton.dev/v1alpha1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">PipelineRun</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">tutorial-pipeline-run-1</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">serviceAccountName:</span> <span class="string">tutorial-service</span></span><br><span class="line">  <span class="attr">pipelineRef:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">tutorial-pipeline</span></span><br><span class="line">  <span class="attr">resources:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">source-repo</span></span><br><span class="line">      <span class="attr">resourceRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">skaffold-git</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">web-image</span></span><br><span class="line">      <span class="attr">resourceRef:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">skaffold-image-leeroy-web</span></span><br></pre></td></tr></table></figure>
-
-<p>The <code>PipelineRun</code> will create the <code>TaskRuns</code> corresponding to each <code>Task</code> and<br>collect the results.</p>
-<p>To apply the yaml files use the following command, you will need to apply the<br><code>deploy-task</code> if you want to run the Pipeline.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl apply -f &lt;name-of-file.yaml&gt;</span><br></pre></td></tr></table></figure>
-
-<p>While the <code>Pipeline</code> is running, you can see what exactly is happening, just use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn pipelinerun logs tutorial-pipeline-run-1 -f</span><br></pre></td></tr></table></figure>
-
-<p>To see the output of the <code>PipelineRun</code>, use the following command:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tkn pipelinerun describe tutorial-pipeline-run-1</span><br></pre></td></tr></table></figure>
-
-<p>You will get an output similar to the following:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Name:           tutorial-pipeline-run-1</span><br><span class="line">Namespace:      default</span><br><span class="line">Pipeline Ref:   tutorial-pipeline</span><br><span class="line"></span><br><span class="line">Status</span><br><span class="line">STARTED       DURATION   STATUS</span><br><span class="line">4 hours ago   1 minute   Succeeded</span><br><span class="line"></span><br><span class="line">Resources</span><br><span class="line">NAME          RESOURCE REF</span><br><span class="line"><span class="built_in">source</span>-repo   skaffold-git</span><br><span class="line">web-image     skaffold-image-leeroy-web</span><br><span class="line"></span><br><span class="line">Params</span><br><span class="line">No params</span><br><span class="line"></span><br><span class="line">Taskruns</span><br><span class="line">NAME                                               TASK NAME            STARTED       DURATION     STATUS</span><br><span class="line">tutorial-pipeline-run-1-deploy-web-jjf2l           deploy-web           4 hours ago   14 seconds   Succeeded</span><br><span class="line">tutorial-pipeline-run-1-build-skaffold-web-7jgjh   build-skaffold-web   4 hours ago   1 minute     Succeeded</span><br></pre></td></tr></table></figure>
-
-<p>The status of type <code>Succeeded</code> shows the <code>Pipeline</code> ran successfully, also<br>the status of individual Task runs are shown.</p>
-<h2 id="Local-development"><a href="#Local-development" class="headerlink" title="Local development"></a>Local development</h2><h3 id="Known-good-configuration"><a href="#Known-good-configuration" class="headerlink" title="Known good configuration"></a>Known good configuration</h3><p>Tekton Pipelines is known to work with:</p>
-<ul>
-<li><a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">Docker for Desktop</a>. A known good<br>configuration specifies six CPUs, 10 GB of memory and 2 GB of swap space. </li>
-<li>These <a href="https://github.com/tektoncd/pipeline/blob/master/DEVELOPMENT.md#requirements" target="_blank" rel="noopener">prerequisites</a>.</li>
-<li>Setting <code>host.docker.local:5000</code> as an insecure registry with Docker for<br>Desktop (set via preferences or configuration, see the<br><a href="https://docs.docker.com/registry/insecure/" target="_blank" rel="noopener">Docker insecure registry documentation</a>.<br>for details)</li>
-<li>Passing <code>--insecure</code> as an argument to Kaniko tasks lets us push to an<br>insecure registry.</li>
-<li>Running a local (insecure) Docker registry: this can be run with</li>
-</ul>
-<p><code>docker run -d -p 5000:5000 --name registry-srv -e REGISTRY_STORAGE_DELETE_ENABLED=true registry:2</code></p>
-<ul>
-<li>Optionally, a Docker registry viewer so we can check our pushed images are<br>present:</li>
-</ul>
-<p><code>docker run -it -p 8080:8080 --name registry-web --link registry-srv -e REGISTRY_URL=http://registry-srv:5000/v2 -e REGISTRY_NAME=localhost:5000 hyper/docker-registry-web</code></p>
-<h3 id="Images"><a href="#Images" class="headerlink" title="Images"></a>Images</h3><ul>
-<li>Any PipelineResource definitions of image type should be updated to use the<br>local registry by setting the url to<br><code>host.docker.internal:5000/myregistry/&lt;image name&gt;</code> equivalents</li>
-<li>The <code>KO_DOCKER_REPO</code> variable should be set to <code>localhost:5000/myregistry</code><br>before using <code>ko</code></li>
-<li>You are able to push to <code>host.docker.internal:5000/myregistry/&lt;image name&gt;</code><br>but your applications (e.g any deployment definitions) should reference<br><code>localhost:5000/myregistry/&lt;image name&gt;</code></li>
-</ul>
-<h3 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h3><ul>
-<li>Logs can remain in-memory only as opposed to sent to a service such as<br><a href="https://cloud.google.com/logging/" target="_blank" rel="noopener">Stackdriver</a>.</li>
-<li>See docs on getting logs from Runs</li>
-</ul>
-<p>Elasticsearch, Beats and Kibana can be deployed locally as a means to view logs:<br>an example is provided at<br><a href="https://github.com/mgreau/tekton-pipelines-elastic-tutorials" target="_blank" rel="noopener">https://github.com/mgreau/tekton-pipelines-elastic-tutorials</a>.</p>
-<h2 id="Experimentation"><a href="#Experimentation" class="headerlink" title="Experimentation"></a>Experimentation</h2><p>Lines of code you may want to configure have the #configure annotation. This<br>annotation applies to subjects such as Docker registries, log output locations<br>and other nuances that may be specific to particular cloud providers or<br>services.</p>
-<p>The <code>TaskRuns</code> have been created in the following<br>order:</p>
-<ol>
-<li><code>tutorial-pipeline-run-1-build-skaffold-web</code> - This runs the<br>Pipeline Task <code>build-skaffold-web</code> first,<br>because it has no <code>from</code> or <code>runAfter</code> clauses</li>
-<li><code>tutorial-pipeline-run-1-deploy-web</code> - This runs <code>deploy-web</code> second, because<br>its input <code>web-image</code> comes <code>from</code><br><code>build-skaffold-web</code> (therefore <code>build-skaffold-web</code> must run before<br><code>deploy-web</code>).</li>
-</ol>
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE2Mjk5OTE3LC0xMzY1MDA5MDJdfQ==
--->
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pipeline</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">tekton</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/21/pipeline/tekton/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1361,6 +1204,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
               </li>
              
@@ -1394,14 +1245,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1537,10 +1380,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">os</a>
               </li>
              
@@ -1558,6 +1397,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
