@@ -121,9 +121,6 @@
     <loc>blog.lovesora.pro/2018/07/19/vcs/gitlab/runner/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/06/29/work/summery/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2020-03-23</lastmod>
-  </url>  <url>
     <loc>blog.lovesora.pro/2020/03/23/work/summery/2020.03/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
@@ -157,10 +154,10 @@
     <loc>blog.lovesora.pro/2018/06/05/fe/ionic/install/sdk/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>
+    <loc>blog.lovesora.pro/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>  <url>
-    <loc>blog.lovesora.pro/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>blog.lovesora.pro/2019/04/11/fe/angular/router/reuse/</loc>
     <lastmod>2020-03-23</lastmod>
   </url>
 </urlset>
