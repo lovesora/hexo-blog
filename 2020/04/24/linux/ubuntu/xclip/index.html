@@ -15,8 +15,8 @@
 <meta property="og:site_name" content="soraliu&#39;s blog">
 <meta property="og:description" content="1234567title: Ubuntu Server 18.04 xclip 使用指南(osx)date: 2020-04-24 09:48:49tags:- ubuntu- vim- x11- xclip  需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-24T02:31:56.043Z">
-<meta property="article:modified_time" content="2020-04-24T02:31:56.043Z">
+<meta property="article:published_time" content="2020-04-24T02:33:37.489Z">
+<meta property="article:modified_time" content="2020-04-24T02:33:37.489Z">
 <meta property="article:author" content="Sora Liu">
 <meta property="article:tag" content="front-end architecture">
 <meta name="twitter:card" content="summary">
@@ -158,7 +158,7 @@
 
         
         <a href="/2020/04/24/linux/ubuntu/xclip/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:31:56.043Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+  	<time datetime="2020-04-24T02:33:37.489Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
@@ -197,11 +197,11 @@
 
 <h3 id="tmux-conf-配置"><a href="#tmux-conf-配置" class="headerlink" title="~/.tmux.conf 配置"></a><code>~/.tmux.conf</code> 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># copy to Mac OSX clipboard</span><br><span class="line">if -b &#39;command -v reattach-to-user-namespace &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | reattach-to-user-namespace pbcopy&quot;&#39;</span><br><span class="line"># copy to X11 clipboard</span><br><span class="line">if -b &#39;command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xsel -i -b&quot;&#39;</span><br><span class="line">if -b &#39;! command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;&amp; command -v xclip &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xclip -i -selection clipboard &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1&quot;&#39;</span><br><span class="line"># copy to Windows clipboard</span><br><span class="line">if -b &#39;command -v clip.exe &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | clip.exe&quot;&#39;</span><br><span class="line">if -b &#39;[ -c &#x2F;dev&#x2F;clipboard ]&#39; &#39;bind y run -b &quot;tmux save-buffer - &gt; &#x2F;dev&#x2F;clipboard&quot;&#39;</span><br></pre></td></tr></table></figure>
 
-<h3 id="vimrc-配置"><a href="#vimrc-配置" class="headerlink" title="~/.vimrc 配置"></a><code>~/.vimrc</code> 配置</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" clipboard</span></span><br><span class="line"><span class="comment">" 复制当前文件地址到剪切板</span></span><br><span class="line"><span class="keyword">set</span> clipboard=unnamedplus               <span class="comment">" 系统剪切板</span></span><br><span class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">"xclip -i -selection c"</span>, <span class="built_in">expand</span>(<span class="string">"%:p"</span>))<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" osx</span></span><br><span class="line"><span class="keyword">if</span> !executable(<span class="string">'xclip'</span>)</span><br><span class="line">  <span class="keyword">set</span> clipboard=unnamed</span><br><span class="line">  <span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">let</span> @+=<span class="built_in">expand</span>(<span class="string">'%:p'</span>)<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+<h3 id="vimrc-配置"><a href="#vimrc-配置" class="headerlink" title="~/.vimrc 配置"></a><code>~/.vimrc</code> 配置</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" y</span></span><br><span class="line"><span class="keyword">set</span> clipboard=unnamedplus</span><br><span class="line"><span class="comment">" copy current buff of filepath to clipboard</span></span><br><span class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">"xclip -i -selection c"</span>, <span class="built_in">expand</span>(<span class="string">"%:p"</span>))<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" osx</span></span><br><span class="line"><span class="keyword">if</span> !executable(<span class="string">'xclip'</span>)</span><br><span class="line">  <span class="keyword">set</span> clipboard=unnamed</span><br><span class="line">  <span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">let</span> @+=<span class="built_in">expand</span>(<span class="string">'%:p'</span>)<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="vim-配置好了之后为什么不生效"><a href="#vim-配置好了之后为什么不生效" class="headerlink" title="vim 配置好了之后为什么不生效?"></a>vim 配置好了之后为什么不生效?</h3><ul>
 <li>gvim</li>
-<li>mosh<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTE5Mzc0NjIzNSwxOTM5MDMyNDcxLDc1OD<br>A2NDM2MCwxNzQyMzU1OTE4XX0=</li>
+<li>mosh<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTE4NjM2NjU3MzYsMTkzOTAzMjQ3MSw3NT<br>gwNjQzNjAsMTc0MjM1NTkxOF19</li>
 <li>-&gt;</li>
 </ul>
 
@@ -348,7 +348,7 @@
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Fri Apr 24 2020 02:31:56 GMT+0000",
+  id: "Fri Apr 24 2020 02:33:37 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -714,11 +714,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
             
             <div class="clearfix"></div>

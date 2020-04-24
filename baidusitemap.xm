@@ -4,7 +4,7 @@
     <loc>blog.soraliu.dev/2019/04/18/linux/ubuntu/upgrade-core/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
+    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/12/03/k8s/docker/</loc>
@@ -64,7 +64,7 @@
     <loc>blog.soraliu.dev/2018/06/29/work/summary/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
+    <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/07/05/fe/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/</loc>
@@ -160,10 +160,10 @@
     <loc>blog.soraliu.dev/2018/06/05/fe/ionic/install/sdk/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>blog.soraliu.dev/2019/04/11/fe/angular/router/reuse/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/04/11/fe/angular/router/reuse/</loc>
+    <loc>blog.soraliu.dev/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>
 </urlset>
