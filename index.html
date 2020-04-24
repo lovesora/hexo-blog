@@ -158,7 +158,7 @@
 
         
         <a href="/2020/04/24/linux/ubuntu/xclip/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:15:56.105Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+  	<time datetime="2020-04-24T02:17:28.864Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
@@ -169,8 +169,9 @@
 
 <h2 id="需求-Future"><a href="#需求-Future" class="headerlink" title="需求 (Future)"></a>需求 (Future)</h2><p>通过 <code>ssh</code> 连远程 <code>ubuntu server(18.04)</code> 时经常会需要通过 <code>vim</code> 编辑文件 <code>copy</code> 一些代码，或者通过 <code>tmux</code> 复制 <code>shell</code> 命令，此时如果需要 <code>paste</code> 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 <code>xclip</code> 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。</p>
 <h2 id="介绍-Introduce"><a href="#介绍-Introduce" class="headerlink" title="介绍 (Introduce)"></a>介绍 (Introduce)</h2><h3 id="X"><a href="#X" class="headerlink" title="X"></a><code>X</code></h3><ul>
+<li>图形界面并不是 <code>Linux</code> 的一部分，和 <code>Windows95</code> 及以后的版本就不一样了，他们的图形界面是操作系统的一部分，图形界面在系统内核中就实现了</li>
 <li><code>X</code> 是协议，一个基于X的应用程序需要运行并显示内容时会连接到 <code>X</code> 服务器，开始用X协议和服务器通信</li>
-<li>图形界面并不是linux的一部分</li>
+<li><code>X11</code> 是指 X Protocol version 11</li>
 </ul>
 <h2 id="安装-Installation"><a href="#安装-Installation" class="headerlink" title="安装 (Installation)"></a>安装 (Installation)</h2><h3 id="OSX-安装-XQuartz"><a href="#OSX-安装-XQuartz" class="headerlink" title="OSX 安装 XQuartz"></a>OSX 安装 <code>XQuartz</code></h3><blockquote>
 <p>The XQuartz project is an open-source effort to develop a version of the <a href="https://www.x.org/" target="_blank" rel="noopener">X.Org X Window System</a> that runs on OS X.</p>
@@ -188,7 +189,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">  ForwardAgent yes</span><br><span class="line">  ForwardX11 yes</span><br><span class="line">  ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
 
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="配置-Configuration"><a href="#配置-Configuration" class="headerlink" title="配置 (Configuration)"></a>配置 (Configuration)</h2><h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MzQzMzUzMTIsNzU4MDY0MzYwLDE3ND
+eyJoaXN0b3J5IjpbLTE5MjU5NTA1NzksNzU4MDY0MzYwLDE3ND
 IzNTU5MThdfQ==
 -->
       
@@ -1313,18 +1314,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tool</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">mobile</a>
               </li>
              
@@ -1405,7 +1394,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cli</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1421,23 +1418,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
+                <a href="javascript:void(0)" class="js-tag color1">enterprise</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cli</a>
+                <a href="javascript:void(0)" class="js-tag color2">requirement</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tool</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">angular</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,6 +1463,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">sdkman</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
             
             <div class="clearfix"></div>
