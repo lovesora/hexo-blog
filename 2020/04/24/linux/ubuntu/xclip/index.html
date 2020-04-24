@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="blog.soraliu.dev">
-  <title>linux/ubuntu/xclip | soraliu&#39;s blog</title>
+  <title>Ubuntu Server 18.04 xclip 使用指南(osx) | soraliu&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1234567title: Ubuntu Server 18.04 xclip 使用指南(osx)date: 2020-04-24 09:48:49tags:- ubuntu- vim- x11- xclip  需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此">
+  <meta name="description" content="需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此时如果需要 paste 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 xclip 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。 介绍 (Intr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux&#x2F;ubuntu&#x2F;xclip">
+<meta property="og:title" content="Ubuntu Server 18.04 xclip 使用指南(osx)">
 <meta property="og:url" content="blog.soraliu.dev/2020/04/24/linux/ubuntu/xclip/index.html">
 <meta property="og:site_name" content="soraliu&#39;s blog">
-<meta property="og:description" content="1234567title: Ubuntu Server 18.04 xclip 使用指南(osx)date: 2020-04-24 09:48:49tags:- ubuntu- vim- x11- xclip  需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此">
+<meta property="og:description" content="需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此时如果需要 paste 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 xclip 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。 介绍 (Intr">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-24T02:37:04.546Z">
-<meta property="article:modified_time" content="2020-04-24T02:37:04.546Z">
+<meta property="article:published_time" content="2020-04-24T09:48:49.000Z">
+<meta property="article:modified_time" content="2020-04-24T02:38:56.289Z">
 <meta property="article:author" content="Sora Liu">
-<meta property="article:tag" content="front-end architecture">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="x11">
+<meta property="article:tag" content="xclip">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="soraliu&#39;s blog" type="application/atom+xml">
@@ -152,22 +155,20 @@
         
   
     <h1 class="article-title" itemprop="name">
-      linux/ubuntu/xclip
+      Ubuntu Server 18.04 xclip 使用指南(osx)
     </h1>
   
 
         
         <a href="/2020/04/24/linux/ubuntu/xclip/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:37:04.546Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+  	<time datetime="2020-04-24T09:48:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">title: Ubuntu Server 18.04 xclip 使用指南(osx)</span><br><span class="line">date: 2020-04-24 09:48:49</span><br><span class="line">tags:</span><br><span class="line">- ubuntu</span><br><span class="line">- vim</span><br><span class="line">- x11</span><br><span class="line">- xclip</span><br></pre></td></tr></table></figure>
-
-<h2 id="需求-Future"><a href="#需求-Future" class="headerlink" title="需求 (Future)"></a>需求 (Future)</h2><p>通过 <code>ssh</code> 连远程 <code>ubuntu server(18.04)</code> 时经常会需要通过 <code>vim</code> 编辑文件 <code>copy</code> 一些代码，或者通过 <code>tmux</code> 复制 <code>shell</code> 命令，此时如果需要 <code>paste</code> 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 <code>xclip</code> 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。</p>
+        <h2 id="需求-Future"><a href="#需求-Future" class="headerlink" title="需求 (Future)"></a>需求 (Future)</h2><p>通过 <code>ssh</code> 连远程 <code>ubuntu server(18.04)</code> 时经常会需要通过 <code>vim</code> 编辑文件 <code>copy</code> 一些代码，或者通过 <code>tmux</code> 复制 <code>shell</code> 命令，此时如果需要 <code>paste</code> 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 <code>xclip</code> 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。</p>
 <h2 id="介绍-Introduce"><a href="#介绍-Introduce" class="headerlink" title="介绍 (Introduce)"></a>介绍 (Introduce)</h2><h3 id="X"><a href="#X" class="headerlink" title="X"></a><code>X</code></h3><ul>
 <li>图形界面并不是 <code>Linux</code> 的一部分，和 <code>Windows95</code> 及以后的版本就不一样了，他们的图形界面是操作系统的一部分，图形界面在系统内核中就实现了</li>
 <li><code>X</code> 是协议，一个基于X的应用程序需要运行并显示内容时会连接到 <code>X</code> 服务器，开始用X协议和服务器通信</li>
@@ -204,7 +205,7 @@
 
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="vim-配置好了之后为什么不生效"><a href="#vim-配置好了之后为什么不生效" class="headerlink" title="vim 配置好了之后为什么不生效?"></a>vim 配置好了之后为什么不生效?</h3><ul>
 <li>需要使用 <code>gvim</code> （推荐  <code>vim-gtk</code>），而不是 <code>vim</code></li>
-<li><code>mosh</code> 不支持 <code>X</code> 协议<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbNjI4MTMwNTI1LDE5MzkwMzI0NzEsNzU4MD<br>Y0MzYwLDE3NDIzNTU5MThdfQ==</li>
+<li><code>mosh</code> 不支持 <code>X</code> 协议<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTIwMjc1OTQ5NTMsNjI4MTMwNTI1LDE5Mz<br>kwMzI0NzEsNzU4MDY0MzYwLDE3NDIzNTU5MThdfQ==</li>
 <li>-&gt;</li>
 </ul>
 
@@ -246,6 +247,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">ubuntu</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">x11</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">xclip</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -351,7 +375,7 @@
 <script src="//lovesora.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "Fri Apr 24 2020 02:37:04 GMT+0000",
+  id: "Fri Apr 24 2020 09:48:49 GMT+0000",
   owner: 'lovesora',
   repo: 'hexo-blog',
   oauth: {
@@ -521,14 +545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
               </li>
              
@@ -562,6 +578,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">config</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -645,6 +669,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">x11</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">xclip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">pageg</a>
               </li>
              
@@ -717,11 +753,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
             
             <div class="clearfix"></div>
