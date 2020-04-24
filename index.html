@@ -158,7 +158,7 @@
 
         
         <a href="/2020/04/24/linux/ubuntu/xclip/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:11:14.028Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+  	<time datetime="2020-04-24T02:12:47.963Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
@@ -177,14 +177,15 @@
 <li>配置 <code>Application</code> ，将 <code>xterm</code> 替换成 <code>iTerm</code> 的运行路径 <code>/Applications/iTerm.app/Contents/MacOS/iTerm2</code> </li>
 <li>检查是否配置成功，iTerm 内执行 <code>echo $DISPLAY</code></li>
 </ul>
-<h3 id="检查客户端配置"><a href="#检查客户端配置" class="headerlink" title="检查客户端配置"></a>检查客户端配置</h3><p>确认客户端已经开启 <code>X11</code></p>
+<h3 id="客户端-ssh-配置"><a href="#客户端-ssh-配置" class="headerlink" title="客户端 ssh 配置"></a>客户端 <code>ssh</code> 配置</h3><p>检查是否已经启用 <code>X11</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure>
 
+<p>确认输出包含</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host *</span><br><span class="line">  ForwardAgent yes</span><br><span class="line">  ForwardX11 yes</span><br><span class="line">  ForwardX11Trusted yes</span><br></pre></td></tr></table></figure>
 
 <h3 id=""><a href="#" class="headerlink" title=""></a></h3><h2 id="配置-Configuration"><a href="#配置-Configuration" class="headerlink" title="配置 (Configuration)"></a>配置 (Configuration)</h2><h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU4ODI2OTUwLDc1ODA2NDM2MCwxNzQyMz
-U1OTE4XX0=
+eyJoaXN0b3J5IjpbMTkyNTY5ODU5MCw3NTgwNjQzNjAsMTc0Mj
+M1NTkxOF19
 -->
       
 
