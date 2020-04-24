@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.soraliu.dev/2019/12/27/go/dep/</loc>
+    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
+    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/12/03/k8s/docker/</loc>
@@ -23,6 +26,9 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/11/21/pipeline/tekton/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/mysql/</loc>
@@ -46,9 +52,6 @@
     <loc>blog.soraliu.dev/2018/06/02/devops/docker/faq/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/06/05/devops/docker/flow/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
     <loc>blog.soraliu.dev/2018/05/26/devops/nginx/config/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
@@ -56,6 +59,9 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/06/05/devops/docker/flow/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/11/22/fe/react/suspense/</loc>
@@ -79,7 +85,7 @@
     <loc>blog.soraliu.dev/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
+    <loc>blog.soraliu.dev/2019/12/27/go/dep/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/05/29/javascript/exports/xlsx/</loc>
@@ -103,9 +109,6 @@
     <loc>blog.soraliu.dev/2018/05/25/vcs/git/git-cammand/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/28/vcs/git/git-flow/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
     <loc>blog.soraliu.dev/2019/12/03/vcs/git/git-shallow-clone/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
@@ -122,6 +125,9 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/28/vcs/git/git-flow/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/06/02/enterprise/tools/requirements/</loc>
@@ -158,12 +164,6 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/04/11/fe/angular/router/reuse/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>
 </urlset>
