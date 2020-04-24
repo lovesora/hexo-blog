@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>blog.soraliu.dev/2018/07/27/linux/centos/ssl/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
     <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/12/03/k8s/docker/</loc>
@@ -26,21 +23,6 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/11/21/pipeline/tekton/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/mysql/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/26/blog/hexo/hexo-faq/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/04/10/blog/hexo/hexo-gitment/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/04/09/blog/hexo/plugin/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/08/03/design/sketch/shortcut/</loc>
@@ -91,7 +73,7 @@
     <loc>blog.soraliu.dev/2018/05/29/javascript/exports/xlsx/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/27/linux/centos/ssl/</loc>
+    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/06/02/linux/centos/yum-epel/</loc>
@@ -160,10 +142,28 @@
     <loc>blog.soraliu.dev/2018/06/05/fe/ionic/install/sdk/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
     <loc>blog.soraliu.dev/2019/04/11/fe/angular/router/reuse/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/27/fe/angular/%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>blog.soraliu.dev/2019/04/09/blog/hexo/plugin/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/mysql/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/26/blog/hexo/hexo-faq/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2019/04/10/blog/hexo/hexo-gitment/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>
 </urlset>
