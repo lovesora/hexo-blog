@@ -16,7 +16,7 @@
 <meta property="og:description" content="需求 (Future)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此时如果需要 paste 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 xclip 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。 介绍 (Intr">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-24T09:48:49.000Z">
-<meta property="article:modified_time" content="2020-04-24T02:38:56.289Z">
+<meta property="article:modified_time" content="2020-04-24T02:40:36.039Z">
 <meta property="article:author" content="Sora Liu">
 <meta property="article:tag" content="ubuntu">
 <meta property="article:tag" content="vim">
@@ -204,8 +204,9 @@
 <h3 id="服务端-vimrc-配置"><a href="#服务端-vimrc-配置" class="headerlink" title="服务端 ~/.vimrc 配置"></a>服务端 <code>~/.vimrc</code> 配置</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" y</span></span><br><span class="line"><span class="keyword">set</span> clipboard=unnamedplus</span><br><span class="line"><span class="comment">" copy the filepath of current buff to clipboard</span></span><br><span class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">"xclip -i -selection c"</span>, <span class="built_in">expand</span>(<span class="string">"%:p"</span>))<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" osx</span></span><br><span class="line"><span class="keyword">if</span> !executable(<span class="string">'xclip'</span>)</span><br><span class="line">  <span class="keyword">set</span> clipboard=unnamed</span><br><span class="line">  <span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">let</span> @+=<span class="built_in">expand</span>(<span class="string">'%:p'</span>)<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="vim-配置好了之后为什么不生效"><a href="#vim-配置好了之后为什么不生效" class="headerlink" title="vim 配置好了之后为什么不生效?"></a>vim 配置好了之后为什么不生效?</h3><ul>
+<li>确认 vim <code>+clipboard</code> 已经开启，<code>vim --version | grep clipboard</code></li>
 <li>需要使用 <code>gvim</code> （推荐  <code>vim-gtk</code>），而不是 <code>vim</code></li>
-<li><code>mosh</code> 不支持 <code>X</code> 协议<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbLTIwMjc1OTQ5NTMsNjI4MTMwNTI1LDE5Mz<br>kwMzI0NzEsNzU4MDY0MzYwLDE3NDIzNTU5MThdfQ==</li>
+<li><code>mosh</code> 不支持 <code>X</code> 协议<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbODU1NTU5NTQ3LDYyODEzMDUyNSwxOTM5MD<br>MyNDcxLDc1ODA2NDM2MCwxNzQyMzU1OTE4XX0=</li>
 <li>-&gt;</li>
 </ul>
 
@@ -545,6 +546,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">spring boot</a>
               </li>
              
@@ -578,14 +587,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">config</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">tekton</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,11 +754,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
             
             <div class="clearfix"></div>
