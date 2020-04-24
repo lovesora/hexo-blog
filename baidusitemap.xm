@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.soraliu.dev/2019/12/27/go/dep/</loc>
+    <loc>blog.soraliu.dev/2020/04/24/linux/ubuntu/xclip/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
@@ -23,36 +23,6 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/11/21/pipeline/tekton/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/mysql/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/26/blog/hexo/hexo-faq/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/04/10/blog/hexo/hexo-gitment/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2019/04/09/blog/hexo/plugin/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/08/03/design/sketch/shortcut/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/31/devops/docker/basis/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/06/02/devops/docker/faq/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/06/05/devops/docker/flow/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/26/devops/nginx/config/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/05/31/devops/shell/basis/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/07/03/fe/mobile/ios%E5%85%BC%E5%AE%B9/</loc>
@@ -79,7 +49,7 @@
     <loc>blog.soraliu.dev/2018/06/25/fe/%E6%9E%B6%E6%9E%84/angularjs/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
+    <loc>blog.soraliu.dev/2019/12/27/go/dep/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/05/29/javascript/exports/xlsx/</loc>
@@ -94,7 +64,7 @@
     <loc>blog.soraliu.dev/2019/04/18/linux/ubuntu/upgrade-core/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2020/04/24/linux/ubuntu/xclip/</loc>
+    <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/05/28/open-source/github/git-page/</loc>
@@ -122,9 +92,6 @@
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
-    <lastmod>2020-04-24</lastmod>
-  </url>  <url>
-    <loc>blog.soraliu.dev/2018/06/02/enterprise/tools/requirements/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/library/</loc>
@@ -160,10 +127,43 @@
     <loc>blog.soraliu.dev/2019/04/11/fe/angular/router/reuse/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
+    <loc>blog.soraliu.dev/2018/05/26/devops/nginx/config/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/06/02/enterprise/tools/requirements/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/31/devops/shell/basis/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/beginner/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/07/05/be/spring-boot/mysql/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/26/blog/hexo/hexo-faq/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2019/04/10/blog/hexo/hexo-gitment/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2019/04/09/blog/hexo/plugin/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/08/03/design/sketch/shortcut/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/05/31/devops/docker/basis/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/06/02/devops/docker/faq/</loc>
+    <lastmod>2020-04-24</lastmod>
+  </url>  <url>
+    <loc>blog.soraliu.dev/2018/06/05/devops/docker/flow/</loc>
     <lastmod>2020-04-24</lastmod>
   </url>
 </urlset>
