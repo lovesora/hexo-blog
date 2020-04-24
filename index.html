@@ -165,7 +165,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="需求-Future"><a href="#需求-Future" class="headerlink" title="需求 (Future)"></a>需求 (Future)</h2><p>通过 <code>ssh</code> 连远程 <code>ubuntu server(18.04)</code> 时经常会需要通过 <code>vim</code> 编辑文件 <code>copy</code> 一些代码，或者通过 <code>tmux</code> 复制 <code>shell</code> 命令，此时如果需要 <code>paste</code> 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 <code>xclip</code> 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。</p>
+        <h2 id="需求-Feature"><a href="#需求-Feature" class="headerlink" title="需求 (Feature)"></a>需求 (Feature)</h2><p>通过 <code>ssh</code> 连远程 <code>ubuntu server(18.04)</code> 时经常会需要通过 <code>vim</code> 编辑文件 <code>copy</code> 一些代码，或者通过 <code>tmux</code> 复制 <code>shell</code> 命令，此时如果需要 <code>paste</code> 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 <code>xclip</code> 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。</p>
 <h2 id="介绍-Introduce"><a href="#介绍-Introduce" class="headerlink" title="介绍 (Introduce)"></a>介绍 (Introduce)</h2><h3 id="X"><a href="#X" class="headerlink" title="X"></a><code>X</code></h3><ul>
 <li>图形界面并不是 <code>Linux</code> 的一部分，和 <code>Windows95</code> 及以后的版本就不一样了，他们的图形界面是操作系统的一部分，图形界面在系统内核中就实现了</li>
 <li><code>X</code> 是协议，一个基于X的应用程序需要运行并显示内容时会连接到 <code>X</code> 服务器，开始用X协议和服务器通信</li>
@@ -202,10 +202,11 @@
 
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="vim-配置好了之后为什么不生效"><a href="#vim-配置好了之后为什么不生效" class="headerlink" title="vim 配置好了之后为什么不生效?"></a>vim 配置好了之后为什么不生效?</h3><ul>
 <li>确认 vim <code>+clipboard</code> 已经开启，<code>vim --version | grep clipboard</code>，推荐使用  <code>vim-gtk</code> 代替系统默认 <code>vim</code></li>
-<li><code>mosh</code> 不支持 <code>X</code> 协议</li>
+<li><code>mosh</code> 不支持 <code>X</code> 协议 <a href="https://github.com/mobile-shell/mosh/issues/41" target="_blank" rel="noopener">mosh/issues/41</a></li>
 </ul>
-<h3 id="意外解决了一个问题"><a href="#意外解决了一个问题" class="headerlink" title="意外解决了一个问题"></a>意外解决了一个问题</h3><ul>
-<li><strong>光标</strong> 之前一直用的系统默认 <code>vim</code> 发现 <code>normal</code> 和 <code>insert</code> 相互切换时光标没办法改变(box &lt;-&gt; vertical var)，换成 <code>gvim</code> 这个问题就解了<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbMjA4NDUwMDk4Nyw2MjgxMzA1MjUsMTkzOT<br>AzMjQ3MSw3NTgwNjQzNjAsMTc0MjM1NTkxOF19</li>
+<h3 id="意外解决的问题"><a href="#意外解决的问题" class="headerlink" title="意外解决的问题"></a>意外解决的问题</h3><ul>
+<li><strong>vim 光标</strong> 之前一直用的系统默认 <code>vim</code> 发现 <code>normal</code> 和 <code>insert</code> 相互切换时光标没办法改变(box &lt;-&gt; vertical var)，换成 <code>gvim</code> 这个问题就解了</li>
+<li><strong>zsh 光标</strong> 没启用 <code>X</code> 之前一直也无法切换光标形状，开启过后问题已解<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbMTAxMDM4ODkxMywtMzU3ODc0Nzk4LC0xND<br>M3NjUzNzI1LDYyODEzMDUyNSwxOTM5MDMyNDcxLDc1ODA2NDM2<br>MCwxNzQyMzU1OTE4XX0=</li>
 <li>-&gt;</li>
 </ul>
 
@@ -1402,15 +1403,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">font</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">xlsx</a>
               </li>
              
               <li class="article-tag-list-item">
