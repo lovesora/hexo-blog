@@ -158,7 +158,7 @@
 
         
         <a href="/2020/04/24/linux/ubuntu/xclip/" class="archive-article-date">
-  	<time datetime="2020-04-24T02:33:52.140Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
+  	<time datetime="2020-04-24T02:35:22.040Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
@@ -173,7 +173,9 @@
 <li><code>X</code> 是协议，一个基于X的应用程序需要运行并显示内容时会连接到 <code>X</code> 服务器，开始用X协议和服务器通信</li>
 <li><code>X11</code> 是指 X Protocol version 11</li>
 </ul>
-<h2 id="安装-Installation"><a href="#安装-Installation" class="headerlink" title="安装 (Installation)"></a>安装 (Installation)</h2><h3 id="OSX-安装-XQuartz"><a href="#OSX-安装-XQuartz" class="headerlink" title="OSX 安装 XQuartz"></a>OSX 安装 <code>XQuartz</code></h3><blockquote>
+<h2 id="安装-Installation"><a href="#安装-Installation" class="headerlink" title="安装 (Installation)"></a>安装 (Installation)</h2><h3 id="Ubuntu-安装-xclip"><a href="#Ubuntu-安装-xclip" class="headerlink" title="Ubuntu 安装 xclip"></a>Ubuntu 安装 <code>xclip</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y xclip</span><br></pre></td></tr></table></figure>
+
+<h3 id="OSX-安装-XQuartz"><a href="#OSX-安装-XQuartz" class="headerlink" title="OSX 安装 XQuartz"></a>OSX 安装 <code>XQuartz</code></h3><blockquote>
 <p>The XQuartz project is an open-source effort to develop a version of the <a href="https://www.x.org/" target="_blank" rel="noopener">X.Org X Window System</a> that runs on OS X.</p>
 </blockquote>
 <p>官方网站  <a href="https://www.xquartz.org/" target="_blank" rel="noopener">https://www.xquartz.org/</a></p>
@@ -182,8 +184,6 @@
 <li>配置 <code>Application</code> ，将 <code>xterm</code> 替换成 <code>iTerm</code> 的运行路径 <code>/Applications/iTerm.app/Contents/MacOS/iTerm2</code> </li>
 <li>检查是否配置成功，iTerm 内执行 <code>echo $DISPLAY</code></li>
 </ul>
-<h3 id="Ubuntu-安装-xclip"><a href="#Ubuntu-安装-xclip" class="headerlink" title="Ubuntu 安装 xclip"></a>Ubuntu 安装 <code>xclip</code></h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install -y xclip</span><br></pre></td></tr></table></figure>
-
 <h2 id="配置-Configuration"><a href="#配置-Configuration" class="headerlink" title="配置 (Configuration)"></a>配置 (Configuration)</h2><h3 id="客户端-ssh-配置"><a href="#客户端-ssh-配置" class="headerlink" title="客户端 ssh 配置"></a>客户端 <code>ssh</code> 配置</h3><p>检查是否已经启用 <code>X11</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/ssh/ssh_config</span><br></pre></td></tr></table></figure>
 
@@ -195,13 +195,13 @@
 <p>确认输出包含</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X11Forwarding yes</span><br></pre></td></tr></table></figure>
 
-<h3 id="tmux-conf-配置"><a href="#tmux-conf-配置" class="headerlink" title="~/.tmux.conf 配置"></a><code>~/.tmux.conf</code> 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># copy to Mac OSX clipboard</span><br><span class="line">if -b &#39;command -v reattach-to-user-namespace &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | reattach-to-user-namespace pbcopy&quot;&#39;</span><br><span class="line"># copy to X11 clipboard</span><br><span class="line">if -b &#39;command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xsel -i -b&quot;&#39;</span><br><span class="line">if -b &#39;! command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;&amp; command -v xclip &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xclip -i -selection clipboard &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1&quot;&#39;</span><br><span class="line"># copy to Windows clipboard</span><br><span class="line">if -b &#39;command -v clip.exe &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | clip.exe&quot;&#39;</span><br><span class="line">if -b &#39;[ -c &#x2F;dev&#x2F;clipboard ]&#39; &#39;bind y run -b &quot;tmux save-buffer - &gt; &#x2F;dev&#x2F;clipboard&quot;&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="服务端-tmux-conf-配置"><a href="#服务端-tmux-conf-配置" class="headerlink" title="服务端 ~/.tmux.conf 配置"></a>服务端 <code>~/.tmux.conf</code> 配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># copy to Mac OSX clipboard</span><br><span class="line">if -b &#39;command -v reattach-to-user-namespace &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | reattach-to-user-namespace pbcopy&quot;&#39;</span><br><span class="line"># copy to X11 clipboard</span><br><span class="line">if -b &#39;command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xsel -i -b&quot;&#39;</span><br><span class="line">if -b &#39;! command -v xsel &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1 &amp;&amp; command -v xclip &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | xclip -i -selection clipboard &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1&quot;&#39;</span><br><span class="line"># copy to Windows clipboard</span><br><span class="line">if -b &#39;command -v clip.exe &gt; &#x2F;dev&#x2F;null 2&gt;&amp;1&#39; &#39;bind y run -b &quot;tmux save-buffer - | clip.exe&quot;&#39;</span><br><span class="line">if -b &#39;[ -c &#x2F;dev&#x2F;clipboard ]&#39; &#39;bind y run -b &quot;tmux save-buffer - &gt; &#x2F;dev&#x2F;clipboard&quot;&#39;</span><br></pre></td></tr></table></figure>
 
-<h3 id="vimrc-配置"><a href="#vimrc-配置" class="headerlink" title="~/.vimrc 配置"></a><code>~/.vimrc</code> 配置</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" y</span></span><br><span class="line"><span class="keyword">set</span> clipboard=unnamedplus</span><br><span class="line"><span class="comment">" copy the filepath of current buff to clipboard</span></span><br><span class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">"xclip -i -selection c"</span>, <span class="built_in">expand</span>(<span class="string">"%:p"</span>))<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" osx</span></span><br><span class="line"><span class="keyword">if</span> !executable(<span class="string">'xclip'</span>)</span><br><span class="line">  <span class="keyword">set</span> clipboard=unnamed</span><br><span class="line">  <span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">let</span> @+=<span class="built_in">expand</span>(<span class="string">'%:p'</span>)<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
+<h3 id="服务端-vimrc-配置"><a href="#服务端-vimrc-配置" class="headerlink" title="服务端~/.vimrc 配置"></a>服务端<code>~/.vimrc</code> 配置</h3><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">" y</span></span><br><span class="line"><span class="keyword">set</span> clipboard=unnamedplus</span><br><span class="line"><span class="comment">" copy the filepath of current buff to clipboard</span></span><br><span class="line"><span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">call</span> <span class="built_in">system</span>(<span class="string">"xclip -i -selection c"</span>, <span class="built_in">expand</span>(<span class="string">"%:p"</span>))<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">" osx</span></span><br><span class="line"><span class="keyword">if</span> !executable(<span class="string">'xclip'</span>)</span><br><span class="line">  <span class="keyword">set</span> clipboard=unnamed</span><br><span class="line">  <span class="keyword">nmap</span> <span class="symbol">&lt;Leader&gt;</span><span class="keyword">c</span> :<span class="keyword">let</span> @+=<span class="built_in">expand</span>(<span class="string">'%:p'</span>)<span class="symbol">&lt;CR&gt;</span></span><br><span class="line"><span class="keyword">endif</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Trouble-Shooting"><a href="#Trouble-Shooting" class="headerlink" title="Trouble Shooting"></a>Trouble Shooting</h2><h3 id="vim-配置好了之后为什么不生效"><a href="#vim-配置好了之后为什么不生效" class="headerlink" title="vim 配置好了之后为什么不生效?"></a>vim 配置好了之后为什么不生效?</h3><ul>
-<li>gvim</li>
-<li>mosh<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbMTA5OTc5MDE1MywxOTM5MDMyNDcxLDc1OD<br>A2NDM2MCwxNzQyMzU1OTE4XX0=</li>
+<li>需要使用 <code>gvim</code> （推荐  <code>vim-gtk</code>），而不是 <code>vim</code></li>
+<li><code>mosh</code> 不支持 <code>X</code> 协议<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbMzAwMTg3MzkzLDE5MzkwMzI0NzEsNzU4MD<br>Y0MzYwLDE3NDIzNTU5MThdfQ==</li>
 <li>-&gt;</li>
 </ul>
 
@@ -1479,11 +1479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
+                <a href="javascript:void(0)" class="js-tag color2">router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">router</a>
+                <a href="javascript:void(0)" class="js-tag color4">beginner</a>
               </li>
             
             <div class="clearfix"></div>
