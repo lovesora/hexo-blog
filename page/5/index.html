@@ -145,6 +145,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-devops/docker/faq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/02/devops/docker/faq/">Docker FAQ</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/02/devops/docker/faq/" class="archive-article-date">
+  	<time datetime="2018-06-02T01:03:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Mac-端口映射无效"><a href="#Mac-端口映射无效" class="headerlink" title="Mac 端口映射无效"></a>Mac 端口映射无效</h2><p>端口映射语法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p [host IP:]&lt;host port&gt;:&lt;container port&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># before</span></span><br><span class="line">-p 80:80</span><br><span class="line"></span><br><span class="line"><span class="comment"># now</span></span><br><span class="line">-p 127.0.0.1:80:80</span><br></pre></td></tr></table></figure>
+
+<h2 id="重设端口映射"><a href="#重设端口映射" class="headerlink" title="重设端口映射"></a>重设端口映射</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx</span><br><span class="line">docker commit nginx nginx:v1.0.1</span><br><span class="line">docker run -p 80:80 nginx:v1.0.1</span><br></pre></td></tr></table></figure>
+
+<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
+<li><a href="https://github.com/docker/for-mac/issues/1675" target="_blank" rel="noopener">Port forwarding doesn’t work at all</a></li>
+<li><a href="https://stackoverflow.com/questions/19335444/how-do-i-assign-a-port-mapping-to-an-existing-docker-container" target="_blank" rel="noopener">Assign a port mapping to an existing Docker container</a></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">faq</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/02/devops/docker/faq/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-enterprise/tools/requirements" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1087,85 +1175,6 @@
 
 
   
-    <article id="post-fe/angular/杂文/疑难杂症" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">angular疑难杂症</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/" class="archive-article-date">
-  	<time datetime="2018-05-28T00:07:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错"><a href="#执行-ng-config-xxx-后-ng-xxx-命令报错-重装-angular-cli仍然报错" class="headerlink" title="执行 ng config xxx 后 ng xxx 命令报错 重装@angular/cli仍然报错"></a>执行 <code>ng config xxx</code> 后 <code>ng xxx</code> 命令报错 重装<code>@angular/cli</code>仍然报错</h2><p>报错信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Workspace needs to be loaded before it is used.</span><br><span class="line">Error: Workspace needs to be loaded before it is used.</span><br><span class="line">    at Workspace._assertLoaded (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:59:19)</span><br><span class="line">    at Workspace._getTool (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:145:14)</span><br><span class="line">    at Workspace.getCli (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/node_modules/@angular-devkit/core/src/workspace/workspace.js:127:21)</span><br><span class="line">    at Object.getDefaultSchematicCollection (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/utilities/config.js:209:32)</span><br><span class="line">    at NewCommand.parseCollectionName (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:88:76)</span><br><span class="line">    at NewCommand.initialize (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/commands/new.js:46:37)</span><br><span class="line">    at Object.&lt;anonymous&gt; (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:87:23)</span><br><span class="line">    at Generator.next (&lt;anonymous&gt;)</span><br><span class="line">    at fulfilled (/usr/<span class="built_in">local</span>/lib/node_modules/@angular/cli/models/<span class="built_in">command</span>-runner.js:4:58)</span><br><span class="line">    at &lt;anonymous&gt;</span><br></pre></td></tr></table></figure>
-
-<p>解决方案</p>
-<p>删除<code>angular-config.json</code>文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm ~/.angular-config.json</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">angular</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/28/fe/angular/%E6%9D%82%E6%96%87/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
@@ -1301,15 +1310,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">volume</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">subPath</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1381,15 +1390,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">data fetch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">

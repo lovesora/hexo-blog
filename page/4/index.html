@@ -145,6 +145,123 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fe/rxjs/函数式编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/05/fe/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">函数式编程浅析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/05/fe/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2018-07-05T17:03:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="命令式-和-声明式"><a href="#命令式-和-声明式" class="headerlink" title="命令式 和 声明式"></a><code>命令式</code> 和 <code>声明式</code></h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 命令式</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addOne</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> results = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">    results.push(arr[i] + <span class="number">1</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> results</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(addOne([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">double</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> results = []</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length; i++)&#123;</span><br><span class="line">    results.push(arr[i] * <span class="number">2</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> results</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(double([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明式</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addOne</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="params">item</span> =&gt;</span> item + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(addOne([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]));</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">double</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.map(<span class="function"><span class="params">item</span> =&gt;</span> item * <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> oneArray = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> anotherArray = double(oneArray);</span><br><span class="line"><span class="comment">// anotherArray的内容为[2, 4, 6]</span></span><br><span class="line"><span class="comment">// oneArray的内容依然是[1, 2, 3]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(oneArray);</span><br><span class="line"><span class="built_in">console</span>.log(anotherArray);</span><br></pre></td></tr></table></figure>
+
+<h2 id="纯函数-引用透明度Referential-Transparency"><a href="#纯函数-引用透明度Referential-Transparency" class="headerlink" title="纯函数(引用透明度Referential Transparency)"></a>纯函数(引用透明度Referential Transparency)</h2><p><strong>纯函数</strong></p>
+<ul>
+<li>函数的执⾏过程完全由输⼊参数决定，不会受除参数之外的任何数据影响</li>
+<li>函数不会修改任何外部状态，⽐如修改全局变量或传⼊的参数对象</li>
+</ul>
+<p><strong>非纯函数</strong></p>
+<ul>
+<li>改变了参数</li>
+<li>改变了全局变量</li>
+<li>DOM或者AJAX操作</li>
+<li>读取用户输入，抛出异常</li>
+</ul>
+<h2 id="数据不可变-Immutable"><a href="#数据不可变-Immutable" class="headerlink" title="数据不可变(Immutable)"></a>数据不可变(Immutable)</h2><ul>
+<li>数据一旦产生，就不可以发生变化（Immutable）。</li>
+</ul>
+<p>es6中的<code>const</code>只是规定了变量不可发生变化，但是变量引用的对象自身可以改变。</p>
+<h2 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h2><ul>
+<li>函数式编程想要实现需要有一层软件模拟来实现数学家们设想的模型，但是在当时的硬件条件下是不被允许的。</li>
+<li>硬件的飞速发展，性能的大幅提升，让开发者们开始关注软件的可维护性，可测试性。</li>
+<li>函数式编程却能够让⼤部 分开发者不需要操⼼任务处理，所以⾮常适合分布式计算的场景</li>
+</ul>
+<h2 id="面向对象-和-函数式"><a href="#面向对象-和-函数式" class="headerlink" title="面向对象 和 函数式"></a><code>面向对象</code> 和 <code>函数式</code></h2><p>面向对象</p>
+<p>优点</p>
+<ul>
+<li>因为通过定义类的⽅法，可以控 制对数据的操作。</li>
+</ul>
+<p>缺陷</p>
+<ul>
+<li>⾯向对象编程提供了⼀种持续编写烂 代码的⽅式，它让你通过⼀系列补丁来拼凑程序。</li>
+<li>不知道对象是如何变为当前状态的，因为每一个方法都有可能修改状态。无法预知如果修改了当前状态会导致哪些地方发生变化。</li>
+</ul>
+<p>函数式</p>
+<p>优点</p>
+<ul>
+<li>声明式，纯函数，数据不可变。</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>难度，性能</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">函数式编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/05/fe/rxjs/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B/">ALL >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-be/spring-boot/mysql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1071,94 +1188,6 @@ eyJoaXN0b3J5IjpbLTE5NDU0NTQ0MjRdfQ==
 
 
   
-    <article id="post-devops/docker/faq" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/02/devops/docker/faq/">Docker FAQ</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/02/devops/docker/faq/" class="archive-article-date">
-  	<time datetime="2018-06-02T01:03:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Mac-端口映射无效"><a href="#Mac-端口映射无效" class="headerlink" title="Mac 端口映射无效"></a>Mac 端口映射无效</h2><p>端口映射语法</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p [host IP:]&lt;host port&gt;:&lt;container port&gt;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># before</span></span><br><span class="line">-p 80:80</span><br><span class="line"></span><br><span class="line"><span class="comment"># now</span></span><br><span class="line">-p 127.0.0.1:80:80</span><br></pre></td></tr></table></figure>
-
-<h2 id="重设端口映射"><a href="#重设端口映射" class="headerlink" title="重设端口映射"></a>重设端口映射</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker stop nginx</span><br><span class="line">docker commit nginx nginx:v1.0.1</span><br><span class="line">docker run -p 80:80 nginx:v1.0.1</span><br></pre></td></tr></table></figure>
-
-<h2 id="Refs"><a href="#Refs" class="headerlink" title="Refs"></a>Refs</h2><ul>
-<li><a href="https://github.com/docker/for-mac/issues/1675" target="_blank" rel="noopener">Port forwarding doesn’t work at all</a></li>
-<li><a href="https://stackoverflow.com/questions/19335444/how-do-i-assign-a-port-mapping-to-an-existing-docker-container" target="_blank" rel="noopener">Assign a port mapping to an existing Docker container</a></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">faq</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/02/devops/docker/faq/">ALL >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1294,15 +1323,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">mac</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">volume</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">subPath</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">mac</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,15 +1403,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">data fetch</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">函数式编程</a>
               </li>
              
               <li class="article-tag-list-item">
