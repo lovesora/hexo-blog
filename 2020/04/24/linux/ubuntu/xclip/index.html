@@ -16,10 +16,10 @@
 <meta property="og:description" content="需求 (Feature)通过 ssh 连远程 ubuntu server(18.04) 时经常会需要通过 vim 编辑文件 copy 一些代码，或者通过 tmux 复制 shell 命令，此时如果需要 paste 到本地每次都需要使用鼠标选中，极其麻烦，对于键盘党来说太不友好，偶然听说 xclip 可以解决这个问题，于是开始了折腾。中间过程中意外解决了以前遇到的一些杂症，甚是神奇。 介绍 (Int">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-24T09:48:49.000Z">
-<meta property="article:modified_time" content="2020-05-15T04:09:08.674Z">
+<meta property="article:modified_time" content="2020-05-19T08:06:05.876Z">
 <meta property="article:author" content="Sora Liu">
 <meta property="article:tag" content="ubuntu">
-<meta property="article:tag" content="vim">
+<meta property="article:tag" content="vimm">
 <meta property="article:tag" content="x11">
 <meta property="article:tag" content="xclip">
 <meta name="twitter:card" content="summary">
@@ -209,7 +209,7 @@
 </ul>
 <h3 id="意外解决的问题"><a href="#意外解决的问题" class="headerlink" title="意外解决的问题"></a>意外解决的问题</h3><ul>
 <li><strong>vim 光标</strong> 之前一直用的系统默认 <code>vim</code> 发现 <code>normal</code> 和 <code>insert</code> 相互切换时光标没办法改变(box &lt;-&gt; vertical var)，换成 <code>gvim</code> 这个问题就解了</li>
-<li><strong>zsh 光标</strong> 没启用 <code>X</code> 之前一直也无法切换光标形状，开启过后问题已解<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbOTA2NzEyNDE2LDEwMTAzODg5MTMsLTM1Nz<br>g3NDc5OCwtMTQzNzY1MzcyNSw2MjgxMzA1MjUsMTkzOTAzMjQ3<br>MSw3NTgwNjQzNjAsMTc0MjM1NTkxOF19</li>
+<li><strong>zsh 光标</strong> 没启用 <code>X</code> 之前一直也无法切换光标形状，开启过后问题已解<br>&lt;!–stackedit_data:<br>eyJoaXN0b3J5IjpbMTAyODY3NjI3NSw5MDY3MTI0MTYsMTAxMD<br>M4ODkxMywtMzU3ODc0Nzk4LC0xNDM3NjUzNzI1LDYyODEzMDUy<br>NSwxOTM5MDMyNDcxLDc1ODA2NDM2MCwxNzQyMzU1OTE4XX0=</li>
 <li>-&gt;</li>
 </ul>
 
@@ -260,7 +260,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">vimm</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -673,7 +673,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color5">vimm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -682,6 +682,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">xclip</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -702,10 +706,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">summary</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">pageg</a>
               </li>
              
               <li class="article-tag-list-item">
