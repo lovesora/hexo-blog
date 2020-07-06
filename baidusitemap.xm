@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
+    <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
     <lastmod>2020-07-06</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
+    <loc>blog.soraliu.dev/2019/05/21/javascript/dynamic/font/</loc>
     <lastmod>2020-07-06</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2019/12/02/k8s/cache/</loc>
@@ -127,7 +127,7 @@
     <loc>blog.soraliu.dev/2018/06/29/work/summary/2018%E5%B9%B4%E4%B8%AD%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2020-07-06</lastmod>
   </url>  <url>
-    <loc>blog.soraliu.dev/2020/03/24/work/summary/2020.03/</loc>
+    <loc>blog.soraliu.dev/2019/12/16/bazel/basic/</loc>
     <lastmod>2020-07-06</lastmod>
   </url>  <url>
     <loc>blog.soraliu.dev/2018/06/02/enterprise/tools/requirements/</loc>
